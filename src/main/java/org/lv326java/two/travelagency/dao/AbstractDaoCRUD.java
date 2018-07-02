@@ -3,6 +3,7 @@ package org.lv326java.two.travelagency.dao;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
+import java.util.Map;
 
 import org.lv326java.two.travelagency.db.ConnectionManager;
 import org.lv326java.two.travelagency.entities.Entity;
@@ -17,10 +18,10 @@ abstract class AbstractDaoCRUD<TEntity extends Entity> extends AbstractDaoRead<T
 
 	// TODO Use Builder
 	// TODO Use List<String>
-	protected abstract String[] getFields(TEntity entity);
+	protected abstract Map<String, String> getFields(TEntity entity);
 
 	// TODO Use List<String>
-	protected abstract String[] getUpdateFields(TEntity entity);
+	protected abstract Map<String, String> getUpdateFields(TEntity entity);
 
 	private boolean executeQuery(String query, SqlQueries sqlQueries) {
 		boolean result = false;
@@ -49,16 +50,18 @@ abstract class AbstractDaoCRUD<TEntity extends Entity> extends AbstractDaoRead<T
 	
 	// Create
 	public boolean insert(TEntity entity) {
+        Map<String, String> allFields = getFields(entity);
 		String query = String.format(sqlQueries.get(SqlQueries.INSERT).toString(),
-					(Object[]) Arrays.copyOfRange(getFields(entity), 1, getFields(entity).length));
+					(Object[]) Arrays.copyOfRange(allFields.values().toArray(), 1, allFields.values().size()));
 		//System.out.println("query = " + query);
 		return executeQuery(query, SqlQueries.INSERT);
 	}
 
 	// Update
 	public boolean updateByEntity(TEntity entity) {
+        Map<String, String> updateFields = getUpdateFields(entity);
 		String query = String.format(sqlQueries.get(SqlQueries.UPDATE_BY_ID).toString(),
-					(Object[]) getUpdateFields(entity));
+					updateFields.values());
 		return executeQuery(query, SqlQueries.UPDATE_BY_FIELD);
 	}
 

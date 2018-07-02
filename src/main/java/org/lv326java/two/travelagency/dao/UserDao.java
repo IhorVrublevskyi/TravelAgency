@@ -3,53 +3,66 @@ package org.lv326java.two.travelagency.dao;
 
 import org.lv326java.two.travelagency.entities.User;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public final class UserDao extends AbstractDaoCRUD<User> {
-	private final static String LOGIN_FIELDNAME = "Login";
 
-	public UserDao() {
-		super();
-		init();
-	}
+    private final static String ID_FIELDNAME = "id";
+    private final static String FIRST_NAME_FIELDNAME = "first_name";
+    private final static String LAST_NAME_FIELDNAME = "last_name";
+    private final static String LOGIN_FIELDNAME = "login";
+    private final static String PASSWORD_FIELDNAME = "password";
+    private final static String ROLE_ID_FIELDNAME = "role_id";
 
-	// TODO Create abstract method in ADao
-	protected void init() {
-		for (User.UserEntityQueries userEntityQueries : User.UserEntityQueries.values()) {
-			sqlQueries.put(userEntityQueries.getSqlQuery(), userEntityQueries);
-		}
-	}
+    public UserDao() {
+        super();
+        init();
+    }
 
-	// TODO Use List<String>
-	protected User createInstance(String[] args) {
-		return new User (
-				Long.parseLong(args[0] == null ? "0" : args[0]),
-				args[1] == null ? new String() : args[1],
-				args[2] == null ? new String() : args[2],
-			    args[3] == null ? new String() : args[3],
-			    Long.parseLong(args[4] == null ? "0" : args[4]));
-	}
+    // TODO Create abstract method in ADao
+    protected void init() {
+        for (User.UserEntityQueries userEntityQueries : User.UserEntityQueries.values()) {
+            sqlQueries.put(userEntityQueries.getSqlQuery(), userEntityQueries);
+        }
+    }
 
-	protected String[] getUpdateFields(User entity) {
-		String[] result = new String[3];
-		String[] allFields = getFields(entity);
-		result[0] = allFields[2]; // passsword
-		result[1] = allFields[3]; // name
-		result[2] = allFields[0]; // id
-		return result;
-	}
+    @Override
+    protected User createInstance(Map<String, String> args) {
+        return new User(
+                Long.parseLong(args.get(ID_FIELDNAME) == null ? "0" : args.get(ID_FIELDNAME)),
+                args.get(FIRST_NAME_FIELDNAME) == null ? "" : args.get(FIRST_NAME_FIELDNAME),
+                args.get(LAST_NAME_FIELDNAME) == null ? "" : args.get(LAST_NAME_FIELDNAME),
+                args.get(LOGIN_FIELDNAME) == null ? "" : args.get(LOGIN_FIELDNAME),
+                args.get(PASSWORD_FIELDNAME) == null ? "" : args.get(PASSWORD_FIELDNAME),
+                Long.parseLong(args.get(ROLE_ID_FIELDNAME) == null ? "" : args.get(ROLE_ID_FIELDNAME)));
+    }
 
-	protected String[] getFields(User entity) {
-		//String[] fields = new String[User.class.getDeclaredFields().length];
-		String[] fields = new String[5];
-		fields[0] = entity.getId().toString();
-		fields[1] = entity.getLogin();
-		fields[2] = entity.getPassword();
-		fields[3] = entity.getName();
-		fields[4] = entity.getIdRole().toString();
-		return fields;
-	}
+    @Override
+    protected Map<String, String> getUpdateFields(User entity) {
+        Map<String, String> result = new HashMap<>();
+        Map<String, String> allFields = getFields(entity);
+        result.put(FIRST_NAME_FIELDNAME, allFields.get(FIRST_NAME_FIELDNAME));
+        result.put(LAST_NAME_FIELDNAME, allFields.get(LAST_NAME_FIELDNAME));
+        result.put(PASSWORD_FIELDNAME, allFields.get(PASSWORD_FIELDNAME));
+        result.put(ROLE_ID_FIELDNAME, allFields.get(ROLE_ID_FIELDNAME));
+        return result;
+    }
 
-	public User getUserEntityByLogin(String login) {
-		return getByFieldName(LOGIN_FIELDNAME, login).get(0);
-	}
+    @Override
+    protected Map<String, String> getFields(User entity) {
+        Map<String, String> fields = new HashMap<>();
+        fields.put(ID_FIELDNAME, entity.getId().toString());
+        fields.put(FIRST_NAME_FIELDNAME, entity.getFirstName());
+        fields.put(LAST_NAME_FIELDNAME, entity.getLastName());
+        fields.put(LOGIN_FIELDNAME, entity.getLogin());
+        fields.put(PASSWORD_FIELDNAME, entity.getPassword());
+        fields.put(ROLE_ID_FIELDNAME, entity.getRoleId().toString());
+        return fields;
+    }
+
+    public User getUserEntityByLogin(String login) {
+        return getByFieldName(LOGIN_FIELDNAME, login).get(0);
+    }
 
 }
