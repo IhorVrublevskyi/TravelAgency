@@ -1,0 +1,26 @@
+.form {
+    width: 400px;
+    margin: 50px auto;
+}
+
+.log {
+    text-align: center;
+}
+
+.input, .submit, .bottom {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.input > input {
+    width: 100%;
+}
+
+.submit > input {
+    float: right;
+    margin: 20px -4px 10px 0;
+}
+
+.clear {
+    clear: both;
+}
