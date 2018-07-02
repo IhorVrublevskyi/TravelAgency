@@ -21,6 +21,7 @@ public final class UserDao extends AbstractDaoCRUD<User> {
     }
 
     // TODO Create abstract method in ADao
+    @Override
     protected void init() {
         for (User.UserEntityQueries userEntityQueries : User.UserEntityQueries.values()) {
             sqlQueries.put(userEntityQueries.getSqlQuery(), userEntityQueries);
