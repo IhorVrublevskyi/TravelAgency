@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Booking implements Entity {
 
-    public static enum UserEntityQueries {
+    public static enum BookingEntityQueries {
         INSERT(SqlQueries.INSERT, "INSERT INTO bookings (user_id, room_id, date_checkin, date_checkout) VALUES (%s, %s, '%s', '%s');"),
         GET_BY_ID(SqlQueries.GET_BY_ID, "SELECT id, user_id, room_id, date_checkin, date_checkout FROM bookings WHERE id = %s;"),
         GET_BY_FIELD(SqlQueries.GET_BY_FIELD, "SELECT id, user_id, room_id, date_checkin, date_checkout FROM bookings WHERE %s = '%s';"),
@@ -17,7 +17,7 @@ public class Booking implements Entity {
         private SqlQueries sqlQuery;
         private String query;
 
-        private UserEntityQueries(SqlQueries sqlQuery, String query) {
+        private BookingEntityQueries(SqlQueries sqlQuery, String query) {
             this.sqlQuery = sqlQuery;
             this.query = query;
         }

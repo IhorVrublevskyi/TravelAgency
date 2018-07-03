@@ -19,8 +19,8 @@ public class RoomDao extends AbstractDaoCRUD<Room> {
 
     @Override
     protected void init() {
-        for (Room.UserEntityQueries userEntityQueries : Room.UserEntityQueries.values()) {
-            sqlQueries.put(userEntityQueries.getSqlQuery(), userEntityQueries);
+        for (Room.RoomEntityQueries roomEntityQueries : Room.RoomEntityQueries.values()) {
+            sqlQueries.put(roomEntityQueries.getSqlQuery(), roomEntityQueries);
         }
     }
 

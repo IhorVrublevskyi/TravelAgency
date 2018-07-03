@@ -21,8 +21,8 @@ public class VisaDao extends AbstractDaoCRUD<Visa> {
 
     @Override
     protected void init() {
-        for (Visa.UserEntityQueries userEntityQueries : Visa.UserEntityQueries.values()) {
-            sqlQueries.put(userEntityQueries.getSqlQuery(), userEntityQueries);
+        for (Visa.VisaEntityQueries visaEntityQueries : Visa.VisaEntityQueries.values()) {
+            sqlQueries.put(visaEntityQueries.getSqlQuery(), visaEntityQueries);
         }
     }
 

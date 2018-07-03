@@ -17,8 +17,8 @@ public class CountryDao extends AbstractDaoCRUD<Country> {
 
     @Override
     protected void init() {
-        for (Country.UserEntityQueries userEntityQueries : Country.UserEntityQueries.values()) {
-            sqlQueries.put(userEntityQueries.getSqlQuery(), userEntityQueries);
+        for (Country.CountryEntityQueries countryEntityQueries : Country.CountryEntityQueries.values()) {
+            sqlQueries.put(countryEntityQueries.getSqlQuery(), countryEntityQueries);
         }
     }
 

@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Visa implements Entity {
 
-    public static enum UserEntityQueries {
+    public static enum VisaEntityQueries {
         INSERT(SqlQueries.INSERT, "INSERT INTO visas (date_of_init, date_of_expired, country_id, user_id) VALUES ('%s', '%s', %s, %s);"),
         GET_BY_ID(SqlQueries.GET_BY_ID, "SELECT id, date_of_init, date_of_expired, country_id, user_id FROM visas WHERE id = %s;"),
         GET_BY_FIELD(SqlQueries.GET_BY_FIELD, "SELECT id, date_of_init, date_of_expired, country_id, user_id FROM visas WHERE %s = '%s';"),
@@ -17,7 +17,7 @@ public class Visa implements Entity {
         private SqlQueries sqlQuery;
         private String query;
 
-        private UserEntityQueries(SqlQueries sqlQuery, String query) {
+        private VisaEntityQueries(SqlQueries sqlQuery, String query) {
             this.sqlQuery = sqlQuery;
             this.query = query;
         }

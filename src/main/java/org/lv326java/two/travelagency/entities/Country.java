@@ -2,7 +2,7 @@ package org.lv326java.two.travelagency.entities;
 
 public class Country implements Entity {
 
-    public static enum UserEntityQueries {
+    public static enum CountryEntityQueries {
         INSERT(SqlQueries.INSERT, "INSERT INTO countries (name) VALUES ('%s');"),
         GET_BY_ID(SqlQueries.GET_BY_ID, "SELECT id, name FROM countries WHERE id = %s;"),
         GET_BY_FIELD(SqlQueries.GET_BY_FIELD, "SELECT id, name FROM countries WHERE %s = '%s';"),
@@ -15,7 +15,7 @@ public class Country implements Entity {
         private SqlQueries sqlQuery;
         private String query;
 
-        private UserEntityQueries(SqlQueries sqlQuery, String query) {
+        private CountryEntityQueries(SqlQueries sqlQuery, String query) {
             this.sqlQuery = sqlQuery;
             this.query = query;
         }

@@ -2,7 +2,7 @@ package org.lv326java.two.travelagency.entities;
 
 public class Role implements Entity {
 
-    public static enum UserEntityQueries {
+    public static enum RoleEntityQueries {
         INSERT(SqlQueries.INSERT, "INSERT INTO roles (name) VALUES ('%s');"),
         GET_BY_ID(SqlQueries.GET_BY_ID, "SELECT id, name FROM roles WHERE id = %s;"),
         GET_BY_FIELD(SqlQueries.GET_BY_FIELD, "SELECT id, name FROM roles WHERE %s = '%s';"),
@@ -15,7 +15,7 @@ public class Role implements Entity {
         private SqlQueries sqlQuery;
         private String query;
 
-        private UserEntityQueries(SqlQueries sqlQuery, String query) {
+        private RoleEntityQueries(SqlQueries sqlQuery, String query) {
             this.sqlQuery = sqlQuery;
             this.query = query;
         }

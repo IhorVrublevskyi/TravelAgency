@@ -18,8 +18,8 @@ public class CityDao extends AbstractDaoCRUD<City> {
 
     @Override
     protected void init() {
-        for (City.UserEntityQueries userEntityQueries : City.UserEntityQueries.values()) {
-            sqlQueries.put(userEntityQueries.getSqlQuery(), userEntityQueries);
+        for (City.CityEntityQueries cityEntityQueries : City.CityEntityQueries.values()) {
+            sqlQueries.put(cityEntityQueries.getSqlQuery(), cityEntityQueries);
         }
     }
 

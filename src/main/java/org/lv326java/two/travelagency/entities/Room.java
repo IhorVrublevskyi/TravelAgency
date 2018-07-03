@@ -2,7 +2,7 @@ package org.lv326java.two.travelagency.entities;
 
 public class Room implements Entity {
 
-    public static enum UserEntityQueries {
+    public static enum RoomEntityQueries {
         INSERT(SqlQueries.INSERT, "INSERT INTO rooms (room_number, hotel_id) VALUES (%s, %s);"),
         GET_BY_ID(SqlQueries.GET_BY_ID, "SELECT id, room_number, hotel_id FROM rooms WHERE id = %s;"),
         GET_BY_FIELD(SqlQueries.GET_BY_FIELD, "SELECT id, room_number, hotel_id FROM rooms WHERE %s = '%s';"),
@@ -15,7 +15,7 @@ public class Room implements Entity {
         private SqlQueries sqlQuery;
         private String query;
 
-        private UserEntityQueries(SqlQueries sqlQuery, String query) {
+        private RoomEntityQueries(SqlQueries sqlQuery, String query) {
             this.sqlQuery = sqlQuery;
             this.query = query;
         }

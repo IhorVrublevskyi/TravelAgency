@@ -17,8 +17,8 @@ public class RoleDao extends AbstractDaoCRUD<Role> {
 
     @Override
     protected void init() {
-        for (Role.UserEntityQueries userEntityQueries : Role.UserEntityQueries.values()) {
-            sqlQueries.put(userEntityQueries.getSqlQuery(), userEntityQueries);
+        for (Role.RoleEntityQueries roleEntityQueries : Role.RoleEntityQueries.values()) {
+            sqlQueries.put(roleEntityQueries.getSqlQuery(), roleEntityQueries);
         }
     }
 

@@ -21,8 +21,8 @@ public class BookingDao extends AbstractDaoCRUD<Booking> {
 
     @Override
     protected void init() {
-        for (Booking.UserEntityQueries userEntityQueries : Booking.UserEntityQueries.values()) {
-            sqlQueries.put(userEntityQueries.getSqlQuery(), userEntityQueries);
+        for (Booking.BookingEntityQueries bookingEntityQueries: Booking.BookingEntityQueries.values()) {
+            sqlQueries.put(bookingEntityQueries.getSqlQuery(), bookingEntityQueries);
         }
     }
 

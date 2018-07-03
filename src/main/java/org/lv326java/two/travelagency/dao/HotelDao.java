@@ -21,8 +21,8 @@ public class HotelDao extends AbstractDaoCRUD<Hotel> {
 
     @Override
     protected void init() {
-        for (Hotel.UserEntityQueries userEntityQueries : Hotel.UserEntityQueries.values()) {
-            sqlQueries.put(userEntityQueries.getSqlQuery(), userEntityQueries);
+        for (Hotel.HotelEntityQueries hotelEntityQueries : Hotel.HotelEntityQueries.values()) {
+            sqlQueries.put(hotelEntityQueries.getSqlQuery(), hotelEntityQueries);
         }
     }
 
