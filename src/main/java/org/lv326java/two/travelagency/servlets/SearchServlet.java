@@ -15,9 +15,9 @@ import java.util.List;
 public class SearchServlet extends HttpServlet {
 
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/pages/visa.jsp").forward(request, response);
-    }
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("WEB-INF/pages/hotels.jsp").forward(request, response);

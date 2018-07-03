@@ -8,7 +8,7 @@
     </style>
 </head>
 <body>
-<h2>Hello ${user}</h2>
+<h2>Hello</h2>
 <div class="visa">
     <p>Information about visas:</p>
     <div class="wrap">

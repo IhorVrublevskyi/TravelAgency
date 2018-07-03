@@ -21,7 +21,6 @@
     <servlet-mapping>
         <servlet-name>search</servlet-name>
         <url-pattern>/search</url-pattern>
-        <url-pattern>/visa</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -67,6 +66,16 @@
     <servlet-mapping>
         <servlet-name>userCab</servlet-name>
         <url-pattern>/userCabinet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>visa</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.servlets.VisaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>visa</servlet-name>
+        <url-pattern>/visa</url-pattern>
+        <url-pattern>/addVisa</url-pattern>
     </servlet-mapping>
 
 
