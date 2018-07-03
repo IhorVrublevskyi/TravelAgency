@@ -22,11 +22,14 @@
                 <p>Password</p>
                 <input type="password" name="login" placeholder="Type password" required>
             </div>
-            <div class="submit">
-                <input type="submit" value="Login">
-            </div>
-            <div class="clear"></div>
         </form>
+        <div class="submit">
+            <a><button>Login</button></a>
+        </div>
+        <div class="submit">
+            <a href="/registration"><button>Register</button></a>
+        </div>
+        <div class="clear"></div>
     </fieldset>
 </div>
 
