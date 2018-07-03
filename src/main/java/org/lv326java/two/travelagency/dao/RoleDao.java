@@ -44,4 +44,8 @@ public class RoleDao extends AbstractDaoCRUD<Role> {
         fields.put(NAME_FIELDNAME, entity.getName());
         return fields;
     }
+
+    public Role getRoleEntityByName(String name) {
+        return getByFieldName(NAME_FIELDNAME, name).get(0);
+    }
 }

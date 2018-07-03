@@ -17,8 +17,8 @@
 }
 
 .submit > input {
-    float: right;
-    margin: 20px -4px 10px 0;
+    float: left;
+    margin: 20px -4px 20px 0;
 }
 
 .clear {
