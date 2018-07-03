@@ -16,7 +16,7 @@
     width: 100%;
 }
 
-.submit > input {
+.submit > input, .submit > a {
     float: right;
     margin: 20px -4px 10px 0;
 }

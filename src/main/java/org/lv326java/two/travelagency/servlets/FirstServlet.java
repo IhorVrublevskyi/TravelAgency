@@ -12,20 +12,7 @@ import java.io.IOException;
 public class FirstServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //TODO check if user exist, his log and pswd (role) and redirect to his page (users or admins)
-//        if (
-////                "role"=="user"
-//                ) {
-
-//        request.setAttribute("", );
-        request.getRequestDispatcher("WEB-INF/pages/search.jsp").forward(request, response);
-
-//        }
-//        if (
-////                "role"=="admin"
-//                ) {
-//        request.getRequestDispatcher("WEB-INF/pages/adminsCabinet.jsp").forward(request, response);
-//
-//        }
+        request.getRequestDispatcher("WEB-INF/pages/registration.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
