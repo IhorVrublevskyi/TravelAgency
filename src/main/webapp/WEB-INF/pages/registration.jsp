@@ -15,20 +15,24 @@
     <fieldset>
         <form action="/userCabinet" method="post">
             <div class="input">
-                <p>First name</p>
-                <input type="text" name="fname" placeholder="Type first_name" required>
-            </div>
-            <div class="input">
-                <p>Last name</p>
-                <input type="text" name="lname" placeholder="Type last_name" required>
-            </div>
-            <div class="input">
                 <p>Login</p>
                 <input type="text" name="uname" placeholder="Type login" required>
             </div>
             <div class="input">
                 <p>Password</p>
                 <input type="password" name="login" placeholder="Type password" required>
+            </div>
+            <div class="input">
+                <p>Retype password</p>
+                <input type="password" name="login" placeholder="Retype password" required>
+            </div>
+            <div class="input">
+                <p>First name</p>
+                <input type="text" name="fname" placeholder="Type first name" required>
+            </div>
+            <div class="input">
+                <p>Last name</p>
+                <input type="text" name="lname" placeholder="Type last name" required>
             </div>
             <div class="submit">
                 <input type="submit" value="Register">
