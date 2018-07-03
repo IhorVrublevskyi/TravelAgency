@@ -14,17 +14,6 @@
 
     <fieldset>
         <form action="/userCabinet" method="post">
-<<<<<<< HEAD
-            <div class="input">
-                <p>First name</p>
-                <input type="text" name="fname" placeholder="Type first_name" required>
-            </div>
-            <div class="input">
-                <p>Last name</p>
-                <input type="text" name="lname" placeholder="Type last_name" required>
-            </div>
-=======
->>>>>>> 3166c3e6f1278569dce077da03ebf0f3ab6675b4
             <div class="input">
                 <p>Login</p>
                 <input type="text" name="uname" placeholder="Type login" required>
