@@ -1,5 +1,5 @@
 .form {
-    width: 400px;
+    width: 500px;
     margin: 50px auto;
 }
 
@@ -16,9 +16,18 @@
     width: 100%;
 }
 
-.submit > input, .submit > a {
+.submit > input {
     float: right;
     margin: 20px -4px 10px 0;
+}
+
+.register {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.register > b {
+    color: red;
 }
 
 .clear {

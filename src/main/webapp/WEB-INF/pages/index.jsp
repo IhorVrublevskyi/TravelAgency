@@ -20,17 +20,17 @@
             </div>
             <div class="input">
                 <p>Password</p>
-                <input type="password" name="login" placeholder="Type password" required>
+                <input type="password" name="password" placeholder="Type password" required>
             </div>
+            <div class="submit">
+                <input type="submit" value="Login"></a>
+            </div>
+            <div class="clear"></div>
         </form>
-        <div class="submit">
-            <a><button>Login</button></a>
-        </div>
-        <div class="submit">
-            <a href="/registration"><button>Register</button></a>
-        </div>
-        <div class="clear"></div>
     </fieldset>
+    <div class="register">
+        <b>*</b> If you have not already registered, please <a href="/registration">register</a>
+    </div>
 </div>
 
 </body>

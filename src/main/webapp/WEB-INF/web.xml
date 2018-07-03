@@ -21,6 +21,7 @@
     <servlet-mapping>
         <servlet-name>search</servlet-name>
         <url-pattern>/search</url-pattern>
+        <url-pattern>/visa</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -49,4 +50,24 @@
         <servlet-name>th</servlet-name>
         <url-pattern>/thanks</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>reg</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.servlets.RegistrationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>reg</servlet-name>
+        <url-pattern>/registration</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>userCab</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.servlets.UserCabinetServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userCab</servlet-name>
+        <url-pattern>/userCabinet</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

@@ -2,7 +2,7 @@ package org.lv326java.two.travelagency.dto;
 
 import java.sql.Date;
 
-public class HotelItem {
+public class HotelDto {
 
     private String country;
     private String city;
@@ -12,7 +12,7 @@ public class HotelItem {
     private Date dateCheckin;
     private Date dateCheckout;
 
-    public HotelItem(String country, String city, String hotelName, String hotelAddress, String freeHotelRooms) {
+    public HotelDto(String country, String city, String hotelName, String hotelAddress, String freeHotelRooms) {
         this.country = country;
         this.city = city;
         this.hotelName = hotelName;

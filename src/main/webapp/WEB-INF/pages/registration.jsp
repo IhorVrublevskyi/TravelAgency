@@ -13,7 +13,7 @@
     <h2 class="log">Please enter your personal info</h2>
 
     <fieldset>
-        <form action="/userCabinet*" method="post">
+        <form action="/userCabinet" method="post">
             <div class="input">
                 <p>First name</p>
                 <input type="text" name="fname" placeholder="Type first_name" required>
