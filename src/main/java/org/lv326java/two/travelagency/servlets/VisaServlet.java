@@ -14,7 +14,7 @@ public class VisaServlet extends HttpServlet {
         protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //TODO check if user exist, his log and pswd (role) and redirect to his page (users or admins)
 //
-            request.getRequestDispatcher("WEB-INF/pages/search.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/pages/userCabinet.jsp").forward(request, response);
 
 //
         }

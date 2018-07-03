@@ -13,7 +13,7 @@
     <h2 class="log">Please enter your VISA info</h2>
 
     <fieldset>
-        <form action="/search" method="post">
+        <form action="/addVisa" method="post">
             <div class="input">
                 <p>Country</p>
                 <input type="text" name="fname" placeholder="Type country" required>
