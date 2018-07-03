@@ -82,7 +82,7 @@ public class HotelDto {
 
     @Override
     public String toString() {
-        return "HotelItem{" +
+        return "HotelDto{" +
                 "country='" + country + '\'' +
                 ", city='" + city + '\'' +
                 ", hotelName='" + hotelName + '\'' +
