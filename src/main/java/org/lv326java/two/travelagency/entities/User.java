@@ -3,7 +3,7 @@ package org.lv326java.two.travelagency.entities;
 public class User implements Entity {
 
     public static enum UserEntityQueries {
-        INSERT(SqlQueries.INSERT, "INSERT INTO users (login, password, first_name, last_name, roles_id) VALUES ('%s', '%s', '%s', '%s', %s);"),
+        INSERT(SqlQueries.INSERT, "INSERT INTO users (first_name, last_name, login, password, roles_id) VALUES ('%s', '%s', '%s', '%s', %s);"),
         GET_BY_ID(SqlQueries.GET_BY_ID, "SELECT id, login, password, first_name, last_name, roles_id FROM users WHERE id = %s;"),
         GET_BY_FIELD(SqlQueries.GET_BY_FIELD, "SELECT id, login, password, first_name, last_name, roles_id FROM users WHERE %s = '%s';"),
         GET_ALL(SqlQueries.GET_ALL, "SELECT id, login, password, first_name, last_name, roles_id FROM users;"),

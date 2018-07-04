@@ -2,16 +2,26 @@ package org.lv326java.two.travelagency.dto;
 
 public class RegistrationDto {
 
+    private String firstName;
+    private String lastName;
     private String login;
     private String password;
-    private String firstNmae;
-    private String lastName;
+    private String retypePassword;
 
-    public RegistrationDto(String login, String password, String firstNmae, String lastName) {
+    public RegistrationDto(String firstName, String lastName, String login, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.login = login;
         this.password = password;
-        this.firstNmae = firstNmae;
+    }
+
+    //constructor for retype checking
+    public RegistrationDto(String firstName, String lastName, String login, String password, String retypePassword) {
+        this.firstName = firstName;
         this.lastName = lastName;
+        this.login = login;
+        this.password = password;
+        this.retypePassword = retypePassword;
     }
 
     // setters
@@ -24,12 +34,16 @@ public class RegistrationDto {
         this.password = password;
     }
 
-    public void setFirstNmae(String firstNmae) {
-        this.firstNmae = firstNmae;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public void setRetypePassword(String retypePassword) {
+        this.retypePassword = retypePassword;
     }
 
     // getters
@@ -42,12 +56,16 @@ public class RegistrationDto {
         return password;
     }
 
-    public String getFirstNmae() {
-        return firstNmae;
+    public String getFirstName() {
+        return firstName;
     }
 
     public String getLastName() {
         return lastName;
+    }
+
+    public String getRetypePassword() {
+        return retypePassword;
     }
 
     @Override
@@ -55,7 +73,7 @@ public class RegistrationDto {
         return "RegistrationDto{" +
                 "login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", firstNmae='" + firstNmae + '\'' +
+                ", firstNmae='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
