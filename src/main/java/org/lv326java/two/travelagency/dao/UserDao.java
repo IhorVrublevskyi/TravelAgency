@@ -36,7 +36,7 @@ public final class UserDao extends AbstractDaoCRUD<User> {
                 args.get(LAST_NAME_FIELDNAME) == null ? "" : args.get(LAST_NAME_FIELDNAME),
                 args.get(LOGIN_FIELDNAME) == null ? "" : args.get(LOGIN_FIELDNAME),
                 args.get(PASSWORD_FIELDNAME) == null ? "" : args.get(PASSWORD_FIELDNAME),
-                Long.parseLong(args.get(ROLE_ID_FIELDNAME) == null ? "" : args.get(ROLE_ID_FIELDNAME)));
+                Long.parseLong(args.get(ROLE_ID_FIELDNAME) == null ? "0" : args.get(ROLE_ID_FIELDNAME)));
     }
 
     @Override
