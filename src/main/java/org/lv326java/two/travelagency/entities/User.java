@@ -3,11 +3,11 @@ package org.lv326java.two.travelagency.entities;
 public class User implements Entity {
 
     public static enum UserEntityQueries {
-        INSERT(SqlQueries.INSERT, "INSERT INTO users (login, password, name) VALUES ('%s', '%s', '%s');"),
-        GET_BY_ID(SqlQueries.GET_BY_ID, "SELECT id, login, password, name FROM users WHERE id = %s;"),
-        GET_BY_FIELD(SqlQueries.GET_BY_FIELD, "SELECT id, login, password, name FROM users WHERE %s = '%s';"),
-        GET_ALL(SqlQueries.GET_ALL, "SELECT id, login, password, name FROM users;"),
-        UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE users SET password = '%s', name = '%s' WHERE id = %s;"),
+        INSERT(SqlQueries.INSERT, "INSERT INTO users (login, password, first_name, last_name, roles_id) VALUES ('%s', '%s', '%s', '%s', %s);"),
+        GET_BY_ID(SqlQueries.GET_BY_ID, "SELECT id, login, password, first_name, last_name, roles_id FROM users WHERE id = %s;"),
+        GET_BY_FIELD(SqlQueries.GET_BY_FIELD, "SELECT id, login, password, first_name, last_name, roles_id FROM users WHERE %s = '%s';"),
+        GET_ALL(SqlQueries.GET_ALL, "SELECT id, login, password, first_name, last_name, roles_id FROM users;"),
+        UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE users SET password = '%s', first_name = '%s', last_name = '%s', WHERE id = %s;"),
         UPDATE_BY_FIELD(SqlQueries.UPDATE_BY_FIELD, "UPDATE users SET %s = '%s' WHERE %s = '%s';"),
         DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE users WHERE id = %s;"),
         DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE users WHERE %s = '%s';");
