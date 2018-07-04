@@ -13,7 +13,7 @@ public final class UserDao extends AbstractDaoCRUD<User> {
     private final static String LAST_NAME_FIELDNAME = "last_name";
     private final static String LOGIN_FIELDNAME = "login";
     private final static String PASSWORD_FIELDNAME = "password";
-    private final static String ROLE_ID_FIELDNAME = "role_id";
+    private final static String ROLE_ID_FIELDNAME = "roles_id";
 
     public UserDao() {
         super();
@@ -31,7 +31,7 @@ public final class UserDao extends AbstractDaoCRUD<User> {
     @Override
     protected User createInstance(Map<String, String> args) {
         return new User(
-                Long.parseLong(args.get(ID_FIELDNAME) == null ? "0" : args.get(ID_FIELDNAME)),
+                Long.parseLong(args.get(ID_FIELDNAME) == null ? "" : args.get(ID_FIELDNAME)),
                 args.get(FIRST_NAME_FIELDNAME) == null ? "" : args.get(FIRST_NAME_FIELDNAME),
                 args.get(LAST_NAME_FIELDNAME) == null ? "" : args.get(LAST_NAME_FIELDNAME),
                 args.get(LOGIN_FIELDNAME) == null ? "" : args.get(LOGIN_FIELDNAME),

@@ -93,4 +93,16 @@ public class User implements Entity {
     public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", roleId=" + roleId +
+                '}';
+    }
 }
