@@ -31,7 +31,7 @@
                 <input type="submit" value="Add">
             </div>
             <div class="clear"></div>
-        </form>
+        </form> 
     </fieldset>
 </div>
 

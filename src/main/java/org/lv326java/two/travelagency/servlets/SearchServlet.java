@@ -14,10 +14,7 @@ import java.util.List;
 @WebServlet(name = "SearchServlet")
 public class SearchServlet extends HttpServlet {
 
-
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//
-//    }
+    
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("WEB-INF/pages/hotels.jsp").forward(request, response);
