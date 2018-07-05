@@ -71,7 +71,7 @@ abstract class AbstractDaoRead<TEntity> implements DaoRead<TEntity> {
             }
         }
         if (all.isEmpty()) {
-//            throw new RuntimeException(String.format(EMPTY_RESULTSET, query));
+            throw new RuntimeException(String.format(EMPTY_RESULTSET, query));
         }
         return all;
     }
