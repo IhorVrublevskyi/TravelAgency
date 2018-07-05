@@ -1,5 +1,6 @@
 package org.lv326java.two.travelagency.servlets;
 
+import org.lv326java.two.travelagency.controllers.ViewUrls;
 import org.lv326java.two.travelagency.entities.Country;
 
 import javax.servlet.ServletException;
@@ -17,6 +18,6 @@ public class SearchServlet extends HttpServlet {
     
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/pages/hotels.jsp").forward(request, response);
+        request.getRequestDispatcher(ViewUrls.HOTELS_JSP.toString()).forward(request, response);
     }
 }

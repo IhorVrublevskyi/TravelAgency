@@ -1,5 +1,6 @@
 package org.lv326java.two.travelagency.servlets;
 
+import org.lv326java.two.travelagency.controllers.ViewUrls;
 import org.lv326java.two.travelagency.dto.LoginDto;
 import org.lv326java.two.travelagency.services.UserService;
 
@@ -28,18 +29,18 @@ public class FirstServlet extends HttpServlet {
 
         if (userService.isValid(loginDto)) {
             if(userService.getRoleDao(loginDto).equals(1L)){
-                request.getRequestDispatcher("WEB-INF/pages/userCabinet.jsp").forward(request, response);
+                request.getRequestDispatcher(ViewUrls.USER_CABINET_JSP.toString()).forward(request, response);
             } else {
-                request.getRequestDispatcher("WEB-INF/pages/adminsCabinet.jsp").forward(request, response);
+                request.getRequestDispatcher(ViewUrls.ADMIN_CABINET_JSP.toString()).forward(request, response);
             }
         } else {
-            request.getRequestDispatcher("WEB-INF/pages/index.jsp").forward(request, response);
+            request.getRequestDispatcher(ViewUrls.INDEX_JSP.toString()).forward(request, response);
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/pages/index.jsp").forward(request, response);
+        request.getRequestDispatcher(ViewUrls.INDEX_JSP.toString()).forward(request, response);
     }
 }
 

@@ -1,5 +1,7 @@
 package org.lv326java.two.travelagency.servlets;
 
+import org.lv326java.two.travelagency.controllers.ViewUrls;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +16,6 @@ public class ThanksServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/pages/thanks.jsp").forward(request, response);
+        request.getRequestDispatcher(ViewUrls.THANKS_JSP.toString()).forward(request, response);
     }
 }

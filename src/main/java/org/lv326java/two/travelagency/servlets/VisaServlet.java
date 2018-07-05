@@ -1,5 +1,6 @@
 package org.lv326java.two.travelagency.servlets;
 
+import org.lv326java.two.travelagency.controllers.ViewUrls;
 import org.lv326java.two.travelagency.dao.VisaDao;
 import org.lv326java.two.travelagency.dto.VisaDto;
 import org.lv326java.two.travelagency.entities.Visa;
@@ -43,12 +44,12 @@ public class VisaServlet extends HttpServlet {
                         Date.valueOf(visaDto.getDateOfInit()),
                         Date.valueOf(visaDto.getDateOfExpired())));
 
-            request.getRequestDispatcher("WEB-INF/pages/userCabinet.jsp").forward(request, response);
+            request.getRequestDispatcher(ViewUrls.USER_CABINET_JSP.toString()).forward(request, response);
         }
 
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
                 ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/pages/visa.jsp").forward(request, response);
+        request.getRequestDispatcher(ViewUrls.VISA_JSP.toString()).forward(request, response);
         }
 
 }
