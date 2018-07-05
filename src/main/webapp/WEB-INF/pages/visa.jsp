@@ -16,7 +16,11 @@
         <form action="/addVisa" method="post">
             <div class="input">
                 <p>Country</p>
-                <input type="text" name="fname" placeholder="Type country" required>
+                <select type="text" name="cName" required>
+                    <option value="ukraine">Ukraine</option>
+                    <option value="poland">Poland</option>
+                    <option value="turkey">Turkey</option>
+                </select>
             </div>
             <div class="input">
                 <p>Init Date</p>

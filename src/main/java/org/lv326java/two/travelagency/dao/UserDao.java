@@ -1,9 +1,8 @@
 package org.lv326java.two.travelagency.dao;
 
-
 import org.lv326java.two.travelagency.entities.User;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public final class UserDao extends AbstractDaoCRUD<User> {
@@ -41,7 +40,7 @@ public final class UserDao extends AbstractDaoCRUD<User> {
 
     @Override
     protected Map<String, String> getUpdateFields(User entity) {
-        Map<String, String> result = new HashMap<>();
+        Map<String, String> result = new LinkedHashMap<>();
         Map<String, String> allFields = getFields(entity);
         result.put(FIRST_NAME_FIELDNAME, allFields.get(FIRST_NAME_FIELDNAME));
         result.put(LAST_NAME_FIELDNAME, allFields.get(LAST_NAME_FIELDNAME));
@@ -52,8 +51,12 @@ public final class UserDao extends AbstractDaoCRUD<User> {
 
     @Override
     protected Map<String, String> getFields(User entity) {
-        Map<String, String> fields = new HashMap<>();
-        fields.put(ID_FIELDNAME, entity.getId().toString());
+        Map<String, String> fields = new LinkedHashMap<>();
+        if(entity.getId() != null){
+            fields.put(ID_FIELDNAME, entity.getId().toString());
+        } else {
+            fields.put(ID_FIELDNAME, null);
+        }
         fields.put(FIRST_NAME_FIELDNAME, entity.getFirstName());
         fields.put(LAST_NAME_FIELDNAME, entity.getLastName());
         fields.put(LOGIN_FIELDNAME, entity.getLogin());
@@ -65,5 +68,4 @@ public final class UserDao extends AbstractDaoCRUD<User> {
     public User getUserEntityByLogin(String login) {
         return getByFieldName(LOGIN_FIELDNAME, login).get(0);
     }
-
 }

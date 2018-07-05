@@ -3,6 +3,7 @@ package org.lv326java.two.travelagency.services;
 
 import org.lv326java.two.travelagency.dao.RoleDao;
 import org.lv326java.two.travelagency.dao.UserDao;
+import org.lv326java.two.travelagency.dto.RegistrationDto;
 import org.lv326java.two.travelagency.dto.UserDto;
 import org.lv326java.two.travelagency.dto.LoginDto;
 import org.lv326java.two.travelagency.entities.User;
@@ -62,6 +63,12 @@ public class UserService {
                 roleDao.getById(user.getRoleId()).getName());
     }
 
+    public Long getRoleDao(LoginDto loginDto) {
+        User user = null;
+        user = userDao.getUserEntityByLogin(loginDto.getLogin());
+        return user.getRoleId();
+    }
+
     public Long getIdUserByLogin(LoginDto loginDto) {
         return userDao.getUserEntityByLogin(loginDto.getLogin()).getId();
     }
@@ -82,6 +89,25 @@ public class UserService {
         }
         result = result && (user.getPassword().equals(loginDto.getPassword()));
         return result;
+    }
+
+    public boolean isExist(RegistrationDto registrationDto) {
+        User user = null;
+        try {
+        user = userDao.getUserEntityByLogin(registrationDto.getLogin());
+        } catch (Exception e){
+            System.out.println("RuntimeException, message: " + e.getMessage());
+            return false;
+        }
+        return true;
+	}
+
+    public boolean checkPassword(RegistrationDto registrationDto) {
+        if(registrationDto.getPassword().equals(registrationDto.getRetypePassword())){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

@@ -34,7 +34,7 @@ abstract class AbstractDaoCRUD<TEntity extends Entity> extends AbstractDaoRead<T
 			// TODO CHECK!
 			result = statement.execute(query);
 		} catch (SQLException e) {
-			throw new RuntimeException(DATABASE_INPUT_ERROR, e);
+//			throw new RuntimeException(DATABASE_INPUT_ERROR, e);
 		} finally {
 			if (statement != null) {
 				try {
@@ -53,7 +53,7 @@ abstract class AbstractDaoCRUD<TEntity extends Entity> extends AbstractDaoRead<T
         Map<String, String> allFields = getFields(entity);
 		String query = String.format(sqlQueries.get(SqlQueries.INSERT).toString(),
 					(Object[]) Arrays.copyOfRange(allFields.values().toArray(), 1, allFields.values().size()));
-		//System.out.println("query = " + query);
+//		System.out.println("query = " + query);
 		return executeQuery(query, SqlQueries.INSERT);
 	}
 

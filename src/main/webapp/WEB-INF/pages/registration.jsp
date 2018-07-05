@@ -13,29 +13,29 @@
     <h2 class="log">Please enter your personal info</h2>
 
     <fieldset>
-        <form action="/userCabinet" method="post">
+        <form action="/registration" method="post">
             <div class="input">
                 <p>Login</p>
-                <input type="text" name="uname" placeholder="Type login" required>
+                <input type="text" name="login" placeholder="Type login" required>
             </div>
             <div class="input">
                 <p>Password</p>
-                <input type="password" name="login" placeholder="Type password" required>
+                <input type="password" name="password" placeholder="Type password" required>
             </div>
             <div class="input">
                 <p>Retype password</p>
-                <input type="password" name="login" placeholder="Retype password" required>
+                <input type="password" name="retypePassword" placeholder="Retype password" required>
             </div>
             <div class="input">
                 <p>First name</p>
-                <input type="text" name="fname" placeholder="Type first name" required>
+                <input type="text" name="firstName" placeholder="Type first name" required>
             </div>
             <div class="input">
                 <p>Last name</p>
-                <input type="text" name="lname" placeholder="Type last name" required>
+                <input type="text" name="lastName" placeholder="Type last name" required>
             </div>
             <div class="submit">
-                <input type="submit" value="Register">
+                <input type="submit" value="register">
             </div>
             <div class="clear"></div>
         </form>
