@@ -5,7 +5,7 @@ public enum ViewUrls {
     HOTEL_CONFIRM_JSP("WEB-INF/pages/hotelConfirm.jsp"),
     USER_CABINET_JSP("WEB-INF/pages/userCabinet.jsp"),
     ADMIN_CABINET_JSP("WEB-INF/pages/adminsCabinet.jsp"),
-    INDEX_JSP("WEB-INF/pages/index.js"),
+    INDEX_JSP("WEB-INF/pages/index.jsp"),
     REGISTRATION_JSP("WEB-INF/pages/registration.jsp"),
     HOTELS_JSP("WEB-INF/pages/hotels.jsp"),
     THANKS_JSP("WEB-INF/pages/thanks.jsp"),
