@@ -1,19 +1,17 @@
 package org.lv326java.two.travelagency.dto;
 
-import java.sql.Date;
-
 public class VisaDto {
 
     private String country;
     private String user;
-    private Date dateOfInit;
-    private Date dateOfCheckOut;
+    private String dateOfInit;
+    private String dateOfExpired;
 
-    public VisaDto(String country, String user, Date dateOfInit, Date dateOfCheckOut) {
+    public VisaDto(String country, String user, String dateOfInit, String dateOfExpired) {
         this.country = country;
         this.user = user;
         this.dateOfInit = dateOfInit;
-        this.dateOfCheckOut = dateOfCheckOut;
+        this.dateOfExpired = dateOfExpired;
     }
 
     // setters
@@ -26,12 +24,12 @@ public class VisaDto {
         this.user = user;
     }
 
-    public void setDateOfInit(Date dateOfInit) {
+    public void setDateOfInit(String dateOfInit) {
         this.dateOfInit = dateOfInit;
     }
 
-    public void setDateOfCheckOut(Date dateOfCheckOut) {
-        this.dateOfCheckOut = dateOfCheckOut;
+    public void setDateOfExpired(String dateOfExpired) {
+        this.dateOfExpired = dateOfExpired;
     }
 
 
@@ -46,12 +44,12 @@ public class VisaDto {
         return user;
     }
 
-    public Date getDateOfInit() {
+    public String getDateOfInit() {
         return dateOfInit;
     }
 
-    public Date getDateOfCheckOut() {
-        return dateOfCheckOut;
+    public String getDateOfExpired() {
+        return dateOfExpired;
     }
 
     @Override
@@ -60,7 +58,7 @@ public class VisaDto {
                 "country='" + country + '\'' +
                 ", user='" + user + '\'' +
                 ", dateOfInit=" + dateOfInit +
-                ", dateOfCheckOut=" + dateOfCheckOut +
+                ", dateOfExpired=" + dateOfExpired +
                 '}';
     }
 }

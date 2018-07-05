@@ -63,6 +63,12 @@ public class UserService {
                 roleDao.getById(user.getRoleId()).getName());
     }
 
+    public Long getRoleDao(LoginDto loginDto) {
+        User user = null;
+        user = userDao.getUserEntityByLogin(loginDto.getLogin());
+        return user.getRoleId();
+    }
+
     public Long getIdUserByLogin(LoginDto loginDto) {
         return userDao.getUserEntityByLogin(loginDto.getLogin()).getId();
     }

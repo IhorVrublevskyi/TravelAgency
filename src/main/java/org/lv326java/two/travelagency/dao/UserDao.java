@@ -2,7 +2,6 @@ package org.lv326java.two.travelagency.dao;
 
 import org.lv326java.two.travelagency.entities.User;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

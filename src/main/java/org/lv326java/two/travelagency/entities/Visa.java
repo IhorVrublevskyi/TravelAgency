@@ -5,9 +5,9 @@ import java.sql.Date;
 public class Visa implements Entity {
 
     public static enum VisaEntityQueries {
-        INSERT(SqlQueries.INSERT, "INSERT INTO visas (date_of_init, date_of_expired, country_id, user_id) VALUES ('%s', '%s', %s, %s);"),
+        INSERT(SqlQueries.INSERT, "INSERT INTO visas (country_id, user_id, date_of_init, date_of_expired) VALUES (%s, %s, '%s', '%s');"),
         GET_BY_ID(SqlQueries.GET_BY_ID, "SELECT id, date_of_init, date_of_expired, country_id, user_id FROM visas WHERE id = %s;"),
-        GET_BY_FIELD(SqlQueries.GET_BY_FIELD, "SELECT id, date_of_init, date_of_expired, country_id, user_id FROM visas WHERE %s = '%s';"),
+        GET_BY_FIELD(SqlQueries.GET_BY_FIELD, "SELECT id, country_id, user_id, date_of_init, date_of_expired FROM visas WHERE %s = '%s';"),
         GET_ALL(SqlQueries.GET_ALL, "SELECT id, date_of_init, date_of_expired, country_id, user_id FROM visas;"),
         UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE visas SET date_of_init = '%s', date_of_expired = '%s', country_id = %s, user_id = %s WHERE id = %s;"),
         UPDATE_BY_FIELD(SqlQueries.UPDATE_BY_FIELD, "UPDATE visas SET %s = '%s' WHERE %s = '%s';"),

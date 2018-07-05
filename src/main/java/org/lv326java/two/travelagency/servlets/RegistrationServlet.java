@@ -1,7 +1,6 @@
 package org.lv326java.two.travelagency.servlets;
 
 import org.lv326java.two.travelagency.dao.UserDao;
-import org.lv326java.two.travelagency.dto.LoginDto;
 import org.lv326java.two.travelagency.dto.RegistrationDto;
 import org.lv326java.two.travelagency.entities.User;
 import org.lv326java.two.travelagency.services.UserService;
@@ -11,10 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileOutputStream;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
@@ -30,6 +27,11 @@ public class RegistrationServlet extends HttpServlet {
                 request.getParameter("login"),
                 request.getParameter("password"),
                 request.getParameter("retypePassword"));
+
+        //for saving Login for Visa and "Hello login*"
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("loginSession", request.getParameter("login"));
+        //
 
 //print
 //        PrintWriter pw = new PrintWriter(new FileOutputStream(new File("/home/kitty/text.txt"),true), true);
