@@ -3,7 +3,7 @@ package org.lv326java.two.travelagency.dao;
 import org.lv326java.two.travelagency.entities.Visa;
 
 import java.sql.Date;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class VisaDao extends AbstractDaoCRUD<Visa> {
@@ -37,14 +37,14 @@ public class VisaDao extends AbstractDaoCRUD<Visa> {
 
     @Override
     protected Map<String, String> getUpdateFields(Visa entity) {
-        //Map<String, String> result = new HashMap<>();
+        //Map<String, String> result = new LinkedHashMap<>();
         //Map<String, String> allFields = getFields(entity);
         return null;//result;
     }
 
     @Override
     protected Map<String, String> getFields(Visa entity) {
-        Map<String, String> fields = new HashMap<>();
+        Map<String, String> fields = new LinkedHashMap<>();
         fields.put(ID_FIELDNAME, entity.getId().toString());
         fields.put(DATE_OF_INIT_FIELDNAME, entity.getDateOfInit().toString());
         fields.put(DATE_OF_EXPIRED_FIELDNAME, entity.getDateOfExpired().toString());

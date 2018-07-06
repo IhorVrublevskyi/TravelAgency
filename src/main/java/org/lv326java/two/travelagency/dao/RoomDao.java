@@ -1,9 +1,8 @@
 package org.lv326java.two.travelagency.dao;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.lv326java.two.travelagency.entities.Room;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class RoomDao extends AbstractDaoCRUD<Room> {
@@ -34,7 +33,7 @@ public class RoomDao extends AbstractDaoCRUD<Room> {
 
     @Override
     protected Map<String, String> getUpdateFields(Room entity) {
-        Map<String, String> result = new HashMap<>();
+        Map<String, String> result = new LinkedHashMap<>();
         Map<String, String> allFields = getFields(entity);
         result.put(ROOM_NUMBER_FIELDNAME, allFields.get(ROOM_NUMBER_FIELDNAME));
         return result;
@@ -42,7 +41,7 @@ public class RoomDao extends AbstractDaoCRUD<Room> {
 
     @Override
     protected Map<String, String> getFields(Room entity) {
-        Map<String, String> fields = new HashMap<>();
+        Map<String, String> fields = new LinkedHashMap<>();
         fields.put(ID_FIELDNAME, entity.getId().toString());
         fields.put(ROOM_NUMBER_FIELDNAME, entity.getRoomNumber().toString());
         fields.put(HOTEL_ID_FIELDNAME, entity.getHotelId().toString());
