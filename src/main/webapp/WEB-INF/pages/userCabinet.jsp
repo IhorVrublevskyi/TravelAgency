@@ -8,7 +8,7 @@
     </style>
 </head>
 <body>
-<h2>Hello ${loginSession}</h2>
+<h2>Hello ${login}</h2>
 <div class="visa">
     <p>Information about visas:</p>
     <div class="wrap">
@@ -19,23 +19,17 @@
             <div class="clear"/>
         </div>
         <div class="row">
-            <%--<c:forEach var="i" items="${visaDto}">--%>
-            <%--<option value="${i.name}">--%>
-            <%--<c:out value="${i.name}"/>--%>
-            <%--</option>--%>
-            <%--</c:forEach>--%>
-
            <%--// TODO view for all visas--%>
-                <c:forEach var = "i" items="${visas}">
-                    <div class="item float-l">${i.getCountryId().toString()}</div>
-                    <div class="item float-l">${i.getDateOfInit().toString()}</div>
-                    <div class="item float-l">${i.getDateOfExpired().toString()}</div>
+
+                <c:forEach items="${userVisas}" var="item">
+                    <div class="item float-l">${item.getCountry()}</div>
+                    <div class="item float-l">${item.getDateOfInit()}</div>
+                    <div class="item float-l">${item.getDateOfExpired()}</div>
                     <div class="clear"></div>
                 </c:forEach>
 
-            <%--//--%>
-
         </div>
+        <br><br>
         <div class="search"><a href="/search">
             <button>Search hotel</button>
         </a></div>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -11,7 +12,11 @@
 
 <div class="form">
     <h2 class="log">Please login to your cabinet</h2>
-
+    <c:if test="${error ne null}">
+        <p>
+            <span style="color:red">${error}</span>
+        </p>
+    </c:if>
     <fieldset>
         <form action="/login" method="post">
             <div class="input">

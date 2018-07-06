@@ -8,10 +8,13 @@
     </style>
 </head>
 <body>
-
 <div class="form">
     <h2 class="log">Please enter your personal info</h2>
-
+    <c:if test="${error ne null}">
+        <p>
+            <span style="color:red">${error}</span>
+        </p>
+    </c:if>
     <fieldset>
         <form action="/registration" method="post">
             <div class="input">
@@ -35,7 +38,7 @@
                 <input type="text" name="lastName" placeholder="Type last name" required>
             </div>
             <div class="submit">
-                <input type="submit" value="register">
+                <input type="submit" value="Register">
             </div>
             <div class="clear"></div>
         </form>

@@ -1,4 +1,4 @@
-package org.lv326java.two.travelagency.servlets;
+package org.lv326java.two.travelagency.controllers;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -5,18 +5,18 @@
          version="3.1">
 
     <servlet>
-        <servlet-name>first</servlet-name>
-        <servlet-class>org.lv326java.two.travelagency.servlets.FirstServlet</servlet-class>
+        <servlet-name>login</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.controllers.users.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>first</servlet-name>
+        <servlet-name>login</servlet-name>
         <url-pattern>/</url-pattern>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>search</servlet-name>
-        <servlet-class>org.lv326java.two.travelagency.servlets.SearchServlet</servlet-class>
+        <servlet-class>org.lv326java.two.travelagency.controllers.SearchServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>search</servlet-name>
@@ -25,7 +25,7 @@
 
     <servlet>
         <servlet-name>book</servlet-name>
-        <servlet-class>org.lv326java.two.travelagency.servlets.BookingServlet</servlet-class>
+        <servlet-class>org.lv326java.two.travelagency.controllers.BookingServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>book</servlet-name>
@@ -34,7 +34,7 @@
 
     <servlet>
         <servlet-name>confirm</servlet-name>
-        <servlet-class>org.lv326java.two.travelagency.servlets.ConfirmServlet</servlet-class>
+        <servlet-class>org.lv326java.two.travelagency.controllers.ConfirmServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>confirm</servlet-name>
@@ -43,7 +43,7 @@
 
     <servlet>
         <servlet-name>th</servlet-name>
-        <servlet-class>org.lv326java.two.travelagency.servlets.ThanksServlet</servlet-class>
+        <servlet-class>org.lv326java.two.travelagency.controllers.ThanksServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>th</servlet-name>
@@ -52,7 +52,7 @@
 
     <servlet>
         <servlet-name>reg</servlet-name>
-        <servlet-class>org.lv326java.two.travelagency.servlets.RegistrationServlet</servlet-class>
+        <servlet-class>org.lv326java.two.travelagency.controllers.users.RegistrationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>reg</servlet-name>
@@ -61,7 +61,7 @@
 
     <servlet>
         <servlet-name>userCab</servlet-name>
-        <servlet-class>org.lv326java.two.travelagency.servlets.UserCabinetServlet</servlet-class>
+        <servlet-class>org.lv326java.two.travelagency.controllers.UserCabinetServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>userCab</servlet-name>
@@ -69,11 +69,11 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>visa</servlet-name>
-        <servlet-class>org.lv326java.two.travelagency.servlets.VisaServlet</servlet-class>
+        <servlet-name>visaServlet</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.controllers.VisaServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>visa</servlet-name>
+        <servlet-name>visaServlet</servlet-name>
         <url-pattern>/visa</url-pattern>
         <url-pattern>/addVisa</url-pattern>
     </servlet-mapping>

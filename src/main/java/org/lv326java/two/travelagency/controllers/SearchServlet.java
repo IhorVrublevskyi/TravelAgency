@@ -1,4 +1,4 @@
-package org.lv326java.two.travelagency.servlets;
+package org.lv326java.two.travelagency.controllers;
 
 import org.lv326java.two.travelagency.entities.Country;
 

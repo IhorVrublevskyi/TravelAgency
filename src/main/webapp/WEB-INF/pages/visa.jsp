@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -11,15 +12,14 @@
 
 <div class="form">
     <h2 class="log">Please enter your VISA info</h2>
-
     <fieldset>
         <form action="/addVisa" method="post">
             <div class="input">
                 <p>Country</p>
-                <select type="text" name="cName" required>
-                    <option value="ukraine">Ukraine</option>
-                    <option value="poland">Poland</option>
-                    <option value="turkey">Turkey</option>
+                <select type="text" name="countryName" required>
+                    <c:forEach items="${countries}" var="item">
+                        <option value="${item.getName()}">${item.getName()}</option>
+                    </c:forEach>
                 </select>
             </div>
             <div class="input">
@@ -35,7 +35,7 @@
                 <input type="submit" value="Add">
             </div>
             <div class="clear"></div>
-        </form> 
+        </form>
     </fieldset>
 </div>
 

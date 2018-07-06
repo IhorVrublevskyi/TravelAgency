@@ -11,6 +11,8 @@ import org.lv326java.two.travelagency.dto.LoginDto;
 import org.lv326java.two.travelagency.entities.Country;
 import org.lv326java.two.travelagency.entities.User;
 import org.lv326java.two.travelagency.entities.Visa;
+import org.lv326java.two.travelagency.exceptions.PasswordMismatchException;
+import org.lv326java.two.travelagency.exceptions.UserAlreadyExistsException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,10 +108,10 @@ public class UserService {
         return result;
     }
 
+    // TODO Fix this method
     public boolean isExist(RegistrationDto registrationDto) {
-        User user = null;
         try {
-        user = userDao.getUserEntityByLogin(registrationDto.getLogin());
+            userDao.getUserEntityByLogin(registrationDto.getLogin());
         } catch (Exception e){
             System.out.println("RuntimeException, message: " + e.getMessage());
             return false;
@@ -117,42 +119,22 @@ public class UserService {
         return true;
 	}
 
-    public boolean checkPassword(RegistrationDto registrationDto) {
-        if(registrationDto.getPassword().equals(registrationDto.getRetypePassword())){
-            return true;
-        } else {
-            return false;
+	// TODO Create password error and user exists error exceptions
+	public void createNewUser(RegistrationDto registrationDto) throws PasswordMismatchException,
+            UserAlreadyExistsException {
+	    if (!registrationDto.getPassword().equals(registrationDto.getRetypePassword())) {
+	        throw new PasswordMismatchException("Passwords didn't match");
         }
+        if (isExist(registrationDto)) {
+	        throw new UserAlreadyExistsException("User with login '" + registrationDto.getLogin() + "' already exists");
+        }
+	    User user = new User(
+	            null,
+                registrationDto.getFirstName(),
+                registrationDto.getLastName(),
+                registrationDto.getLogin(),
+                registrationDto.getPassword(),
+                1L);
+	    userDao.insert(user);
     }
-
-    public Visa [] getVisaByUserLogin(String login) {
-        User user = null;
-        List<Visa> visas = null;
-        try {
-            user = userDao.getUserEntityByLogin(login);
-            visas = visaDao.getByFieldName("user_id", user.getId().toString());
-
-        } catch (Exception e){
-            System.out.println("RuntimeException, message: " + e.getMessage());
-        }
-        Visa visa [] = new Visa[visas.size()];
-        for(int i = 0; i < visas.size(); i++){
-            visa[i] = visas.get(i);
-        }
-        return visa;
-    }
-
-    public String getCountryById(Long id) {
-        Country country = null;
-        country = countryDao.getById(id);
-        try {
-            country = countryDao.getById(id);
-        } catch (Exception e){
-            System.out.println("RuntimeException, message: " + e.getMessage());
-        }
-        return country.getName();
-    }
-
-
-
 }
