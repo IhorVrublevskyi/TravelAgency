@@ -1,5 +1,7 @@
 package org.lv326java.two.travelagency.dto;
 
+import org.lv326java.two.travelagency.entities.User;
+
 public class UserDto {
 
     private String login;

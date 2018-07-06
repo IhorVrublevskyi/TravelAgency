@@ -7,10 +7,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 abstract class AbstractDaoRead<TEntity> implements DaoRead<TEntity> {
@@ -21,7 +18,7 @@ abstract class AbstractDaoRead<TEntity> implements DaoRead<TEntity> {
     protected final Map<Enum<?>, Enum<?>> sqlQueries;
 
     protected AbstractDaoRead() {
-        this.sqlQueries = new HashMap<Enum<?>, Enum<?>>();
+        this.sqlQueries = new LinkedHashMap<Enum<?>, Enum<?>>();
         // TODO Call init();
     }
 
@@ -45,7 +42,7 @@ abstract class AbstractDaoRead<TEntity> implements DaoRead<TEntity> {
             resultSet = statement.executeQuery(query);
             ResultSetMetaData md = resultSet.getMetaData();
             int columns = md.getColumnCount();
-            queryResult = new HashMap();
+            queryResult = new LinkedHashMap<>();
             while (resultSet.next()) {
                 for (int i = 1; i <= columns; i++) {
                     queryResult.put(md.getColumnName(i), resultSet.getString(i));

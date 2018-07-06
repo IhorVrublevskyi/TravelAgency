@@ -37,7 +37,7 @@ public class VisaDao extends AbstractDaoCRUD<Visa> {
 
     @Override
     protected Map<String, String> getUpdateFields(Visa entity) {
-        //Map<String, String> result = new HashMap<>();
+        //Map<String, String> result = new LinkedHashMap<>();
         //Map<String, String> allFields = getFields(entity);
         return null;//result;
     }

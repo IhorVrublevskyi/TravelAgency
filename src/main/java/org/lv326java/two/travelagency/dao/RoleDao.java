@@ -2,7 +2,7 @@ package org.lv326java.two.travelagency.dao;
 
 import org.lv326java.two.travelagency.entities.Role;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class RoleDao extends AbstractDaoCRUD<Role> {
@@ -31,7 +31,7 @@ public class RoleDao extends AbstractDaoCRUD<Role> {
 
     @Override
     protected Map<String, String> getUpdateFields(Role entity) {
-        Map<String, String> result = new HashMap<>();
+        Map<String, String> result = new LinkedHashMap<>();
         Map<String, String> allFields = getFields(entity);
         result.put(NAME_FIELDNAME, allFields.get(NAME_FIELDNAME));
         return result;
@@ -39,7 +39,7 @@ public class RoleDao extends AbstractDaoCRUD<Role> {
 
     @Override
     protected Map<String, String> getFields(Role entity) {
-        Map<String, String> fields = new HashMap<>();
+        Map<String, String> fields = new LinkedHashMap<>();
         fields.put(ID_FIELDNAME, entity.getId().toString());
         fields.put(NAME_FIELDNAME, entity.getName());
         return fields;

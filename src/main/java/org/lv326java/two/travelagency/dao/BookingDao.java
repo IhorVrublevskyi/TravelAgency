@@ -3,7 +3,7 @@ package org.lv326java.two.travelagency.dao;
 import org.lv326java.two.travelagency.entities.Booking;
 
 import java.sql.Date;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class BookingDao extends AbstractDaoCRUD<Booking> {
@@ -38,7 +38,7 @@ public class BookingDao extends AbstractDaoCRUD<Booking> {
 
     @Override
     protected Map<String, String> getUpdateFields(Booking entity) {
-        Map<String, String> result = new HashMap<>();
+        Map<String, String> result = new LinkedHashMap<>();
         Map<String, String> allFields = getFields(entity);
         result.put(USER_ID_FIELDNAME, allFields.get(USER_ID_FIELDNAME));
         result.put(ROOM_ID_FIELDNAME, allFields.get(ROOM_ID_FIELDNAME));
@@ -49,7 +49,7 @@ public class BookingDao extends AbstractDaoCRUD<Booking> {
 
     @Override
     protected Map<String, String> getFields(Booking entity) {
-        Map<String, String> fields = new HashMap<>();
+        Map<String, String> fields = new LinkedHashMap<>();
         fields.put(ID_FIELDNAME, entity.getId().toString());
         fields.put(USER_ID_FIELDNAME, entity.getUserId().toString());
         fields.put(ROOM_ID_FIELDNAME, entity.getRoomId().toString());
