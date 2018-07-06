@@ -53,7 +53,11 @@ public final class UserDao extends AbstractDaoCRUD<User> {
     @Override
     protected Map<String, String> getFields(User entity) {
         Map<String, String> fields = new LinkedHashMap<>();
-        fields.put(ID_FIELDNAME, entity.getId().toString());
+        if(entity.getId() != null){
+            fields.put(ID_FIELDNAME, entity.getId().toString());
+        } else {
+            fields.put(ID_FIELDNAME, null);
+        }
         fields.put(FIRST_NAME_FIELDNAME, entity.getFirstName());
         fields.put(LAST_NAME_FIELDNAME, entity.getLastName());
         fields.put(LOGIN_FIELDNAME, entity.getLogin());
