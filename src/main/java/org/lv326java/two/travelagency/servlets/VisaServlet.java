@@ -31,10 +31,10 @@ public class VisaServlet extends HttpServlet {
 
                 request.setAttribute("visaDto", visaDto);
 //
-                request.setAttribute("country", request.getParameter("cName"));
-                request.setAttribute("entryDate", request.getParameter("entryDate"));
-                request.setAttribute("outDate", request.getParameter("outDate"));
-//
+//                request.setAttribute("country", request.getParameter("cName"));
+//                request.setAttribute("entryDate", request.getParameter("entryDate"));
+//                request.setAttribute("outDate", request.getParameter("outDate"));
+////
                 VisaDao visaDao = new VisaDao();
                 visaDao.insert(new Visa(
                         null,

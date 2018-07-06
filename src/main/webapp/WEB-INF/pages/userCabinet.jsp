@@ -26,10 +26,13 @@
             <%--</c:forEach>--%>
 
            <%--// TODO view for all visas--%>
-            <div class="item float-l">${country}</div>
-            <div class="item float-l">${entryDate}</div>
-            <div class="item float-l">${outDate}</div>
-            <div class="clear"></div>
+                <c:forEach var = "i" items="${visas}">
+                    <div class="item float-l">${i.getCountryId().toString()}</div>
+                    <div class="item float-l">${i.getDateOfInit().toString()}</div>
+                    <div class="item float-l">${i.getDateOfExpired().toString()}</div>
+                    <div class="clear"></div>
+                </c:forEach>
+
             <%--//--%>
 
         </div>

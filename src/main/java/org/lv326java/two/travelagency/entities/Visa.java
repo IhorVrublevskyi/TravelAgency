@@ -86,4 +86,15 @@ public class Visa implements Entity {
     public void setDateOfExpired(Date dateOfExpired) {
         this.dateOfExpired = dateOfExpired;
     }
+
+    @Override
+    public String toString() {
+        return "Visa{" +
+                "id=" + id +
+                ", countryId=" + countryId +
+                ", userId=" + userId +
+                ", dateOfInit=" + dateOfInit +
+                ", dateOfExpired=" + dateOfExpired +
+                '}';
+    }
 }

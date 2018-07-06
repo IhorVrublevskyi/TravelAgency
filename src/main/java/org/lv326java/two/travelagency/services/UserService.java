@@ -1,18 +1,29 @@
 package org.lv326java.two.travelagency.services;
 
 
+import org.lv326java.two.travelagency.dao.CountryDao;
 import org.lv326java.two.travelagency.dao.RoleDao;
 import org.lv326java.two.travelagency.dao.UserDao;
+import org.lv326java.two.travelagency.dao.VisaDao;
 import org.lv326java.two.travelagency.dto.RegistrationDto;
 import org.lv326java.two.travelagency.dto.UserDto;
 import org.lv326java.two.travelagency.dto.LoginDto;
+import org.lv326java.two.travelagency.entities.Country;
 import org.lv326java.two.travelagency.entities.User;
+import org.lv326java.two.travelagency.entities.Visa;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserService {
 
 
     private UserDao userDao;
     private RoleDao roleDao;
+    private VisaDao visaDao;
+    private CountryDao countryDao;
+
+
 
 //    private UserService() {
 //    }
@@ -30,11 +41,15 @@ public class UserService {
 	public UserService() {
 		userDao = new UserDao();
 		roleDao = new RoleDao();
+		visaDao = new VisaDao();
+        countryDao = new CountryDao();
 	}
 
-	private UserService(UserDao userDao, RoleDao roleDao) {
+	private UserService(UserDao userDao, RoleDao roleDao, VisaDao visaDao, CountryDao countryDao) {
 		this.userDao = userDao;
 		this.roleDao = roleDao;
+		this.visaDao = visaDao;
+		this.countryDao = countryDao;
 	}
 
     public boolean setUserDto(UserDto userDto) {
@@ -109,5 +124,35 @@ public class UserService {
             return false;
         }
     }
+
+    public Visa [] getVisaByUserLogin(String login) {
+        User user = null;
+        List<Visa> visas = null;
+        try {
+            user = userDao.getUserEntityByLogin(login);
+            visas = visaDao.getByFieldName("user_id", user.getId().toString());
+
+        } catch (Exception e){
+            System.out.println("RuntimeException, message: " + e.getMessage());
+        }
+        Visa visa [] = new Visa[visas.size()];
+        for(int i = 0; i < visas.size(); i++){
+            visa[i] = visas.get(i);
+        }
+        return visa;
+    }
+
+    public String getCountryById(Long id) {
+        Country country = null;
+        country = countryDao.getById(id);
+        try {
+            country = countryDao.getById(id);
+        } catch (Exception e){
+            System.out.println("RuntimeException, message: " + e.getMessage());
+        }
+        return country.getName();
+    }
+
+
 
 }

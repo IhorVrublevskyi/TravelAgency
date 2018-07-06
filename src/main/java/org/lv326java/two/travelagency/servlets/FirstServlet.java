@@ -2,6 +2,7 @@ package org.lv326java.two.travelagency.servlets;
 
 import org.lv326java.two.travelagency.dto.LoginDto;
 import org.lv326java.two.travelagency.services.UserService;
+import org.lv326java.two.travelagency.services.VisaService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,14 +18,17 @@ public class FirstServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         UserService userService = new UserService();
+        VisaService visaService = new VisaService();
         LoginDto loginDto = new LoginDto(request.getParameter("login"), request.getParameter("password"));
+
+        request.setAttribute("loginDto", loginDto);
 
         //for saving Login for Visa
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("loginSession", loginDto.getLogin());
+        httpSession.setAttribute("visas", userService.getVisaByUserLogin(loginDto.getLogin()));
         //
 
-        request.setAttribute("loginDto", loginDto);
 
         if (userService.isValid(loginDto)) {
             if(userService.getRoleDao(loginDto).equals(1L)){
