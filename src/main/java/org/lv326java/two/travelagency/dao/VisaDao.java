@@ -45,7 +45,11 @@ public class VisaDao extends AbstractDaoCRUD<Visa> {
     @Override
     protected Map<String, String> getFields(Visa entity) {
         Map<String, String> fields = new LinkedHashMap<>();
-        fields.put(ID_FIELDNAME, entity.getId().toString());
+        if(entity.getId() != null){
+            fields.put(ID_FIELDNAME, entity.getId().toString());
+        } else {
+            fields.put(ID_FIELDNAME, null);
+        }
         fields.put(DATE_OF_INIT_FIELDNAME, entity.getDateOfInit().toString());
         fields.put(DATE_OF_EXPIRED_FIELDNAME, entity.getDateOfExpired().toString());
         fields.put(COUNTRY_ID_FIELDNAME, entity.getCountryId().toString());
