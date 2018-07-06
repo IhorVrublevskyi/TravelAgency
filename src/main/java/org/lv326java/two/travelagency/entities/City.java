@@ -3,11 +3,11 @@ package org.lv326java.two.travelagency.entities;
 public class City implements Entity {
 
     public static enum CityEntityQueries {
-        INSERT(SqlQueries.INSERT, "INSERT INTO cities (name, county_id) VALUES ('%s', %s);"),
-        GET_BY_ID(SqlQueries.GET_BY_ID, "SELECT id, name, county_id FROM cities WHERE id = %s;"),
-        GET_BY_FIELD(SqlQueries.GET_BY_FIELD, "SELECT id, name, county_id FROM cities WHERE %s = '%s';"),
-        GET_ALL(SqlQueries.GET_ALL, "SELECT id, name, county_id FROM cities;"),
-        UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE cities SET name = '%s', county_id = %s WHERE id = %s;"),
+        INSERT(SqlQueries.INSERT, "INSERT INTO cities (name, country_id) VALUES ('%s', %s);"),
+        GET_BY_ID(SqlQueries.GET_BY_ID, "SELECT id, name, country_id FROM cities WHERE id = %s;"),
+        GET_BY_FIELD(SqlQueries.GET_BY_FIELD, "SELECT id, name, country_id FROM cities WHERE %s = '%s';"),
+        GET_ALL(SqlQueries.GET_ALL, "SELECT id, name, country_id FROM cities;"),
+        UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE cities SET name = '%s', country_id = %s WHERE id = %s;"),
         UPDATE_BY_FIELD(SqlQueries.UPDATE_BY_FIELD, "UPDATE users SET %s = '%s' WHERE %s = '%s';"),
         DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE cities WHERE id = %s;"),
         DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE cities WHERE %s = '%s';");

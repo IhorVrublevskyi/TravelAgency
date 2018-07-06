@@ -9,7 +9,8 @@ public enum ViewUrls {
     REGISTRATION_JSP("/WEB-INF/pages/registration.jsp"),
     HOTELS_JSP("/WEB-INF/pages/hotels.jsp"),
     THANKS_JSP("/WEB-INF/pages/thanks.jsp"),
-    VISA_JSP("/WEB-INF/pages/visa.jsp");
+    VISA_JSP("/WEB-INF/pages/visa.jsp"),
+    SEARCH_JSP("/WEB-INF/pages/search.jsp");
     //
     private String url;
 

@@ -30,9 +30,8 @@
 
         </div>
         <br><br>
-        <div class="search"><a href="/search">
-            <button>Search hotel</button>
-        </a></div>
+        <div class="search">
+            <a href="/search"><button>Search Hotel</button></a></div>
     </div>
 
 

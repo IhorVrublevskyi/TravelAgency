@@ -1,6 +1,6 @@
 package org.lv326java.two.travelagency.controllers;
 
-import org.lv326java.two.travelagency.entities.Country;
+import org.lv326java.two.travelagency.services.CityService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.util.List;
 
 @WebServlet(name = "SearchServlet")
 public class SearchServlet extends HttpServlet {
@@ -17,6 +15,8 @@ public class SearchServlet extends HttpServlet {
     
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/pages/hotels.jsp").forward(request, response);
+        CityService cityService = new CityService();
+        request.setAttribute("cities", cityService.getAllCitiesDto());
+        request.getRequestDispatcher(ViewUrls.SEARCH_JSP.toString()).forward(request, response);
     }
 }
