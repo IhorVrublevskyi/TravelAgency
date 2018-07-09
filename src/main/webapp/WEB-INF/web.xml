@@ -38,6 +38,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>confirm</servlet-name>
+        <url-pattern>/edit</url-pattern>
         <url-pattern>/confirm</url-pattern>
     </servlet-mapping>
 

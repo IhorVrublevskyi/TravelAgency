@@ -8,7 +8,8 @@ public class App {
     public static void main(String[] args) {
 
         UserDao userDao = new UserDao();
-        User user = userDao.getByFieldName("roles_id", "1").get(0);
+        User user = userDao.getByFieldName("roles_id", "2").get(0);
+        System.out.println(user);
         UserDto userDto = new UserDto(user.getLogin(), user.getPassword(), user.getFirstName(), user.getLastName(),
                 user.getRoleId().toString());
         

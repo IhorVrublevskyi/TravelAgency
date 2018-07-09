@@ -33,3 +33,53 @@
 .clear {
     clear: both;
 }
+
+.wrap {
+    width: 80%;
+}
+
+.row {
+    width: 80%;
+}
+
+.wrap-item {
+    box-sizing: border-box;
+    width: 20%;
+    height: 30%;
+    border: 1px solid #000000;
+    margin: 15px;
+    padding: 20px;
+    background: #bfc6cb;
+}
+
+.fd{
+    width: 40%;
+}
+
+.sd{
+    width: 55%;
+}
+.item {
+    text-align: center;
+    margin-top: 15px;
+
+}
+
+.visa-item{
+    width: 33%;
+    height: 25px;
+    border: 1px solid black;
+}
+
+.float-l {
+    float: left;
+}
+
+.float-r {
+    float: right;
+}
+
+.addButton{
+    margin-right: 20%;
+    margin-bottom: 25px;
+}

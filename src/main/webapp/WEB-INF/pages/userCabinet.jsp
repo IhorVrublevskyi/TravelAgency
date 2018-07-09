@@ -4,7 +4,7 @@
 <head>
     <title>userCabinet</title>
     <style>
-        <%@include file="../styles/userCabinet.css"%>
+        <%@include file="../styles/index.css"%>
     </style>
 </head>
 <body>
@@ -19,15 +19,14 @@
             <div class="clear"/>
         </div>
         <div class="row">
-
-            <div class="item float-l">Country</div>
-            <div class="item float-l">Date of init</div>
-            <div class="item float-l">Date of expired</div>
+            <div class="visa-item float-l">Country</div>
+            <div class="visa-item float-l">Date of init</div>
+            <div class="visa-item float-l">Date of expired</div>
             <div class="clear"></div>
             <c:forEach items="${userVisas}" var="item">
-                <div class="item float-l">${item.getCountry()}</div>
-                <div class="item float-l">${item.getDateOfInit()}</div>
-                <div class="item float-l">${item.getDateOfExpired()}</div>
+                <div class="visa-item float-l">${item.getCountry()}</div>
+                <div class="visa-item float-l">${item.getDateOfInit()}</div>
+                <div class="visa-item float-l">${item.getDateOfExpired()}</div>
                 <div class="clear"></div>
             </c:forEach>
         </div>
