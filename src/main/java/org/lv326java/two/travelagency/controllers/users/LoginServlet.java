@@ -3,6 +3,7 @@ package org.lv326java.two.travelagency.controllers.users;
 import org.lv326java.two.travelagency.controllers.ControllerUrls;
 import org.lv326java.two.travelagency.controllers.ViewUrls;
 import org.lv326java.two.travelagency.dto.LoginDto;
+import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
 import org.lv326java.two.travelagency.services.UserService;
 import org.lv326java.two.travelagency.services.VisaService;
 
@@ -14,9 +15,14 @@ import java.io.*;
 @WebServlet(name = "LoginServlet")
 public class LoginServlet extends HttpServlet {
 
+    private UserService userService;
+
+    public LoginServlet() {
+        userService = ServiceDaoConteiner.get().getUserService();
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        UserService userService = new UserService();
         LoginDto loginDto = new LoginDto(request.getParameter("login"), request.getParameter("password"));
 
         request.setAttribute("loginDto", loginDto);
@@ -44,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/pages/login.jsp").forward(request, response);
+        request.getRequestDispatcher(ViewUrls.LOGIN_JSP.toString()).forward(request, response);
     }
 }
 

@@ -8,26 +8,31 @@ import org.lv326java.two.travelagency.entities.City;
 import org.lv326java.two.travelagency.entities.Country;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CityService {
 
     private CityDao cityDao;
+    private CountryDao countryDao;
 
-    public CityService(CityDao cityDao) {
+    public CityService(CityDao cityDao, CountryDao countryDao) {
         this.cityDao = cityDao;
+        this.countryDao = countryDao;
     }
+
 
     public CityService() {
         this.cityDao = new CityDao();
+        this.countryDao = new CountryDao();
     }
 
     public List<CityDto> getAllCitiesDto() {
         List<City> cities;
-        List<CityDto> result = new ArrayList<>();
+        List<CityDto> result = new LinkedList<>();
         cities = cityDao.getAll();
-        for (City city: cities) {
-            result.add(new CityDto(null, city.getName(), null));
+        for (City city : cities) {
+            result.add(new CityDto(city.getName(), countryDao.getById(city.getCountryId()).getName()));
         }
         return result;
     }

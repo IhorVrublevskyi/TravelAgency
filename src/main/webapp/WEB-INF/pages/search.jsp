@@ -12,12 +12,12 @@
 <div class="form">
     <h2 class="log">Searching page</h2>
     <fieldset>
-        <form action="/search" method="get">
+        <form action="/search" method="post">
             <div class="input">
                 <p>City</p>
                 <select type="text" name="cityName" required>
                     <c:forEach items="${cities}" var="item">
-                        <option value="${item.getName()}">${item.getName()}</option>
+                        <option value="${item.getName()}">${item.getCountry()} ${item.getName()}</option>
                     </c:forEach>
                 </select>
             </div>

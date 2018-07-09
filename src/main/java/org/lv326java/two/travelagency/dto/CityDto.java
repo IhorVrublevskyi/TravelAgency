@@ -2,42 +2,31 @@ package org.lv326java.two.travelagency.dto;
 
 public class CityDto {
 
-    private String id;
     private String name;
-    private String countryId;
+    private String country;
 
-    public CityDto(String id, String name, String countryId) {
-        this.id = id;
+    public CityDto(String name, String country) {
         this.name = name;
-        this.countryId = countryId;
+        this.country = country;
     }
 
     // setters
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setCountryId(String countryId) {
-        this.countryId = countryId;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     // getters
-
-
-    public String getId() {
-        return id;
-    }
 
     public String getName() {
         return name;
     }
 
-    public String getCountryId() {
-        return countryId;
+    public String getCountry() {
+        return country;
     }
 }

@@ -10,10 +10,11 @@ import java.io.IOException;
 @WebServlet(name = "BookingServlet")
 public class BookingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setAttribute("test", request.getParameterMap());
+        request.getRequestDispatcher(ViewUrls.INFO_ABOUT_SELECTED_HOTEL_JSP.toString()).forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/pages/infoAboutSelectedHotel.jsp").forward(request, response);
+        request.getRequestDispatcher(ViewUrls.INFO_ABOUT_SELECTED_HOTEL_JSP.toString()).forward(request, response);
     }
 }

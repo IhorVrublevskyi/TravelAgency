@@ -48,10 +48,6 @@ public class VisaService {
             visas = visaDao.getByFieldName("user_id", user.getId().toString());
 
             for (Visa visa : visas) {
-                System.out.println(visa.getCountryId());
-            }
-
-            for (Visa visa : visas) {
                 result.add(new VisaDto(countryDao.getById(visa.getCountryId()).getName(), null,
                         visa.getDateOfInit().toString(), visa.getDateOfExpired().toString()));
             }

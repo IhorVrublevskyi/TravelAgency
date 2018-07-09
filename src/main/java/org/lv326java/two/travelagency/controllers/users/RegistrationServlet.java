@@ -6,6 +6,7 @@ import org.lv326java.two.travelagency.dto.RegistrationDto;
 import org.lv326java.two.travelagency.entities.User;
 import org.lv326java.two.travelagency.exceptions.PasswordMismatchException;
 import org.lv326java.two.travelagency.exceptions.UserAlreadyExistsException;
+import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
 import org.lv326java.two.travelagency.services.UserService;
 
 import javax.servlet.ServletException;
@@ -19,8 +20,13 @@ import java.io.IOException;
 @WebServlet(name = "RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
 
+    private UserService userService;
+
+    public RegistrationServlet() {
+        userService = ServiceDaoConteiner.get().getUserService();
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserService userService = new UserService();
         RegistrationDto registrationDto = new RegistrationDto(
                 request.getParameter("firstName"),
                 request.getParameter("lastName"),

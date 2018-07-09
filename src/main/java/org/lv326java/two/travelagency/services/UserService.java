@@ -22,10 +22,6 @@ public class UserService {
 
     private UserDao userDao;
     private RoleDao roleDao;
-    private VisaDao visaDao;
-    private CountryDao countryDao;
-
-
 
 //    private UserService() {
 //    }
@@ -43,15 +39,11 @@ public class UserService {
 	public UserService() {
 		userDao = new UserDao();
 		roleDao = new RoleDao();
-		visaDao = new VisaDao();
-        countryDao = new CountryDao();
 	}
 
-	private UserService(UserDao userDao, RoleDao roleDao, VisaDao visaDao, CountryDao countryDao) {
+    public UserService(UserDao userDao, RoleDao roleDao) {
 		this.userDao = userDao;
 		this.roleDao = roleDao;
-		this.visaDao = visaDao;
-		this.countryDao = countryDao;
 	}
 
     public boolean setUserDto(UserDto userDto) {
