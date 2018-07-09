@@ -19,13 +19,17 @@
             <div class="clear"/>
         </div>
         <div class="row">
-           <%--// TODO view for all visas--%>
-                <c:forEach items="${userVisas}" var="item">
-                    <div class="item float-l">${item.getCountry()}</div>
-                    <div class="item float-l">${item.getDateOfInit()}</div>
-                    <div class="item float-l">${item.getDateOfExpired()}</div>
-                    <div class="clear"></div>
-                </c:forEach>
+
+            <div class="item float-l">Country</div>
+            <div class="item float-l">Date of init</div>
+            <div class="item float-l">Date of expired</div>
+            <div class="clear"></div>
+            <c:forEach items="${userVisas}" var="item">
+                <div class="item float-l">${item.getCountry()}</div>
+                <div class="item float-l">${item.getDateOfInit()}</div>
+                <div class="item float-l">${item.getDateOfExpired()}</div>
+                <div class="clear"></div>
+            </c:forEach>
         </div>
         <br><br>
         <div class="search">
