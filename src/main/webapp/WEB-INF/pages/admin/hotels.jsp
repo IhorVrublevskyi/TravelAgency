@@ -5,26 +5,27 @@
     <title>Hotels</title>
     <style>
         <%@include file="../../styles/index.css"%>
-    </style>>
+    </style>
 </head>
 <body>
     <div class="form">
+        <h2 class="log">Hotels</h2>
         <table>
             <c:forEach items ="${hotelsAdmin}" var="item">
                     <tr>
                         <td > ${item.getCountry()} ${item.getCity()} ${item.getHotelName()} ${item.getHotelAddress()} </td>
                         <td >
-                            <button name="edit">Edit</button>
+                            <button class="edit" name="edit">Edit</button>
                         </td>
                         <td >
-                            <button name="delete">Delete</button>
+                            <button class="delete" name="delete">Delete</button>
                         </td>
                     </tr>
             </c:forEach>
             <div class="clear"></div>
         </table>
         <br><br>
-        <div> <b>*</b> Insert a new hotel <button>Insert</button></div>
+        <div> Insert a new hotel <button class="insert">Insert</button></div>
     </div>
 </body>
 </html>

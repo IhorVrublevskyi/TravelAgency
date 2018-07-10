@@ -82,11 +82,23 @@ thead {
     background-color: silver;
 }
 
-tr:nth-child(even) {
-    background: silver;
+/*tr:nth-child(even) {*/
+/*background: silver;*/
+/*}*/
+
+.edit {
+    color: orange;
 }
 
 button {
     width: 100px;
     height: 25px;
+}
+
+.delete {
+    color: red;
+}
+
+.insert {
+    color: green;
 }
