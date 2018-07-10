@@ -36,36 +36,15 @@
 
 .wrap {
     width: 80%;
+    margin: 50px auto;
 }
 
-.row {
-    width: 80%;
-}
-
-.wrap-item {
-    box-sizing: border-box;
-    width: 20%;
-    height: 30%;
-    border: 1px solid #000000;
-    margin: 15px;
-    padding: 20px;
-    background: #bfc6cb;
-}
-
-.fd{
-    width: 40%;
-}
-
-.sd{
-    width: 55%;
-}
 .item {
     text-align: center;
     margin-top: 15px;
-
 }
 
-.visa-item{
+.visa-item {
     width: 33%;
     height: 25px;
     border: 1px solid black;
@@ -79,7 +58,22 @@
     float: right;
 }
 
-.addButton{
-    margin-right: 20%;
-    margin-bottom: 25px;
+.addButton {
+    margin-bottom: 15px;
+}
+
+.name {
+    text-transform: uppercase;
+}
+
+td {
+    width: 16.5%;
+}
+thead{
+    font-weight: bold;
+    background-color: silver;
+}
+
+tr:nth-child(even) {
+    background: silver;
 }

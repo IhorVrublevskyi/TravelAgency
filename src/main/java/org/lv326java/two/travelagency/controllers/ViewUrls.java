@@ -11,9 +11,9 @@ public enum ViewUrls {
     THANKS_JSP("/WEB-INF/pages/thanks.jsp"),
     VISA_JSP("/WEB-INF/pages/visa.jsp"),
     SEARCH_JSP("/WEB-INF/pages/search.jsp"),
-    ADMIN_CABINET_JSP("/WEB-INF/pages/adminsCabinet.jsp"),
     ADMIN_COUNTRY_JSP("/WEB-INF/pages/admin/countries.jsp"),
-    ADMIN_CITIES_JSP("/WEB-INF/pages/admin/cities.jsp");
+    ADMIN_CITY_JSP("/WEB-INF/pages/admin/cities.jsp"),
+    ADMIN_HOTELS_JSP("/WEB-INF/pages/admin/hotels.jsp");
     //
     private String url;
 

@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Countries</title>
+    <title>Hotels</title>
     <style>
         .form {
             width: 500px;
@@ -16,9 +16,9 @@
 <body>
     <div class="form">
         <table>
-            <c:forEach items ="${countriesAdmin}" var="item">
+            <c:forEach items ="${hotelsAdmin}" var="item">
                     <tr>
-                        <td >${item.getName()} </td>
+                        <td > ${item.getCountry()} ${item.getCity()} ${item.getHotelName()} ${item.getHotelAddress()} </td>
                         <td >
                             <button name="edit">Edit</button>
                         </td>
@@ -30,7 +30,7 @@
             <div class="clear"></div>
         </table>
         <br><br>
-        <div> <b>*</b> Insert a new country <button>Insert</button></div>
+        <div> <b>*</b> Insert a new hotel <button>Insert</button></div>
     </div>
 </body>
 </html>

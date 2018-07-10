@@ -105,4 +105,23 @@
         <url-pattern>/countries</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>adminCity</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.controllers.admin.AdminCityServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminCity</servlet-name>
+        <url-pattern>/cities</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>adminHotel</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.controllers.admin.AdminHotelServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminHotel</servlet-name>
+        <url-pattern>/hotels</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
