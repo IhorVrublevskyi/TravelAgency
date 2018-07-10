@@ -4,14 +4,8 @@
 <head>
     <title>Hotels</title>
     <style>
-        .form {
-            width: 500px;
-            margin: 50px auto;
-        }
-        b {
-            color: red;
-        }
-    </style>
+        <%@include file="../../styles/index.css"%>
+    </style>>
 </head>
 <body>
     <div class="form">

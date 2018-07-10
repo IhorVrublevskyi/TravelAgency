@@ -4,10 +4,7 @@
 <head>
     <title>adminsCabinet</title>
     <style>
-        .form {
-            width: 500px;
-            margin: 50px auto;
-        }
+        <%@include file="../../styles/index.css"%>
     </style>
 </head>
 <body>

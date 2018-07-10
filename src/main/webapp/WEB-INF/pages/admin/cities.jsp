@@ -4,13 +4,7 @@
 <head>
     <title>Cities</title>
     <style>
-        .form {
-            width: 500px;
-            margin: 50px auto;
-        }
-        b {
-            color: red;
-        }
+        <%@include file="../../styles/index.css"%>
     </style>
 </head>
 <body>
