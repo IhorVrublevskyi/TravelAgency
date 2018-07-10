@@ -12,7 +12,7 @@ public class App {
         System.out.println(user);
         UserDto userDto = new UserDto(user.getLogin(), user.getPassword(), user.getFirstName(), user.getLastName(),
                 user.getRoleId().toString());
-        
+
 
     }
 }

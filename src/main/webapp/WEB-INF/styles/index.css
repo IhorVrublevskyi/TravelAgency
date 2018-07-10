@@ -102,3 +102,12 @@ button {
 .insert {
     color: green;
 }
+
+.ml{
+    margin-left: 25px;
+    margin-top: 10px;
+}
+
+.mt{
+    margin-top: 10px;
+}

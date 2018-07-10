@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -9,16 +8,44 @@
 </head>
 <body>
 <div class="wrap">
-    <h2 class = "logout float-r"><a href="/logout"><button>Logout</button></a></h2>
+    <h2 class="logout float-r"><a href="/logout">
+        <button>Logout</button>
+    </a></h2>
     <h2 class="log float-r">Hello, <span class="name">${loginDto.getLogin()}</span></h2>
     <div class="clear"/>
 
-    <div class="form">
-        <a href="/countries"> Countries</a>
-        <a href="/cities"> Cities</a>
-        <a href="/hotels"> Hotels</a>
-        <a href="#"> Rooms</a>
-        <a href="#"> Users</a>
+    <div class="wrap">
+        <p>Please, choose what do you want to edit</p>
+        <div class="float-l mt">
+            <a href="/countries"><button>Countries</button></a>
+        </div>
+        <div class="float-l ml">You can insert new country and edit or delete already exists.</div>
+        <div class="clear"/>
+
+        <div class="float-l mt">
+            <a href="/cities"><button>Cities</button></a>
+        </div>
+        <div class="float-l ml">You can insert new city and edit or delete already exists.</div>
+        <div class="clear"/>
+
+        <div class="float-l mt">
+            <a href="/hotels"><button>Hotels</button></a>
+        </div>
+        <div class="float-l ml">You can insert new hotel and edit or delete already exists.</div>
+        <div class="clear"/>
+
+        <div class="float-l mt">
+            <a href="#"><button>Rooms</button></a>
+        </div>
+        <div class="float-l ml">You can insert new room and edit or delete already exists.</div>
+        <div class="clear"/>
+
+        <div class="float-l mt">
+            <a href="#"><button>Users</button></a>
+        </div>
+        <div class="float-l ml">You can insert new user and edit or delete already exists.</div>
+        <div class="clear"/>
+
     </div>
 
 </div>
