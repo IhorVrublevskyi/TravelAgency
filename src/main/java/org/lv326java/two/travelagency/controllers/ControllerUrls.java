@@ -4,8 +4,8 @@ public enum ControllerUrls {
     ROOT_SERVLET("/"),
     LOGIN_SERVLET("/login"),
     LOGOUT_SERVLET("/logout"),
-    USERCABINET_SERVLET("/userCabinet");
-
+    USERCABINET_SERVLET("/userCabinet"),
+    ADMINCABINET_SERVLET("/adminsCabinet");
 
     private String url;
 

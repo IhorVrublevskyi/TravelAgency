@@ -78,6 +78,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>adminCab</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.controllers.AdminCabinetServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminCab</servlet-name>
+        <url-pattern>/adminsCabinet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>visaServlet</servlet-name>
         <servlet-class>org.lv326java.two.travelagency.controllers.VisaServlet</servlet-class>
     </servlet>

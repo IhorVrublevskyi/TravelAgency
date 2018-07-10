@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + ControllerUrls.USERCABINET_SERVLET);
             } else {
                 //TODO AdminCabinet
-                response.sendRedirect(request.getContextPath() + ControllerUrls.USERCABINET_SERVLET);
+                response.sendRedirect(request.getContextPath() + ControllerUrls.ADMINCABINET_SERVLET);
             }
         } else {
             request.setAttribute("error", "Bad Login or Password");

@@ -11,10 +11,9 @@
     <fieldset>
         <form action="/addCountry" method="post">
             <div class="input">
-                <p>Country</p>
-                    <c:forEach items="${countriesAdmin}" var="item">
-                        <div class="visa-item float-l">${item.getName()}</div>
-                    </c:forEach>
+                <c:forEach items="${countriesAdmin}" var="item">
+                    <div class="visa-item float-l">${item.getName()}</div>
+                </c:forEach>
             </div>
             <div class="clear"></div>
         </form>
