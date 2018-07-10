@@ -5,7 +5,7 @@
     <title>adminsCabinet</title>
 </head>
 <body>
-<a href="#"> Countries</a>
+<a href="/countries"> Countries</a>
 <a href="#"> Cities</a>
 <a href="#"> Hotels</a>
 <a href="#"> Rooms</a>

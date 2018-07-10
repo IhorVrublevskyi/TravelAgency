@@ -95,4 +95,14 @@
         <url-pattern>/visa</url-pattern>
         <url-pattern>/addVisa</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>adminCoun</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.controllers.admin.AdminCountryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminCoun</servlet-name>
+        <url-pattern>/countries</url-pattern>
+    </servlet-mapping>
+
 </web-app>

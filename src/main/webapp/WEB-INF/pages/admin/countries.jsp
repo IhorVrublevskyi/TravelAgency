@@ -5,20 +5,28 @@
     <title>Countries</title>
 </head>
 <body>
-
-<div class="form">
-    <h2 class="log">Countries</h2>
-    <fieldset>
-        <form action="/addCountry" method="post">
-            <div class="input">
-                <c:forEach items="${countriesAdmin}" var="item">
-                    <div class="visa-item float-l">${item.getName()}</div>
-                </c:forEach>
-            </div>
-            <div class="clear"></div>
-        </form>
-    </fieldset>
+<div class="wrap-item">
+    <form action="/book" method="post">
+        <div class="row">
+            <c:forEach items ="${countriesAdmin}" var="item">
+                <div class="wrap-item float-l">
+                    <table>
+                        <tr>
+                            <td class="sd">${item.getName()}
+                            </td>
+                            <td>
+                                <button name="edit">Edit</button>
+                            </td>
+                            <td>
+                                <button name="delete">Delete</button>
+                            </td>
+                        </tr>
+                    <div class="clear"></div>
+                    </table>
+                </div>
+            </c:forEach>
+        </div>
+    </form>
 </div>
-
 </body>
 </html>
