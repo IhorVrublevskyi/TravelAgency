@@ -25,6 +25,8 @@
                     </table>
                 </div>
             </c:forEach>
+            <br><br>
+            <div> Insert a new country <button name="insert">Insert</button></div>
         </div>
     </form>
 </div>
