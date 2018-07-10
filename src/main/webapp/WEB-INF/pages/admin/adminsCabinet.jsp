@@ -6,6 +6,11 @@
 </head>
 <body>
 <p>adminsCabinet</p>
+<a> Countries</a>
+<a> Cities</a>
+<a> Hotels</a>
+<a> Rooms</a>
+<a> Users</a>
 
 </body>
 </html>
