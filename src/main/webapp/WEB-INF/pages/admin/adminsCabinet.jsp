@@ -5,7 +5,11 @@
     <title>adminsCabinet</title>
 </head>
 <body>
-<p>adminsCabinet</p>
+<a href="/countries"> Countries</a>
+<a href="#"> Cities</a>
+<a href="#"> Hotels</a>
+<a href="#"> Rooms</a>
+<a href="#"> Users</a>
 
 </body>
 </html>

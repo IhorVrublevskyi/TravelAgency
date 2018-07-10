@@ -43,7 +43,7 @@
         <%--<button>Edit</button>--%>
     <%--</a></div>--%>
     <%--Має вести назад до переліку готелів--%>
-    <div class="item float-l"><a href="/confirm">
+    <div class="item float-l"><a href="/hotelConfirm">
         <button>Confirm</button>
     </a></div>
     <div class="clear"></div>

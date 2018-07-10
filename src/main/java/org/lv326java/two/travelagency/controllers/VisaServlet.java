@@ -29,24 +29,38 @@ public class VisaServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession httpSession = request.getSession();
-        VisaDto visaDto = new VisaDto(
-                visaService.getIdCountryByName(request.getParameter("countryName")).toString(),
-                visaService.getIdUserByLogin(String.valueOf(httpSession.getAttribute("login"))).toString(),
-                request.getParameter("entryDate"),
-                request.getParameter("outDate"));
-
-        visaService.addVisa(visaDto);
-        getServletConfig()
-                .getServletContext()
-                .getRequestDispatcher(ControllerUrls.USERCABINET_SERVLET.toString())
-                .forward(request, response);
+        if (Security.isActiveSession(request, response)) {
+            HttpSession httpSession = request.getSession();
+            VisaDto visaDto = new VisaDto(
+                    visaService.getIdCountryByName(request.getParameter("countryName")).toString(),
+                    visaService.getIdUserByLogin(String.valueOf(httpSession.getAttribute("login"))).toString(),
+                    request.getParameter("entryDate"),
+                    request.getParameter("outDate"));
+            visaService.addVisa(visaDto);
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ControllerUrls.USERCABINET_SERVLET.toString())
+                    .forward(request, response);
+        } else {
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ControllerUrls.LOGOUT_SERVLET.toString())
+                    .forward(request, response);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
-        request.setAttribute("countries", countryService.getAllCountriesDto());
-        request.getRequestDispatcher(ViewUrls.VISA_JSP.toString()).forward(request, response);
+        if (Security.isActiveSession(request, response)) {
+            request.setAttribute("countries", countryService.getAllCountriesDto());
+            request.getRequestDispatcher(ViewUrls.VISA_JSP.toString()).forward(request, response);
+        } else {
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ControllerUrls.LOGOUT_SERVLET.toString())
+                    .forward(request, response);
+        }
+
     }
 
 }

@@ -3,7 +3,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-
     <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>org.lv326java.two.travelagency.controllers.users.LoginServlet</servlet-class>
@@ -12,6 +11,15 @@
         <servlet-name>login</servlet-name>
         <url-pattern>/</url-pattern>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.controllers.users.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -70,6 +78,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>adminCab</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.controllers.AdminCabinetServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminCab</servlet-name>
+        <url-pattern>/adminsCabinet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>visaServlet</servlet-name>
         <servlet-class>org.lv326java.two.travelagency.controllers.VisaServlet</servlet-class>
     </servlet>
@@ -79,5 +96,13 @@
         <url-pattern>/addVisa</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>adminCoun</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.controllers.admin.AdminCountryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminCoun</servlet-name>
+        <url-pattern>/countries</url-pattern>
+    </servlet-mapping>
 
 </web-app>

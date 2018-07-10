@@ -22,22 +22,18 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         LoginDto loginDto = new LoginDto(request.getParameter("login"), request.getParameter("password"));
-
-        request.setAttribute("loginDto", loginDto);
-
         if (userService.isValid(loginDto)) {
             HttpSession session = request.getSession(true);
-            session.setAttribute("login", loginDto.getLogin());
-            // Add Cookie
-            Cookie cookie = new Cookie("id_session", session.getId());
-            response.addCookie(cookie);
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ControllerUrls.USERCABINET_SERVLET.toString())
-                    .forward(request, response);
+            session.setAttribute("loginDto", loginDto);
+            response.addCookie(new Cookie("id_session", session.getId()));
 
+            if (ServiceDaoConteiner.get().getUserDao().getUserEntityByLogin(loginDto.getLogin()).getRoleId() == 1) {
+                response.sendRedirect(request.getContextPath() + ControllerUrls.USERCABINET_SERVLET);
+            } else {
+                //TODO AdminCabinet
+                response.sendRedirect(request.getContextPath() + ControllerUrls.ADMINCABINET_SERVLET);
+            }
         } else {
             request.setAttribute("error", "Bad Login or Password");
             getServletConfig()

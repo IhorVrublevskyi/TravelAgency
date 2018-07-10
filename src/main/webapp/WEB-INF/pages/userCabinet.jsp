@@ -8,10 +8,10 @@
     </style>
 </head>
 <body>
-<div class="wrap">
-    <h2 class="log">Hello, <span class="name">${login}</span></h2>
-    <p>There is information about your visas:</p>
 
+<div class="wrap">
+    <h2 class="log">Hello, <span class="name">${loginDto.getLogin()}</span></h2>
+    <p>There is information about your visas:</p>
     <div>
         <div class="addButton float-r">
             <a href="/visa">
