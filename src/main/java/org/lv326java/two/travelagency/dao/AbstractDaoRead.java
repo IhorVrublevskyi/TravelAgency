@@ -29,8 +29,8 @@ abstract class AbstractDaoRead<TEntity> implements DaoRead<TEntity> {
     protected abstract void init();
 
     // Read
-    private List<TEntity> getQueryResult(String query, SqlQueries sqlQueries) {
-        List<TEntity> all = new ArrayList<TEntity>();
+    protected List<TEntity> getQueryResult(String query, SqlQueries sqlQueries) {
+        List<TEntity> all = new ArrayList<>();
         Statement statement = null;
         ResultSet resultSet = null;
         Map<String, String> queryResult;

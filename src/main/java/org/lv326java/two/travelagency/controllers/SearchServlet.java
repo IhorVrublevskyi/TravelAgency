@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 
 @WebServlet(name = "SearchServlet")
 public class SearchServlet extends HttpServlet {
@@ -25,15 +26,32 @@ public class SearchServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("hotels", hotelService.getAllHotels());
-        getServletConfig()
-                .getServletContext()
-                .getRequestDispatcher(ViewUrls.HOTELS_JSP.toString())
-                .forward(request, response);
+        if (Security.isActiveSession(request, response)) {
+            String cityName = request.getParameter("cityName");
+            Date checkin = Date.valueOf(request.getParameter("entryDate"));
+            Date checkout = Date.valueOf(request.getParameter("outDate"));
+            request.setAttribute("hotels", hotelService.searchHotels(checkin, checkout, cityName));
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ViewUrls.HOTELS_JSP.toString())
+                    .forward(request, response);
+        } else {
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ControllerUrls.LOGOUT_SERVLET.toString())
+                    .forward(request, response);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("cities", cityService.getAllCitiesDto());
-        request.getRequestDispatcher(ViewUrls.SEARCH_JSP.toString()).forward(request, response);
+        if (Security.isActiveSession(request, response)) {
+            request.setAttribute("cities", cityService.getAllCitiesDto());
+            request.getRequestDispatcher(ViewUrls.SEARCH_JSP.toString()).forward(request, response);
+        } else {
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ControllerUrls.LOGOUT_SERVLET.toString())
+                    .forward(request, response);
+        }
     }
 }

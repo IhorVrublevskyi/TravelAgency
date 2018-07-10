@@ -23,7 +23,6 @@ public class HotelDto {
 
     // setters
 
-
     public void setId(String id) {
         this.id = id;
     }
@@ -57,7 +56,6 @@ public class HotelDto {
     }
 
     // getters
-
 
     public String getId() {
         return id;
