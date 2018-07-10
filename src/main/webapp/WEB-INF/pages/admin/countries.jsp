@@ -3,32 +3,34 @@
 <html>
 <head>
     <title>Countries</title>
+    <style>
+        .form {
+            width: 500px;
+            margin: 50px auto;
+        }
+        b {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-<div class="wrap-item">
-    <form action="/book" method="post">
-        <div class="row">
+    <div class="form">
+        <table>
             <c:forEach items ="${countriesAdmin}" var="item">
-                <div class="wrap-item float-l">
-                    <table>
-                        <tr>
-                            <td class="sd">${item.getName()}
-                            </td>
-                            <td>
-                                <button name="edit">Edit</button>
-                            </td>
-                            <td>
-                                <button name="delete">Delete</button>
-                            </td>
-                        </tr>
-                    <div class="clear"></div>
-                    </table>
-                </div>
+                    <tr>
+                        <td >${item.getName()} </td>
+                        <td >
+                            <button name="edit">Edit</button>
+                        </td>
+                        <td >
+                            <button name="delete">Delete</button>
+                        </td>
+                    </tr>
             </c:forEach>
-            <br><br>
-            <div> Insert a new country <button name="insert">Insert</button></div>
-        </div>
-    </form>
-</div>
+            <div class="clear"></div>
+        </table>
+        <br><br>
+        <div> <b>*</b> Insert a new country <button>Insert</button></div>
+    </div>
 </body>
 </html>

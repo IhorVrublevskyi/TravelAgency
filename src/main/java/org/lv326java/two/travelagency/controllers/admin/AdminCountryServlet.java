@@ -36,7 +36,9 @@ public class AdminCountryServlet extends HttpServlet {
             ServletException, IOException {
         HttpSession session = request.getSession(true);
         session.setAttribute("countriesAdmin", countryService.getAllCountriesDto());
-        System.out.println(countryService.getAllCountriesDto());
+
+
+
         request.getRequestDispatcher(ViewUrls.ADMIN_COUNTRY_JSP.toString()).forward(request, response);
     }
 }
