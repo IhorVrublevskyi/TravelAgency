@@ -10,7 +10,10 @@
 <body>
 
 <div class="wrap">
-    <h2 class="log">Hello, <span class="name">${loginDto.getLogin()}</span></h2>
+    <h2 class = "logout float-r"><a href="/logout"><button>Logout</button></a></h2>
+    <h2 class="log float-r">Hello, <span class="name">${loginDto.getLogin()}</span></h2>
+    <div class="clear"/>
+
     <p>There is information about your visas:</p>
     <div>
         <div class="addButton float-r">

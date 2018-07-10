@@ -5,6 +5,13 @@
 
 .log {
     text-align: center;
+    width: 85%;
+
+}
+
+.logout {
+    width: 15%;
+    text-align: right;
 }
 
 .input, .submit, .bottom {
@@ -69,11 +76,17 @@
 td {
     width: 16.5%;
 }
-thead{
+
+thead {
     font-weight: bold;
     background-color: silver;
 }
 
 tr:nth-child(even) {
     background: silver;
+}
+
+button {
+    width: 100px;
+    height: 25px;
 }
