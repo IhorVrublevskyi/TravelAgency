@@ -15,7 +15,7 @@
 <div class="form">
     <a href="/countries"> Countries</a>
     <a href="/cities"> Cities</a>
-    <a href="#"> Hotels</a>
+    <a href="/hotels"> Hotels</a>
     <a href="#"> Rooms</a>
     <a href="#"> Users</a>
 </div>
