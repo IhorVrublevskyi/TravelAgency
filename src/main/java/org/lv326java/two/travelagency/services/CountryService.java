@@ -2,9 +2,7 @@ package org.lv326java.two.travelagency.services;
 
 import org.lv326java.two.travelagency.dao.CountryDao;
 import org.lv326java.two.travelagency.dto.CountryDto;
-import org.lv326java.two.travelagency.dto.HotelDto;
 import org.lv326java.two.travelagency.entities.Country;
-import org.lv326java.two.travelagency.entities.Hotel;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -55,12 +53,5 @@ public class CountryService {
 
     public boolean deleteCountryById(Long id){
         return countryDao.deleteById(id);
-    }
-
-    public static void main(String[] args) {
-        CountryService countryService = new CountryService();
-        List<CountryDto> countryDtos = new ArrayList<>();
-        System.out.println(countryDtos = countryService.getAllCountries());
-
     }
 }
