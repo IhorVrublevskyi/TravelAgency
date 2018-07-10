@@ -10,22 +10,23 @@
 <body>
 <body>
 <div class="form">
+    <h2 class="log">Cities</h2>
     <table>
         <c:forEach items ="${citiesAdmin}" var="item">
             <tr>
                 <td >${item.getCountry()} ${item.getName()} </td>
                 <td >
-                    <button name="edit">Edit</button>
+                    <button class="edit" name="edit">Edit</button>
                 </td>
                 <td >
-                    <button name="delete">Delete</button>
+                    <button class="delete" name="delete">Delete</button>
                 </td>
             </tr>
         </c:forEach>
         <div class="clear"></div>
     </table>
     <br><br>
-    <div> <b>*</b> Insert a new city <button>Insert</button></div>
+    <div> Insert a new city <button class="insert">Insert</button></div>
 </div>
 </body>
 
