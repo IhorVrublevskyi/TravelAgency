@@ -1,13 +1,8 @@
 package org.lv326java.two.travelagency.services;
 
-import org.lv326java.two.travelagency.dao.CityDao;
-import org.lv326java.two.travelagency.dao.CountryDao;
-import org.lv326java.two.travelagency.dao.HotelDao;
-import org.lv326java.two.travelagency.dao.RoomDao;
+import org.lv326java.two.travelagency.dao.*;
 import org.lv326java.two.travelagency.dto.HotelDto;
-import org.lv326java.two.travelagency.entities.City;
-import org.lv326java.two.travelagency.entities.Country;
-import org.lv326java.two.travelagency.entities.Hotel;
+import org.lv326java.two.travelagency.entities.*;
 
 import java.sql.Date;
 import java.util.LinkedList;
@@ -16,15 +11,17 @@ import java.util.List;
 public class HotelService {
 
     private HotelDao hotelDao;
+    private BookingDao bookingDao;
     private CityDao cityDao;
     private CountryDao countryDao;
     private RoomDao roomDao;
 
-    public HotelService(HotelDao hotelDao, CityDao cityDao, CountryDao countryDao, RoomDao roomDao) {
+    public HotelService(HotelDao hotelDao, CityDao cityDao, CountryDao countryDao, RoomDao roomDao, BookingDao bookingDao) {
         this.hotelDao = hotelDao;
         this.cityDao = cityDao;
         this.countryDao = countryDao;
         this.roomDao = roomDao;
+        this.bookingDao = bookingDao;
     }
 
     //TODO rewrite this method
@@ -49,5 +46,24 @@ public class HotelService {
         return hotelDtos;
     }
 
+    public List<HotelDto> searchHotels(Date startDate, Date endDate, String cityName) {
+        List<HotelDto> hotelDtos = new LinkedList<>();
+        for (Room room : roomDao.getFreeRoomsByPerion(startDate, endDate)) {
+            Hotel hotel = hotelDao.getById(room.getHotelId());
+//            City hotelCity = cityDao.getById(hotel.getId());
+            City ourCity = cityDao.getByFieldName("name", cityName).get(0);
+
+            if (hotel.getCityId().equals(ourCity.getId())) {
+                hotelDtos.add(new HotelDto(
+                        countryDao.getById(ourCity.getCountryId()).getName(),
+                        ourCity.getName(),
+                        hotel.getName(),
+                        hotel.getAddress(),
+                        null
+                ));
+            }
+        }
+        return hotelDtos;
+    }
 
 }

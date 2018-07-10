@@ -3,7 +3,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-
     <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>org.lv326java.two.travelagency.controllers.users.LoginServlet</servlet-class>
@@ -12,6 +11,15 @@
         <servlet-name>login</servlet-name>
         <url-pattern>/</url-pattern>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.controllers.users.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -78,6 +86,4 @@
         <url-pattern>/visa</url-pattern>
         <url-pattern>/addVisa</url-pattern>
     </servlet-mapping>
-
-
 </web-app>

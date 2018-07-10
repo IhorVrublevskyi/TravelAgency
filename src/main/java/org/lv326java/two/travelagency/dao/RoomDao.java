@@ -1,8 +1,11 @@
 package org.lv326java.two.travelagency.dao;
 
 import org.lv326java.two.travelagency.entities.Room;
+import org.lv326java.two.travelagency.entities.SqlQueries;
 
+import java.sql.Date;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RoomDao extends AbstractDaoCRUD<Room> {
@@ -42,9 +45,19 @@ public class RoomDao extends AbstractDaoCRUD<Room> {
     @Override
     protected Map<String, String> getFields(Room entity) {
         Map<String, String> fields = new LinkedHashMap<>();
-        fields.put(ID_FIELDNAME, entity.getId().toString());
+        fields.put(ID_FIELDNAME, entity.getId() != null ? entity.getId().toString(): null);
         fields.put(ROOM_NUMBER_FIELDNAME, entity.getRoomNumber().toString());
         fields.put(HOTEL_ID_FIELDNAME, entity.getHotelId().toString());
         return fields;
+    }
+
+    public List<Room> getFreeRoomsByPerion(Date startDate, Date endDate) {
+        String sql = "SELECT rooms.id, rooms.room_number, rooms.hotel_id FROM cities LEFT JOIN hotels " +
+                "ON cities.id = hotels.city_id JOIN rooms ON hotels.id = " +
+                "rooms.hotel_id LEFT JOIN bookings ON rooms.id = bookings.room_id WHERE (bookings.date_checkin > " +
+                "'%s' OR bookings.date_checkin IS NULL OR bookings.date_checkout < '%s' OR " +
+                "bookings.date_checkout IS NULL);";
+        sql = String.format(sql, endDate, startDate);
+        return getQueryResult(sql, SqlQueries.GET_BY_FIELD);
     }
 }
