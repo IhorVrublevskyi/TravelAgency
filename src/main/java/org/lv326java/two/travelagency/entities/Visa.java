@@ -11,8 +11,8 @@ public class Visa implements Entity {
         GET_ALL(SqlQueries.GET_ALL, "SELECT id, date_of_init, date_of_expired, country_id, user_id FROM visas;"),
         UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE visas SET date_of_init = '%s', date_of_expired = '%s', country_id = %s, user_id = %s WHERE id = %s;"),
         UPDATE_BY_FIELD(SqlQueries.UPDATE_BY_FIELD, "UPDATE visas SET %s = '%s' WHERE %s = '%s';"),
-        DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE visas WHERE id = %s;"),
-        DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE visas WHERE %s = '%s';");
+        DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE FROM visas WHERE id = %s;"),
+        DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE FROM visas WHERE %s = '%s';");
 
         private SqlQueries sqlQuery;
         private String query;

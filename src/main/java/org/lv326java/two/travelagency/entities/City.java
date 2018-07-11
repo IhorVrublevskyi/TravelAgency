@@ -9,8 +9,8 @@ public class City implements Entity {
         GET_ALL(SqlQueries.GET_ALL, "SELECT id, name, country_id FROM cities;"),
         UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE cities SET name = '%s', country_id = %s WHERE id = %s;"),
         UPDATE_BY_FIELD(SqlQueries.UPDATE_BY_FIELD, "UPDATE users SET %s = '%s' WHERE %s = '%s';"),
-        DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE cities WHERE id = %s;"),
-        DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE cities WHERE %s = '%s';");
+        DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE FROM cities WHERE id = %s;"),
+        DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE FROM cities WHERE %s = '%s';");
         //
         private SqlQueries sqlQuery;
         private String query;

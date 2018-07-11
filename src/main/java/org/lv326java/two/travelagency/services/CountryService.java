@@ -25,7 +25,7 @@ public class CountryService {
         List<CountryDto> result = new ArrayList<>();
         countries = countryDao.getAll();
         for (Country country : countries) {
-            result.add(new CountryDto(null, country.getName()));
+            result.add(new CountryDto(country.getId().toString(), country.getName()));
         }
         return result;
     }
@@ -45,15 +45,26 @@ public class CountryService {
         return countryDtos;
     }
 
-    public boolean insertCountry(Country country){
-        return countryDao.insert(country);
-    }
-
-    public boolean deleteCountry(Country country){
-        return countryDao.delete(country);
+    public boolean insertCountry(CountryDto countryDto){
+        return countryDao.insert(new Country(Long.parseLong(countryDto.getId()), countryDto.getName()));
     }
 
     public boolean deleteCountryById(Long id){
         return countryDao.deleteById(id);
+    }
+
+    public boolean updateContry(CountryDto countryDto) {
+        return countryDao.updateByEntity(new Country(
+                Long.parseLong(countryDto.getId()),
+                countryDto.getName()
+        ));
+    }
+
+    public CountryDto getCountryDtoById(Long id) {
+        Country country = countryDao.getById(id);
+        return new CountryDto(
+                country.getId().toString(),
+                country.getName()
+        );
     }
 }

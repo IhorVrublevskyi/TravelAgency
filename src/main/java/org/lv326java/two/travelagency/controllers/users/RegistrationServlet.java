@@ -1,9 +1,9 @@
 package org.lv326java.two.travelagency.controllers.users;
 
-import org.lv326java.two.travelagency.controllers.ViewUrls;
-import org.lv326java.two.travelagency.dao.UserDao;
+import org.lv326java.two.travelagency.controllers.constants.ControllerUrls;
+import org.lv326java.two.travelagency.controllers.constants.ParametersEnum;
+import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
 import org.lv326java.two.travelagency.dto.RegistrationDto;
-import org.lv326java.two.travelagency.entities.User;
 import org.lv326java.two.travelagency.exceptions.PasswordMismatchException;
 import org.lv326java.two.travelagency.exceptions.UserAlreadyExistsException;
 import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
@@ -28,24 +28,22 @@ public class RegistrationServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RegistrationDto registrationDto = new RegistrationDto(
-                request.getParameter("firstName"),
-                request.getParameter("lastName"),
-                request.getParameter("login"),
-                request.getParameter("password"),
-                request.getParameter("retypePassword"));
+                request.getParameter(ParametersEnum.FIRST_NAME.toString()),
+                request.getParameter(ParametersEnum.LAST_NAME.toString()),
+                request.getParameter(ParametersEnum.LOGIN.toString()),
+                request.getParameter(ParametersEnum.PASSWORD.toString()),
+                request.getParameter(ParametersEnum.RETYPE_PASSWORD.toString()));
 
-        HttpSession httpSession = request.getSession();
         try {
             userService.createNewUser(registrationDto);
         } catch (PasswordMismatchException e) {
-            request.setAttribute("error", "Passwords didn`t match. Please try again.");
+            request.setAttribute(ParametersEnum.ERROR.toString(), "Passwords didn`t match. Please try again.");
             request.getRequestDispatcher(ViewUrls.REGISTRATION_JSP.toString()).forward(request, response);
         } catch (UserAlreadyExistsException e) {
-            request.setAttribute("error", "User already exists. Please log in.");
+            request.setAttribute(ParametersEnum.ERROR.toString(), "User already exists. Please log in.");
             request.getRequestDispatcher(ViewUrls.LOGIN_JSP.toString()).forward(request, response);
         }
-            httpSession.setAttribute("login", request.getParameter("login"));
-            request.getRequestDispatcher(ViewUrls.USER_CABINET_JSP.toString()).forward(request, response);
+        response.sendRedirect(request.getContextPath() + ControllerUrls.LOGIN_SERVLET.toString());
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

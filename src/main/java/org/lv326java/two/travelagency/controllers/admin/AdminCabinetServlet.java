@@ -1,8 +1,9 @@
-package org.lv326java.two.travelagency.controllers;
+package org.lv326java.two.travelagency.controllers.admin;
 
+import org.lv326java.two.travelagency.controllers.constants.ControllerUrls;
+import org.lv326java.two.travelagency.controllers.Security;
+import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
 import org.lv326java.two.travelagency.dto.LoginDto;
-import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
-import org.lv326java.two.travelagency.services.VisaService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,13 +23,17 @@ public class AdminCabinetServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
             HttpSession session = request.getSession(false);
-            request.getRequestDispatcher(ViewUrls.ADMIN_CABINET_JSP.toString()).forward(request, response);
+            LoginDto loginDto = (LoginDto) session.getAttribute("loginDto");
+            if (Security.isAdmin(loginDto)) {
+                request.getRequestDispatcher(ViewUrls.ADMIN_CABINET_JSP.toString()).forward(request, response);
+            } else {
+                request.getRequestDispatcher(ViewUrls.USER_CABINET_JSP.toString()).forward(request, response);
+            }
         } else {
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ControllerUrls.LOGOUT_SERVLET.toString())
                     .forward(request, response);
         }
-
     }
 }

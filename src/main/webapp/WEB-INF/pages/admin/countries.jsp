@@ -8,26 +8,32 @@
     </style>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/adminCoun" method="post">
-    <div class="form">
-        <h2 class="log">Countries</h2>
-        <table>
-            <c:forEach items ="${countriesAdmin}" var="item">
-                    <tr>
-                        <td id="countryName">${item.getName()} </td>
-                        <td >
-                            <button class="edit" name="edit">Edit</button>
-                        </td>
-                        <td >
-                            <button class="delete" name="delete">Delete</button>
-                        </td>
-                    </tr>
-            </c:forEach>
-            <div class="clear"></div>
-        </table>
-        <br><br>
-        <div> Insert a new country <button class="insert">Insert</button></div>
+<div class="form">
+    <h2 class="log">Countries</h2>
+    <table>
+        <c:forEach items="${countries}" var="item">
+            <tr>
+                <form action="${pageContext.request.contextPath}/countries" method="post">
+                    <input type="hidden" name="countryId" value="${item.getId()}">
+                    <td>${item.getName()} </td>
+                    <td>
+                        <button name="action" value="editForm" type="submit">Edit</button>
+                    </td>
+                    <td>
+                        <button name="action" value="delete" type="submit">Delete</button>
+                    </td>
+                </form>
+            </tr>
+        </c:forEach>
+    </table>
+    <div class="clear"></div>
+
+    <br><br>
+    <div> Insert a new country
+        <form action="${pageContext.request.contextPath}/countries", method="post">
+            <button class="insert" name="action" value="insertForm">Insert</button>
+        </form>
     </div>
-</form>
+</div>
 </body>
 </html>

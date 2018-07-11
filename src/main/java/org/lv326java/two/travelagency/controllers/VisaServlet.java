@@ -1,8 +1,10 @@
 package org.lv326java.two.travelagency.controllers;
 
-import org.lv326java.two.travelagency.dao.VisaDao;
+import org.lv326java.two.travelagency.controllers.constants.ControllerUrls;
+import org.lv326java.two.travelagency.controllers.constants.ParametersEnum;
+import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
+import org.lv326java.two.travelagency.dto.LoginDto;
 import org.lv326java.two.travelagency.dto.VisaDto;
-import org.lv326java.two.travelagency.entities.Visa;
 import org.lv326java.two.travelagency.services.CountryService;
 import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
 import org.lv326java.two.travelagency.services.VisaService;
@@ -14,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.Date;
 
 @WebServlet(name = "VisaServlet")
 public class VisaServlet extends HttpServlet {
@@ -32,10 +33,11 @@ public class VisaServlet extends HttpServlet {
         if (Security.isActiveSession(request, response)) {
             HttpSession httpSession = request.getSession();
             VisaDto visaDto = new VisaDto(
-                    visaService.getIdCountryByName(request.getParameter("countryName")).toString(),
-                    visaService.getIdUserByLogin(String.valueOf(httpSession.getAttribute("login"))).toString(),
-                    request.getParameter("entryDate"),
-                    request.getParameter("outDate"));
+                    visaService.getIdCountryByName(request.getParameter(ParametersEnum.COUNTRY_NAME.toString())).toString(),
+                    visaService.getIdUserByLogin(((LoginDto)httpSession.getAttribute(
+                            ParametersEnum.LOGIN_DTO.toString())).getLogin()).toString(),
+                    request.getParameter(ParametersEnum.ENTRY_DATE.toString()),
+                    request.getParameter(ParametersEnum.OUT_DATE.toString()));
             visaService.addVisa(visaDto);
             getServletConfig()
                     .getServletContext()
@@ -52,7 +54,7 @@ public class VisaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
-            request.setAttribute("countries", countryService.getAllCountriesDto());
+            request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountriesDto());
             request.getRequestDispatcher(ViewUrls.VISA_JSP.toString()).forward(request, response);
         } else {
             getServletConfig()

@@ -1,7 +1,6 @@
 package org.lv326java.two.travelagency.controllers.admin;
 
-import org.lv326java.two.travelagency.controllers.ViewUrls;
-import org.lv326java.two.travelagency.services.HotelService;
+import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
 import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
 import org.lv326java.two.travelagency.services.UserService;
 

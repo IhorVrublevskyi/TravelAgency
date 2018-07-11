@@ -9,8 +9,8 @@ public class Room implements Entity {
         GET_ALL(SqlQueries.GET_ALL, "SELECT id, room_number, hotel_id FROM rooms;"),
         UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE rooms SET room_number = %s, hotel_id = %s WHERE id = %s;"),
         UPDATE_BY_FIELD(SqlQueries.UPDATE_BY_FIELD, "UPDATE rooms SET %s = '%s' WHERE %s = '%s';"),
-        DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE rooms WHERE id = %s;"),
-        DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE rooms WHERE %s = '%s';");
+        DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE FROM rooms WHERE id = %s;"),
+        DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE FROM rooms WHERE %s = '%s';");
         //
         private SqlQueries sqlQuery;
         private String query;

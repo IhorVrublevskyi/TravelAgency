@@ -9,8 +9,8 @@ public class Role implements Entity {
         GET_ALL(SqlQueries.GET_ALL, "SELECT id, name FROM roles;"),
         UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE roles SET name = '%s' WHERE id = %s;"),
         UPDATE_BY_FIELD(SqlQueries.UPDATE_BY_FIELD, "UPDATE roles SET %s = '%s' WHERE %s = '%s';"),
-        DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE roles WHERE id = %s;"),
-        DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE roles WHERE %s = '%s';");
+        DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE FROM roles WHERE id = %s;"),
+        DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE FROM roles WHERE %s = '%s';");
         //
         private SqlQueries sqlQuery;
         private String query;

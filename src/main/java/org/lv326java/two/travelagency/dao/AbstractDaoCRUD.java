@@ -3,6 +3,7 @@ package org.lv326java.two.travelagency.dao;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Map;
 
 import org.lv326java.two.travelagency.db.ConnectionManager;
@@ -58,16 +59,19 @@ abstract class AbstractDaoCRUD<TEntity extends Entity> extends AbstractDaoRead<T
 	}
 
 	// Update
+	//TODO Fix this awful workaround
 	public boolean updateByEntity(TEntity entity) {
         Map<String, String> updateFields = getUpdateFields(entity);
-		String query = String.format(sqlQueries.get(SqlQueries.UPDATE_BY_ID).toString(),
-					updateFields.values());
+		Collection<String> collection = updateFields.values();
+		String[] paramsArray = collection.toArray(new String[collection.size()]);
+		String query = String.format(sqlQueries.get(SqlQueries.UPDATE_BY_ID).toString(), paramsArray);
 		return executeQuery(query, SqlQueries.UPDATE_BY_FIELD);
 	}
 
 	public boolean updateByFieldName(String fieldName, String text, String fieldCondition, String textCondition) {
 		String query = String.format(sqlQueries.get(SqlQueries.UPDATE_BY_FIELD).toString(),
 					fieldName, text, fieldCondition, textCondition);
+		System.out.println("query=" + query);
 		return executeQuery(query, SqlQueries.UPDATE_BY_FIELD);
 	}
 
@@ -75,7 +79,7 @@ abstract class AbstractDaoCRUD<TEntity extends Entity> extends AbstractDaoRead<T
 	public boolean deleteById(Long id) {
 		String query = String.format(sqlQueries.get(SqlQueries.DELETE_BY_ID).toString(),
 					id);
-		//System.out.println("query=" + query);
+		System.out.println("query=" + query);
 		return executeQuery(query, SqlQueries.DELETE_BY_ID);
 	}
 

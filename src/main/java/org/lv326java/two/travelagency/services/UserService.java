@@ -1,21 +1,16 @@
 package org.lv326java.two.travelagency.services;
 
 
-import org.lv326java.two.travelagency.dao.CountryDao;
 import org.lv326java.two.travelagency.dao.RoleDao;
 import org.lv326java.two.travelagency.dao.UserDao;
-import org.lv326java.two.travelagency.dao.VisaDao;
 import org.lv326java.two.travelagency.dto.RegistrationDto;
 import org.lv326java.two.travelagency.dto.UserDto;
 import org.lv326java.two.travelagency.dto.LoginDto;
-import org.lv326java.two.travelagency.entities.Country;
 import org.lv326java.two.travelagency.entities.Role;
 import org.lv326java.two.travelagency.entities.User;
-import org.lv326java.two.travelagency.entities.Visa;
 import org.lv326java.two.travelagency.exceptions.PasswordMismatchException;
 import org.lv326java.two.travelagency.exceptions.UserAlreadyExistsException;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -88,7 +83,7 @@ public class UserService {
         return userDao.getUserEntityByLogin(userDto.getLogin()).getId();
     }
 
-    public boolean isValid(LoginDto loginDto) {
+    public boolean isValidCredentials(LoginDto loginDto) {
         boolean result = true;
         User user = null;
         try {

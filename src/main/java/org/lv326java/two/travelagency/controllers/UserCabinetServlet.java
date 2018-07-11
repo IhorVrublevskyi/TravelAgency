@@ -1,5 +1,8 @@
 package org.lv326java.two.travelagency.controllers;
 
+import org.lv326java.two.travelagency.controllers.constants.ControllerUrls;
+import org.lv326java.two.travelagency.controllers.constants.ParametersEnum;
+import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
 import org.lv326java.two.travelagency.dto.LoginDto;
 import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
 import org.lv326java.two.travelagency.services.VisaService;
@@ -28,8 +31,9 @@ public class UserCabinetServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
             HttpSession session = request.getSession(false);
-            request.setAttribute("userVisas",
-                    visaService.getVisaByUserLogin(((LoginDto)session.getAttribute("loginDto")).getLogin()));
+            request.setAttribute(ParametersEnum.USER_VISAS.toString(),
+                    visaService.getVisaByUserLogin(((LoginDto)session.getAttribute(ParametersEnum.LOGIN_DTO.toString()))
+                            .getLogin()));
             request.getRequestDispatcher(ViewUrls.USER_CABINET_JSP.toString()).forward(request, response);
         } else {
             getServletConfig()

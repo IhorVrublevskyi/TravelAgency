@@ -11,8 +11,8 @@ public class Booking implements Entity {
         GET_ALL(SqlQueries.GET_ALL, "SELECT id, user_id, room_id, date_checkin, date_checkout FROM bookings;"),
         UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE bookings SET user_id = %s, room_id = %s, date_checkin = '%s', date_checkout = '%s' WHERE id = %s;"),
         UPDATE_BY_FIELD(SqlQueries.UPDATE_BY_FIELD, "UPDATE bookings SET %s = '%s' WHERE %s = '%s';"),
-        DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE bookings WHERE id = %s;"),
-        DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE bookings WHERE %s = '%s';");
+        DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE FROM bookings WHERE id = %s;"),
+        DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE FROM bookings WHERE %s = '%s';");
         //
         private SqlQueries sqlQuery;
         private String query;

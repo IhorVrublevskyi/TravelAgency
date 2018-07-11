@@ -34,6 +34,7 @@ public class CountryDao extends AbstractDaoCRUD<Country> {
         Map<String, String> result = new LinkedHashMap<>();
         Map<String, String> allFields = getFields(entity);
         result.put(NAME_FIELDNAME, allFields.get(NAME_FIELDNAME));
+        result.put(ID_FIELDNAME, allFields.get(ID_FIELDNAME));
         return result;
     }
 

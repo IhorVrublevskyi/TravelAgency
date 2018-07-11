@@ -1,5 +1,8 @@
 package org.lv326java.two.travelagency.controllers;
 
+import org.lv326java.two.travelagency.controllers.constants.ControllerUrls;
+import org.lv326java.two.travelagency.controllers.constants.ParametersEnum;
+import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
 import org.lv326java.two.travelagency.services.CityService;
 import org.lv326java.two.travelagency.services.HotelService;
 import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
@@ -27,10 +30,10 @@ public class SearchServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
-            String cityName = request.getParameter("cityName");
-            Date checkin = Date.valueOf(request.getParameter("entryDate"));
-            Date checkout = Date.valueOf(request.getParameter("outDate"));
-            request.setAttribute("hotels", hotelService.searchHotels(checkin, checkout, cityName));
+            String cityName = request.getParameter(ParametersEnum.CITY_NAME.toString());
+            Date checkin = Date.valueOf(request.getParameter(ParametersEnum.ENTRY_DATE.toString()));
+            Date checkout = Date.valueOf(request.getParameter(ParametersEnum.OUT_DATE.toString()));
+            request.setAttribute(ParametersEnum.HOTEL_DTO_LIST.toString(), hotelService.searchHotels(checkin, checkout, cityName));
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.HOTELS_JSP.toString())
@@ -45,7 +48,7 @@ public class SearchServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
-            request.setAttribute("cities", cityService.getAllCitiesDto());
+            request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), cityService.getAllCitiesDto());
             request.getRequestDispatcher(ViewUrls.SEARCH_JSP.toString()).forward(request, response);
         } else {
             getServletConfig()

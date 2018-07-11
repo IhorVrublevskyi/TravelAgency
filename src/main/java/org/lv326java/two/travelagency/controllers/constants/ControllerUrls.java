@@ -1,11 +1,12 @@
-package org.lv326java.two.travelagency.controllers;
+package org.lv326java.two.travelagency.controllers.constants;
 
 public enum ControllerUrls {
     ROOT_SERVLET("/"),
     LOGIN_SERVLET("/login"),
     LOGOUT_SERVLET("/logout"),
     USERCABINET_SERVLET("/userCabinet"),
-    ADMINCABINET_SERVLET("/adminsCabinet");
+    ADMINCABINET_SERVLET("/adminsCabinet"),
+    ADMINCOUNTRY_SERVLET("/countries");
 
     private String url;
 

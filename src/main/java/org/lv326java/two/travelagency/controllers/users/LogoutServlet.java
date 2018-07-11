@@ -1,6 +1,6 @@
 package org.lv326java.two.travelagency.controllers.users;
 
-import org.lv326java.two.travelagency.controllers.ViewUrls;
+import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

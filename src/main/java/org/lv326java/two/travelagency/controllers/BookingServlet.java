@@ -1,5 +1,7 @@
 package org.lv326java.two.travelagency.controllers;
 
+import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

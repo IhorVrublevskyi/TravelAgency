@@ -1,11 +1,12 @@
 package org.lv326java.two.travelagency.controllers.users;
 
-import org.lv326java.two.travelagency.controllers.ControllerUrls;
-import org.lv326java.two.travelagency.controllers.ViewUrls;
+import org.lv326java.two.travelagency.controllers.constants.ControllerUrls;
+import org.lv326java.two.travelagency.controllers.Security;
+import org.lv326java.two.travelagency.controllers.constants.ParametersEnum;
+import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
 import org.lv326java.two.travelagency.dto.LoginDto;
 import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
 import org.lv326java.two.travelagency.services.UserService;
-import org.lv326java.two.travelagency.services.VisaService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,26 +23,24 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LoginDto loginDto = new LoginDto(request.getParameter("login"), request.getParameter("password"));
-        if (userService.isValid(loginDto)) {
+        LoginDto loginDto = new LoginDto(request.getParameter(ParametersEnum.LOGIN.toString()),
+                request.getParameter(ParametersEnum.PASSWORD.toString()));
+        if (userService.isValidCredentials(loginDto)) {
             HttpSession session = request.getSession(true);
-            session.setAttribute("loginDto", loginDto);
-            response.addCookie(new Cookie("id_session", session.getId()));
-
-            if (ServiceDaoConteiner.get().getUserDao().getUserEntityByLogin(loginDto.getLogin()).getRoleId() == 1) {
-                response.sendRedirect(request.getContextPath() + ControllerUrls.USERCABINET_SERVLET);
-            } else {
-                //TODO AdminCabinet
+            session.setAttribute(ParametersEnum.LOGIN_DTO.toString(), loginDto);
+            response.addCookie(new Cookie(ParametersEnum.SESSION_COOCKIE_NAME.toString(), session.getId()));
+            if (Security.isAdmin(loginDto)) {
                 response.sendRedirect(request.getContextPath() + ControllerUrls.ADMINCABINET_SERVLET);
+            } else {
+                response.sendRedirect(request.getContextPath() + ControllerUrls.USERCABINET_SERVLET);
             }
         } else {
-            request.setAttribute("error", "Bad Login or Password");
+            request.setAttribute(ParametersEnum.ERROR.toString(), "Bad Login or Password");
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
                     .forward(request, response);
         }
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws

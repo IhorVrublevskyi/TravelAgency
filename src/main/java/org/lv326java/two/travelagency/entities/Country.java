@@ -9,8 +9,8 @@ public class Country implements Entity {
         GET_ALL(SqlQueries.GET_ALL, "SELECT id, name FROM countries;"),
         UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE countries SET name = '%s' WHERE id = %s;"),
         UPDATE_BY_FIELD(SqlQueries.UPDATE_BY_FIELD, "UPDATE countries SET %s = '%s' WHERE %s = '%s';"),
-        DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE countries WHERE id = %s;"),
-        DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE countries WHERE %s = '%s';");
+        DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE FROM countries WHERE id = %s;"),
+        DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE FROM countries WHERE %s = '%s';");
         //
         private SqlQueries sqlQuery;
         private String query;

@@ -1,4 +1,4 @@
-package org.lv326java.two.travelagency.controllers;
+package org.lv326java.two.travelagency.controllers.constants;
 
 public enum ViewUrls {
     LOGIN_JSP("/WEB-INF/pages/login.jsp"),
@@ -14,7 +14,8 @@ public enum ViewUrls {
     ADMIN_COUNTRY_JSP("/WEB-INF/pages/admin/countries.jsp"),
     ADMIN_CITY_JSP("/WEB-INF/pages/admin/cities.jsp"),
     ADMIN_HOTELS_JSP("/WEB-INF/pages/admin/hotels.jsp"),
-    ADMIN_USERS_JSP("/WEB-INF/pages/admin/users.jsp");
+    ADMIN_USERS_JSP("/WEB-INF/pages/admin/users.jsp"),
+    ADMIN_COUNTRIES_INSERT_UPDATE_JSP("/WEB-INF/pages/admin/InsertUpdateCountry.jsp");
     //
     private String url;
 

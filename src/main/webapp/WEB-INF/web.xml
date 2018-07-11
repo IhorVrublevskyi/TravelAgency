@@ -79,7 +79,7 @@
 
     <servlet>
         <servlet-name>adminCab</servlet-name>
-        <servlet-class>org.lv326java.two.travelagency.controllers.AdminCabinetServlet</servlet-class>
+        <servlet-class>org.lv326java.two.travelagency.controllers.admin.AdminCabinetServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>adminCab</servlet-name>
