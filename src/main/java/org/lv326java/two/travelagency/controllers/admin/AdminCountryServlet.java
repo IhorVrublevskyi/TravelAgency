@@ -4,6 +4,7 @@ import org.lv326java.two.travelagency.controllers.ControllerUrls;
 import org.lv326java.two.travelagency.controllers.ViewUrls;
 import org.lv326java.two.travelagency.dto.CountryDto;
 import org.lv326java.two.travelagency.dto.LoginDto;
+import org.lv326java.two.travelagency.entities.Country;
 import org.lv326java.two.travelagency.services.*;
 
 import javax.servlet.ServletException;
@@ -30,12 +31,25 @@ public class AdminCountryServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+//        HttpSession session = request.getSession(true);
+//
+//        if (request.getParameter("edit") != null) {
+//
+//        } else if (request.getParameter("delete") != null) {
+////            Country country = new Country(session.getAttribute())
+//
+////            countryService.deleteCountry();
+//        } else if (request.getParameter("insert") != null) {
+////            countryService.insertCountry();
+//        }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
         HttpSession session = request.getSession(true);
         session.setAttribute("countriesAdmin", countryService.getAllCountriesDto());
+
 
 
 

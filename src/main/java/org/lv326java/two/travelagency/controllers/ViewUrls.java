@@ -13,7 +13,8 @@ public enum ViewUrls {
     SEARCH_JSP("/WEB-INF/pages/search.jsp"),
     ADMIN_COUNTRY_JSP("/WEB-INF/pages/admin/countries.jsp"),
     ADMIN_CITY_JSP("/WEB-INF/pages/admin/cities.jsp"),
-    ADMIN_HOTELS_JSP("/WEB-INF/pages/admin/hotels.jsp");
+    ADMIN_HOTELS_JSP("/WEB-INF/pages/admin/hotels.jsp"),
+    ADMIN_USERS_JSP("/WEB-INF/pages/admin/users.jsp");
     //
     private String url;
 

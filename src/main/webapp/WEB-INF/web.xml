@@ -123,5 +123,16 @@
         <url-pattern>/hotels</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>adminUser</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.controllers.admin.AdminUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminUser</servlet-name>
+        <url-pattern>/users</url-pattern>
+    </servlet-mapping>
+
+
+
 
 </web-app>

@@ -8,12 +8,13 @@
     </style>
 </head>
 <body>
+<form action="${pageContext.request.contextPath}/adminCoun" method="post">
     <div class="form">
         <h2 class="log">Countries</h2>
         <table>
             <c:forEach items ="${countriesAdmin}" var="item">
                     <tr>
-                        <td >${item.getName()} </td>
+                        <td id="countryName">${item.getName()} </td>
                         <td >
                             <button class="edit" name="edit">Edit</button>
                         </td>
@@ -27,5 +28,6 @@
         <br><br>
         <div> Insert a new country <button class="insert">Insert</button></div>
     </div>
+</form>
 </body>
 </html>

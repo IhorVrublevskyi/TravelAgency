@@ -19,31 +19,31 @@
         <div class="float-l mt">
             <a href="/countries"><button>Countries</button></a>
         </div>
-        <div class="float-l ml">You can insert new country and edit or delete already exists.</div>
+        <div class="float-l ml">You can <span class="insert">insert</span> new country and <span class="edit">edit</span> or <span class="delete">delete</span> already exists.</div>
         <div class="clear"/>
 
         <div class="float-l mt">
             <a href="/cities"><button>Cities</button></a>
         </div>
-        <div class="float-l ml">You can insert new city and edit or delete already exists.</div>
+        <div class="float-l ml">You can <span class="insert">insert</span> new country and <span class="edit">edit</span> or <span class="delete">delete</span> already exists.</div>
         <div class="clear"/>
 
         <div class="float-l mt">
             <a href="/hotels"><button>Hotels</button></a>
         </div>
-        <div class="float-l ml">You can insert new hotel and edit or delete already exists.</div>
+        <div class="float-l ml">You can <span class="insert">insert</span> new country and <span class="edit">edit</span> or <span class="delete">delete</span> already exists.</div>
         <div class="clear"/>
 
         <div class="float-l mt">
-            <a href="#"><button>Rooms</button></a>
+            <a href="/rooms"><button>Rooms</button></a>
         </div>
-        <div class="float-l ml">You can insert new room and edit or delete already exists.</div>
+        <div class="float-l ml">You can <span class="insert">insert</span> new country and <span class="edit">edit</span> or <span class="delete">delete</span> already exists.</div>
         <div class="clear"/>
 
         <div class="float-l mt">
-            <a href="#"><button>Users</button></a>
+            <a href="/users"><button>Users</button></a>
         </div>
-        <div class="float-l ml">You can insert new user and edit or delete already exists.</div>
+        <div class="float-l ml">You can <span class="insert">insert</span> new country and <span class="edit">edit</span> or <span class="delete">delete</span> already exists.</div>
         <div class="clear"/>
 
     </div>

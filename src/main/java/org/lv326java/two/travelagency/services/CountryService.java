@@ -30,6 +30,8 @@ public class CountryService {
         return result;
     }
 
+    //CRUD
+
     public List<CountryDto> getAllCountries(){
         List<CountryDto> countryDtos = new LinkedList<>();
         for (Country country: countryDao.getAll()) {

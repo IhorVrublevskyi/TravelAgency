@@ -66,4 +66,18 @@ public class HotelService {
         return hotelDtos;
     }
 
+    //CRUD
+
+    public boolean insertHotel(Hotel hotel){
+        return hotelDao.insert(hotel);
+    }
+
+    public boolean deleteHotel(Hotel hotel){
+        return hotelDao.delete(hotel);
+    }
+
+    public boolean deleteHotelById(Long id){
+        return hotelDao.deleteById(id);
+    }
+
 }

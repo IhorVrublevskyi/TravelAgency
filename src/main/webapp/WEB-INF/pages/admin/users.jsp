@@ -2,18 +2,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Hotels</title>
+    <title>Users</title>
     <style>
         <%@include file="../../styles/index.css"%>
     </style>
 </head>
 <body>
     <div class="form">
-        <h2 class="log">Hotels</h2>
+        <h2 class="log">Users</h2>
         <table>
-            <c:forEach items ="${hotelsAdmin}" var="item">
+            <c:forEach items ="${usersAdmin}" var="item">
                     <tr>
-                        <td > ${item.getCountry()} ${item.getCity()} ${item.getHotelName()} ${item.getHotelAddress()} ${item.getHotelAddress()} </td>
+                        <td > ${item.getFirstName()} ${item.getLastName()} ${item.getLogin()} ${item.getPassword()} ${item.getRole()} </td>
                         <td >
                             <button class="edit" name="edit">Edit</button>
                         </td>
@@ -25,7 +25,7 @@
             <div class="clear"></div>
         </table>
         <br><br>
-        <div> Insert a new hotel <button class="insert">Insert</button></div>
+        <div> Insert a new user <button class="insert">Insert</button></div>
     </div>
 </body>
 </html>

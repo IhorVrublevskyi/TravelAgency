@@ -27,6 +27,8 @@ public class CityService {
         this.countryDao = new CountryDao();
     }
 
+    //CRUD
+
     public List<CityDto> getAllCitiesDto() {
         List<City> cities;
         List<CityDto> result = new LinkedList<>();
@@ -35,5 +37,17 @@ public class CityService {
             result.add(new CityDto(city.getName(), countryDao.getById(city.getCountryId()).getName()));
         }
         return result;
+    }
+
+    public boolean insertCity(City city){
+        return cityDao.insert(city);
+    }
+
+    public boolean deleteCity(City city){
+        return cityDao.delete(city);
+    }
+
+    public boolean deleteCityById(Long id){
+        return cityDao.deleteById(id);
     }
 }

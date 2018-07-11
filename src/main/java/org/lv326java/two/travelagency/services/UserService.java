@@ -9,12 +9,14 @@ import org.lv326java.two.travelagency.dto.RegistrationDto;
 import org.lv326java.two.travelagency.dto.UserDto;
 import org.lv326java.two.travelagency.dto.LoginDto;
 import org.lv326java.two.travelagency.entities.Country;
+import org.lv326java.two.travelagency.entities.Role;
 import org.lv326java.two.travelagency.entities.User;
 import org.lv326java.two.travelagency.entities.Visa;
 import org.lv326java.two.travelagency.exceptions.PasswordMismatchException;
 import org.lv326java.two.travelagency.exceptions.UserAlreadyExistsException;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class UserService {
@@ -128,5 +130,34 @@ public class UserService {
                 registrationDto.getPassword(),
                 1L);
 	    userDao.insert(user);
+    }
+
+    //CRUD
+
+    public List<UserDto> getAllUsers() {
+        List<UserDto> userDtos = new LinkedList<>();
+        for (User user: userDao.getAll()) {
+            Role role = roleDao.getById(user.getRoleId());
+            UserDto userDto = new UserDto(
+                    user.getLogin(),
+                    user.getPassword(),
+                    user.getFirstName(),
+                    user.getLastName(),
+                    String.valueOf(role.getId()));
+            userDtos.add(userDto);
+        }
+        return userDtos;
+    }
+
+    public boolean insertUser(User user){
+        return userDao.insert(user);
+    }
+
+    public boolean deleteUser(User user){
+        return userDao.delete(user);
+    }
+
+    public boolean deleteUseryById(Long id){
+        return userDao.deleteById(id);
     }
 }
