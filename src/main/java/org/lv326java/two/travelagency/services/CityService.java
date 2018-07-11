@@ -34,17 +34,17 @@ public class CityService {
         List<CityDto> result = new LinkedList<>();
         cities = cityDao.getAll();
         for (City city : cities) {
-            result.add(new CityDto(city.getName(), countryDao.getById(city.getCountryId()).getName()));
+            result.add(new CityDto(city.getId().toString(), city.getName(), countryDao.getById(city.getCountryId()).getName()));
         }
         return result;
     }
 
-    public boolean insertCity(City city){
-        return cityDao.insert(city);
+    public boolean insertCity(CityDto cityDto){
+        return cityDao.insert(new City(Long.parseLong(cityDto.getId()), cityDto.getName(), Long.parseLong(cityDto.getCountry())));
     }
 
-    public boolean deleteCity(City city){
-        return cityDao.delete(city);
+    public boolean deleteCity(CityDto cityDto){
+        return cityDao.delete(new City(Long.parseLong(cityDto.getId()), cityDto.getName(), Long.parseLong(cityDto.getCountry())));
     }
 
     public boolean deleteCityById(Long id){
