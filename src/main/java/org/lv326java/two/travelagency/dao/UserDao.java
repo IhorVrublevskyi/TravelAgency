@@ -40,12 +40,13 @@ public final class UserDao extends AbstractDaoCRUD<User> {
 
     @Override
     protected Map<String, String> getUpdateFields(User entity) {
-        Map<String, String> result = new LinkedHashMap<>();
         Map<String, String> allFields = getFields(entity);
+        Map<String, String> result = new LinkedHashMap<>();
+//        result.put(PASSWORD_FIELDNAME, allFields.get(PASSWORD_FIELDNAME));
         result.put(FIRST_NAME_FIELDNAME, allFields.get(FIRST_NAME_FIELDNAME));
         result.put(LAST_NAME_FIELDNAME, allFields.get(LAST_NAME_FIELDNAME));
-        result.put(PASSWORD_FIELDNAME, allFields.get(PASSWORD_FIELDNAME));
         result.put(ROLE_ID_FIELDNAME, allFields.get(ROLE_ID_FIELDNAME));
+        result.put(ID_FIELDNAME, allFields.get(ID_FIELDNAME));
         return result;
     }
 

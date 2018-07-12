@@ -26,7 +26,13 @@ public enum ParametersEnum {
     LAST_NAME("lastName"),
     CURRENT_COUNTRY("currentCountry"),
     CURRENT_CITY("currentCity"),
-    CURRENT_HOTEL("currentHotel");
+    CURRENT_HOTEL("currentHotel"),
+    CURRENT_USER("currentUser"),
+    USER_DTO_LIST("users"),
+    ROLE_ID("roleId"),
+    ROLE_DTO_LIST("roles"),
+    USER_ID("userId");
+
 
     private String url;
 

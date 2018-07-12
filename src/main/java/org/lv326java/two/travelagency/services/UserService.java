@@ -20,19 +20,6 @@ public class UserService {
     private UserDao userDao;
     private RoleDao roleDao;
 
-//    private UserService() {
-//    }
-
-//    private static UserService instance;
-//
-//    public static UserService getInstance() {
-//        if (instance == null) {
-//            instance = new UserService();
-//        }
-//        return instance;
-//    }
-
-
 	public UserService() {
 		userDao = new UserDao();
 		roleDao = new RoleDao();
@@ -49,14 +36,14 @@ public class UserService {
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setPassword(userDto.getPassword());
-        try {
-            user.setRoleId(roleDao.getRoleEntityByName(userDto.getRole()).getId());
+       // try {
+            user.setRoleId(Long.parseLong(userDto.getRole()));
             userDao.updateByEntity(user);
-        } catch (Exception e) {
+        //} catch (Exception e) {
             // Logging Exception
-            System.out.println("RuntimeException, message: " + e.getMessage());
-            result = false;
-        }
+           // System.out.println("RuntimeException, message: " + e.getMessage());
+            //result = false;
+       // }
         return result;
     }
 
@@ -138,7 +125,8 @@ public class UserService {
                     user.getPassword(),
                     user.getFirstName(),
                     user.getLastName(),
-                    String.valueOf(role.getId()));
+                    role.getName());
+            userDto.setId(user.getId().toString());
             userDtos.add(userDto);
         }
         return userDtos;
@@ -154,5 +142,23 @@ public class UserService {
 
     public boolean deleteUseryById(Long id){
         return userDao.deleteById(id);
+    }
+
+    public UserDto getUserDtoById(Long id) {
+	    User user = userDao.getById(id);
+	    return new UserDto(
+	            user.getLogin(),
+                null,
+                user.getFirstName(),
+                user.getLastName(),
+                user.getRoleId().toString()
+        );
+    }
+
+    public boolean updateUser(UserDto userDto) {
+	    User user = userDao.getUserEntityByLogin(userDto.getLogin());
+        userDto.setPassword(user.getPassword());
+        user.setLogin(user.getLogin());
+	    return setUserDto(userDto);
     }
 }

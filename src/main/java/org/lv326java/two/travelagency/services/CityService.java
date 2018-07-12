@@ -61,7 +61,6 @@ public class CityService {
     }
 
     public boolean updateCity(CityDto cityDto) {
-
         return cityDao.updateByEntity(new City(
                 Long.parseLong(cityDto.getId()),
                 cityDto.getName(),

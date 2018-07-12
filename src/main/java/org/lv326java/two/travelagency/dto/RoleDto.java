@@ -1,38 +1,36 @@
 package org.lv326java.two.travelagency.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RoleDto {
-	private List<String> roles;
 
-	public RoleDto() {
-		this.roles = new ArrayList<>();
+	private String id;
+	private String name;
+
+	public RoleDto(String id, String name) {
+		this.id = id;
+		this.name = name;
 	}
 
-	public RoleDto(List<String> roles) {
-		this.roles = roles;
+	public String getId() {
+		return id;
 	}
 
-	// setters
-
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public void addRole(String role) {
-		roles.add(role);
+	public String getName() {
+		return name;
 	}
 
-	// getters
-
-	public List<String> getRoles() {
-		return roles;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	@Override
-	public String toString() {
-		return "(" + "roles=" + roles.toString() + ")";
-	}
-	
+    @Override
+    public String toString() {
+        return "RoleDto{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

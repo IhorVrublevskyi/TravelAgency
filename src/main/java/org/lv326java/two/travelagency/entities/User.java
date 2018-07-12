@@ -7,7 +7,7 @@ public class User implements Entity {
         GET_BY_ID(SqlQueries.GET_BY_ID, "SELECT id, login, password, first_name, last_name, roles_id FROM users WHERE id = %s;"),
         GET_BY_FIELD(SqlQueries.GET_BY_FIELD, "SELECT id, login, password, first_name, last_name, roles_id FROM users WHERE %s = '%s';"),
         GET_ALL(SqlQueries.GET_ALL, "SELECT id, login, password, first_name, last_name, roles_id FROM users;"),
-        UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE users SET password = '%s', first_name = '%s', last_name = '%s', WHERE id = %s;"),
+        UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE users SET first_name = '%s', last_name = '%s', roles_id = %s WHERE id = %s;"),
         UPDATE_BY_FIELD(SqlQueries.UPDATE_BY_FIELD, "UPDATE users SET %s = '%s' WHERE %s = '%s';"),
         DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE FROM users WHERE id = %s;"),
         DELETE_BY_FIELD(SqlQueries.DELETE_BY_FIELD, "DELETE FROM users WHERE %s = '%s';");

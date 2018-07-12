@@ -8,7 +8,8 @@ public enum ControllerUrls {
     ADMINCABINET_SERVLET("/adminsCabinet"),
     ADMINCOUNTRY_SERVLET("/countries"),
     ADMINCITY_SERVLET("/cities"),
-    ADMINHOTEL_SERVLET("/hotels");
+    ADMINHOTEL_SERVLET("/hotels"),
+    ADMINUSER_SERVLET("/users");
 
     private String url;
 

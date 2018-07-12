@@ -1,9 +1,8 @@
 package org.lv326java.two.travelagency.dto;
 
-import org.lv326java.two.travelagency.entities.User;
-
 public class UserDto {
 
+	private String id;
     private String login;
     private String password;
     private String firstName;
@@ -36,8 +35,11 @@ public class UserDto {
 		this.role = role;
 	}
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	// getters
+    // getters
 
 
 	public String getLogin() {
@@ -60,7 +62,11 @@ public class UserDto {
 		return role;
 	}
 
-	@Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
 	public String toString() {
 		return "UserDto{" +
 				"login='" + login + '\'' +
