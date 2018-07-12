@@ -35,11 +35,11 @@ public class Hotel implements Entity {
     private Long cityId;
     private String address;
 
-    public Hotel(Long id, String name, Long cityId, String adress) {
+    public Hotel(Long id, String name, Long cityId, String address) {
         this.id = id;
         this.name = name;
         this.cityId = cityId;
-        this.address = adress;
+        this.address = address;
     }
 
     @Override

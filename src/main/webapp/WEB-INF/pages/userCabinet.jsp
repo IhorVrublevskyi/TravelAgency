@@ -8,7 +8,6 @@
     </style>
 </head>
 <body>
-
 <div class="wrap">
     <h2 class = "logout float-r"><a href="/logout"><button>Logout</button></a></h2>
     <h2 class="log float-r">Hello, <span class="name">${loginDto.getLogin()}</span></h2>
@@ -40,8 +39,6 @@
         <a href="/search">
             <button>Search Hotel</button>
         </a></div>
-
-
 </div>
 </body>
 </html>

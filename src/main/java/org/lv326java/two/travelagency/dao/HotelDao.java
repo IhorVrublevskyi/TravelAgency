@@ -36,9 +36,12 @@ public class HotelDao extends AbstractDaoCRUD<Hotel> {
 
     @Override
     protected Map<String, String> getUpdateFields(Hotel entity) {
-        Map<String, String> result = new LinkedHashMap<>();
         Map<String, String> allFields = getFields(entity);
+        Map<String, String> result = new LinkedHashMap<>();
         result.put(NAME_FIELDNAME, allFields.get(NAME_FIELDNAME));
+        result.put(CITY_ID_FIELDNAME, allFields.get(CITY_ID_FIELDNAME));
+        result.put(ADDRESS_FIELDNAME, allFields.get(ADDRESS_FIELDNAME));
+        result.put(ID_FIELDNAME, allFields.get(ID_FIELDNAME));
         return result;
     }
 

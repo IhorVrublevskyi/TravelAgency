@@ -44,13 +44,13 @@ public class AdminCityServlet extends HttpServlet {
                         request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountries());
                         request.setAttribute(ParametersEnum.CURRENT_CITY.toString(), cityDto);
                         request.setAttribute(ParametersEnum.ACTION.toString(), ActionConstants.UPDATE);
-                        request.getRequestDispatcher(ViewUrls.ADMIN_CITIES_INSERT_UPDATE_JSP.toString())
+                        request.getRequestDispatcher(ViewUrls.ADMIN_CITY_INSERT_UPDATE_JSP.toString())
                                 .forward(request, response);
                         break;
                     case ActionConstants.INSERT_FORM:
                         request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountries());
                         request.setAttribute(ParametersEnum.ACTION.toString(), ActionConstants.INSERT);
-                        request.getRequestDispatcher(ViewUrls.ADMIN_CITIES_INSERT_UPDATE_JSP.toString())
+                        request.getRequestDispatcher(ViewUrls.ADMIN_CITY_INSERT_UPDATE_JSP.toString())
                                 .forward(request, response);
                         break;
                     case ActionConstants.UPDATE:
@@ -92,7 +92,7 @@ public class AdminCityServlet extends HttpServlet {
             LoginDto loginDto = (LoginDto) session.getAttribute(ParametersEnum.LOGIN_DTO.toString());
             if (Security.isAdmin(loginDto)) {
                 request.setAttribute(ParametersEnum.CITY_DTO_LIST.toString(), cityService.getAllCitiesDto());
-                request.getRequestDispatcher(ViewUrls.ADMIN_CITY_JSP.toString()).forward(request, response);
+                request.getRequestDispatcher(ViewUrls.ADMIN_CITIES_JSP.toString()).forward(request, response);
             } else {
                 request.getRequestDispatcher(ViewUrls.USER_CABINET_JSP.toString()).forward(request, response);
             }
@@ -103,7 +103,5 @@ public class AdminCityServlet extends HttpServlet {
                     .forward(request, response);
         }
     }
-
-
 }
 

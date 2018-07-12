@@ -48,7 +48,7 @@ public class SearchServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
-            request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), cityService.getAllCitiesDto());
+            request.setAttribute(ParametersEnum.CITY_DTO_LIST.toString(), cityService.getAllCitiesDto());
             request.getRequestDispatcher(ViewUrls.SEARCH_JSP.toString()).forward(request, response);
         } else {
             getServletConfig()

@@ -11,12 +11,13 @@ public enum ViewUrls {
     THANKS_JSP("/WEB-INF/pages/thanks.jsp"),
     VISA_JSP("/WEB-INF/pages/visa.jsp"),
     SEARCH_JSP("/WEB-INF/pages/search.jsp"),
-    ADMIN_COUNTRY_JSP("/WEB-INF/pages/admin/countries.jsp"),
-    ADMIN_CITY_JSP("/WEB-INF/pages/admin/cities.jsp"),
+    ADMIN_COUNTRIES_JSP("/WEB-INF/pages/admin/countries.jsp"),
+    ADMIN_CITIES_JSP("/WEB-INF/pages/admin/cities.jsp"),
     ADMIN_HOTELS_JSP("/WEB-INF/pages/admin/hotels.jsp"),
     ADMIN_USERS_JSP("/WEB-INF/pages/admin/users.jsp"),
-    ADMIN_COUNTRIES_INSERT_UPDATE_JSP("/WEB-INF/pages/admin/InsertUpdateCountry.jsp"),
-    ADMIN_CITIES_INSERT_UPDATE_JSP("/WEB-INF/pages/admin/InsertUpdateCity.jsp");
+    ADMIN_COUNTRY_INSERT_UPDATE_JSP("/WEB-INF/pages/admin/InsertUpdateCountry.jsp"),
+    ADMIN_CITY_INSERT_UPDATE_JSP("/WEB-INF/pages/admin/InsertUpdateCity.jsp"),
+    ADMIN_HOTEL_INSERT_UPDATE_JSP("/WEB-INF/pages/admin/InsertUpdateHotel.jsp");
     //
     private String url;
 

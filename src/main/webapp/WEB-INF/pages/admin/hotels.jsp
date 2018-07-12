@@ -8,24 +8,41 @@
     </style>
 </head>
 <body>
-    <div class="form">
-        <h2 class="log">Hotels</h2>
-        <table>
-            <c:forEach items ="${hotelsAdmin}" var="item">
-                    <tr>
-                        <td > ${item.getCountry()} ${item.getCity()} ${item.getHotelName()} ${item.getHotelAddress()} ${item.getHotelAddress()} </td>
-                        <td >
-                            <button class="edit" name="edit">Edit</button>
-                        </td>
-                        <td >
-                            <button class="delete" name="delete">Delete</button>
-                        </td>
-                    </tr>
-            </c:forEach>
-            <div class="clear"></div>
-        </table>
-        <br><br>
-        <div> Insert a new hotel <button class="insert">Insert</button></div>
+<div class="form">
+    <h2 class="log">Hotels</h2>
+    <table border="1">
+        <tr>
+            <td>Country</td>
+            <td>City</td>
+            <td>Name</td>
+            <td>Address</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+        <c:forEach items="${hotels}" var="item">
+            <tr>
+                <td>${item.getCountry()}</td>
+                <td>${item.getCity()}</td>
+                <td>${item.getHotelName()}</td>
+                <td>${item.getHotelAddress()}</td>
+                <form action="${pageContext.request.contextPath}/hotels" method="post">
+                    <input type="hidden" name="hotelId" value="${item.getId()}">
+                    <td>
+                        <button name="action" value="editForm" type="submit">Edit</button>
+                    </td>
+                    <td>
+                        <button name="action" value="delete" type="submit">Delete</button>
+                    </td>
+                </form>
+            </tr>
+        </c:forEach>
+    </table>
+    <br><br>
+    <div> Insert a new hotel
+        <form action="${pageContext.request.contextPath}/hotels", method="post">
+            <button class="insert" name="action" value="insertForm">Insert</button>
+        </form>
     </div>
+</div>
 </body>
 </html>

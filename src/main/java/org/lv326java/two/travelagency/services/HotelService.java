@@ -11,35 +11,41 @@ import java.util.List;
 public class HotelService {
 
     private HotelDao hotelDao;
-    private BookingDao bookingDao;
     private CityDao cityDao;
     private CountryDao countryDao;
     private RoomDao roomDao;
 
-    public HotelService(HotelDao hotelDao, CityDao cityDao, CountryDao countryDao, RoomDao roomDao, BookingDao bookingDao) {
+    public HotelService(HotelDao hotelDao, CityDao cityDao, CountryDao countryDao, RoomDao roomDao) {
         this.hotelDao = hotelDao;
         this.cityDao = cityDao;
         this.countryDao = countryDao;
         this.roomDao = roomDao;
-        this.bookingDao = bookingDao;
+    }
+
+    public HotelDto getHotelDtoById(Long id) {
+        Hotel hotel = hotelDao.getById(id);
+        City city = cityDao.getById(hotel.getId());
+        HotelDto hotelDto = new HotelDto(
+                countryDao.getById(city.getCountryId()).getName(),
+                city.getName(),
+                hotel.getName(),
+                hotel.getAddress());
+        hotel.setId(hotel.getId());
+        return hotelDto;
     }
 
     //TODO rewrite this method
-    public List<HotelDto> getAllHotels() {
+    public List<HotelDto> getAllHotelsDto() {
         List<HotelDto> hotelDtos = new LinkedList<>();
-
         for (Hotel hotel : hotelDao.getAll()) {
             City city = cityDao.getById(hotel.getCityId());
             Country country = countryDao.getById(city.getCountryId());
-
-//            TODO Refactor rooms system
-            int roomCount = roomDao.getByFieldName("hotel_id", hotel.getId().toString()).size();
+//            int roomCount = roomDao.getByFieldName("hotel_id", hotel.getId().toString()).size();
             HotelDto hotelDto = new HotelDto(
                     country.getName(),
                     city.getName(),
                     hotel.getName(),
-                    hotel.getAddress(),
-                    Integer.toString(roomCount));
+                    hotel.getAddress());
             hotelDto.setId(hotel.getId().toString());
             hotelDtos.add(hotelDto);
         }
@@ -50,7 +56,6 @@ public class HotelService {
         List<HotelDto> hotelDtos = new LinkedList<>();
         for (Room room : roomDao.getFreeRoomsByPerion(startDate, endDate)) {
             Hotel hotel = hotelDao.getById(room.getHotelId());
-//            City hotelCity = cityDao.getById(hotel.getId());
             City ourCity = cityDao.getByFieldName("name", cityName).get(0);
 
             if (hotel.getCityId().equals(ourCity.getId())) {
@@ -58,8 +63,7 @@ public class HotelService {
                         countryDao.getById(ourCity.getCountryId()).getName(),
                         ourCity.getName(),
                         hotel.getName(),
-                        hotel.getAddress(),
-                        null
+                        hotel.getAddress()
                 ));
             }
         }
@@ -68,16 +72,31 @@ public class HotelService {
 
     //CRUD
 
-    public boolean insertHotel(Hotel hotel){
-        return hotelDao.insert(hotel);
+    public boolean insertHotel(HotelDto hotelDto) {
+        return hotelDao.insert(new Hotel(
+                0L,
+                hotelDto.getHotelName(),
+                Long.parseLong(hotelDto.getCity()),
+                hotelDto.getHotelAddress()
+        ));
     }
 
-    public boolean deleteHotel(Hotel hotel){
-        return hotelDao.delete(hotel);
+    public boolean deleteHotel(HotelDto hotelDto) {
+        return hotelDao.deleteById(Long.parseLong(hotelDto.getId()));
     }
 
-    public boolean deleteHotelById(Long id){
+    public boolean deleteHotelById(Long id) {
         return hotelDao.deleteById(id);
+    }
+
+    public boolean updateHotel(HotelDto hotelDto) {
+
+        return hotelDao.updateByEntity(new Hotel(
+                Long.parseLong(hotelDto.getId()),
+                hotelDto.getHotelName(),
+                Long.parseLong(hotelDto.getCity()),
+                hotelDto.getHotelAddress()
+        ));
     }
 
 }

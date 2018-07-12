@@ -40,12 +40,12 @@ public class AdminCountryServlet extends HttpServlet {
                         CountryDto countryDto = countryService.getCountryDtoById(Long.parseLong(id));
                         request.setAttribute(ParametersEnum.CURRENT_COUNTRY.toString(), countryDto);
                         request.setAttribute(ParametersEnum.ACTION.toString(), ActionConstants.UPDATE);
-                        request.getRequestDispatcher(ViewUrls.ADMIN_COUNTRIES_INSERT_UPDATE_JSP.toString())
+                        request.getRequestDispatcher(ViewUrls.ADMIN_COUNTRY_INSERT_UPDATE_JSP.toString())
                                 .forward(request, response);
                         break;
                     case ActionConstants.INSERT_FORM:
                         request.setAttribute(ParametersEnum.ACTION.toString(), ActionConstants.INSERT);
-                        request.getRequestDispatcher(ViewUrls.ADMIN_COUNTRIES_INSERT_UPDATE_JSP.toString())
+                        request.getRequestDispatcher(ViewUrls.ADMIN_COUNTRY_INSERT_UPDATE_JSP.toString())
                                 .forward(request, response);
                         break;
                     case ActionConstants.UPDATE:
@@ -85,7 +85,7 @@ public class AdminCountryServlet extends HttpServlet {
             LoginDto loginDto = (LoginDto) session.getAttribute(ParametersEnum.LOGIN_DTO.toString());
             if (Security.isAdmin(loginDto)) {
                 request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountriesDto());
-                request.getRequestDispatcher(ViewUrls.ADMIN_COUNTRY_JSP.toString()).forward(request, response);
+                request.getRequestDispatcher(ViewUrls.ADMIN_COUNTRIES_JSP.toString()).forward(request, response);
             } else {
                 request.getRequestDispatcher(ViewUrls.USER_CABINET_JSP.toString()).forward(request, response);
             }

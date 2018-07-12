@@ -42,7 +42,7 @@ public final class ServiceDaoConteiner {
         visaService = new VisaService(countryDao, userDao, visaDao);
         countryService = new CountryService(countryDao);
         cityService = new CityService(cityDao, countryDao);
-        hotelService = new HotelService(hotelDao, cityDao, countryDao, roomDao, bookingDao);
+        hotelService = new HotelService(hotelDao, cityDao, countryDao, roomDao);
     }
 
     public static ServiceDaoConteiner get() {

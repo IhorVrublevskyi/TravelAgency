@@ -10,6 +10,9 @@ public enum ParametersEnum {
     CITY_ID("cityId"),
     CITY_NAME("cityName"),
     CITY_DTO_LIST("cities"),
+    HOTEL_ID("hotelId"),
+    HOTEL_NAME("hotelName"),
+    HOTEL_ADDRESS("hotelAddress"),
     HOTEL_DTO_LIST("hotels"),
     ACTION("action"),
     ENTRY_DATE("entryDate"),
@@ -22,7 +25,8 @@ public enum ParametersEnum {
     FIRST_NAME("firstName"),
     LAST_NAME("lastName"),
     CURRENT_COUNTRY("currentCountry"),
-    CURRENT_CITY("currentCity");
+    CURRENT_CITY("currentCity"),
+    CURRENT_HOTEL("currentHotel");
 
     private String url;
 

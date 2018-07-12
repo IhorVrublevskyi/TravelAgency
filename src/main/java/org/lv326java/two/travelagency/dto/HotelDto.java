@@ -13,12 +13,11 @@ public class HotelDto {
     private Date dateCheckin;
     private Date dateCheckout;
 
-    public HotelDto(String country, String city, String hotelName, String hotelAddress, String freeHotelRooms) {
+    public HotelDto(String country, String city, String hotelName, String hotelAddress) {
         this.country = country;
         this.city = city;
         this.hotelName = hotelName;
         this.hotelAddress = hotelAddress;
-        this.freeHotelRooms = freeHotelRooms;
     }
 
     // setters
