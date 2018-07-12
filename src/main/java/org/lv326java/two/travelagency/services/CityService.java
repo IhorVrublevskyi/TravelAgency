@@ -50,4 +50,22 @@ public class CityService {
     public boolean deleteCityById(Long id){
         return cityDao.deleteById(id);
     }
+
+    public CityDto getCityDtoById(Long id) {
+        City city = cityDao.getById(id);
+        return new CityDto(
+                city.getId().toString(),
+                city.getName(),
+                countryDao.getById(city.getCountryId()).getName()
+        );
+    }
+
+    public boolean updateCity(CityDto cityDto) {
+
+        return cityDao.updateByEntity(new City(
+                Long.parseLong(cityDto.getId()),
+                cityDto.getName(),
+                Long.parseLong(cityDto.getCountry())
+        ));
+    }
 }

@@ -7,12 +7,13 @@ public enum ParametersEnum {
     COUNTRY_ID("countryId"),
     COUNTRY_NAME("countryName"),
     COUNTRY_DTO_LIST("countries"),
+    CITY_ID("cityId"),
+    CITY_NAME("cityName"),
+    CITY_DTO_LIST("cities"),
+    HOTEL_DTO_LIST("hotels"),
     ACTION("action"),
     ENTRY_DATE("entryDate"),
     OUT_DATE("outDate"),
-    HOTEL_DTO_LIST("hotels"),
-    CITY_NAME("cityName"),
-    CITY_DTO_LIST("cities"),
     ERROR("error"),
     SESSION_COOCKIE_NAME("id_session"),
     LOGIN("login"),
@@ -20,7 +21,8 @@ public enum ParametersEnum {
     RETYPE_PASSWORD("retypePassword"),
     FIRST_NAME("firstName"),
     LAST_NAME("lastName"),
-    CURRENT_COUNTRY("currentCountry");
+    CURRENT_COUNTRY("currentCountry"),
+    CURRENT_CITY("currentCity");
 
     private String url;
 

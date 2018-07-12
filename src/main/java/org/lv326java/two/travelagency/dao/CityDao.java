@@ -37,6 +37,7 @@ public class CityDao extends AbstractDaoCRUD<City> {
         Map<String, String> allFields = getFields(entity);
         result.put(NAME_FIELDNAME, allFields.get(NAME_FIELDNAME));
         result.put(COUNTRY_ID_FIELDNAME, allFields.get(COUNTRY_ID_FIELDNAME));
+        result.put(ID_FIELDNAME, allFields.get(ID_FIELDNAME));
         return result;
     }
 

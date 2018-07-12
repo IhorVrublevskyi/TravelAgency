@@ -6,7 +6,8 @@ public enum ControllerUrls {
     LOGOUT_SERVLET("/logout"),
     USERCABINET_SERVLET("/userCabinet"),
     ADMINCABINET_SERVLET("/adminsCabinet"),
-    ADMINCOUNTRY_SERVLET("/countries");
+    ADMINCOUNTRY_SERVLET("/countries"),
+    ADMINCITY_SERVLET("/cities");
 
     private String url;
 

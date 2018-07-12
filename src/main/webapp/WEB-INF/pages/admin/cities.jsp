@@ -8,28 +8,30 @@
     </style>
 </head>
 <body>
-<body>
 <div class="form">
     <h2 class="log">Cities</h2>
     <table>
-        <c:forEach items ="${citiesAdmin}" var="item">
+        <c:forEach items="${cities}" var="item">
             <tr>
-                <td >${item.getCountry()} ${item.getName()} </td>
-                <td >
-                    <button class="edit" name="edit">Edit</button>
-                </td>
-                <td >
-                    <button class="delete" name="delete">Delete</button>
-                </td>
+                <form action="${pageContext.request.contextPath}/cities" method="post">
+                    <input type="hidden" name="cityId" value="${item.getId()}">
+                    <td>${item.getName()} </td>
+                    <td>
+                        <button name="action" value="editForm" type="submit">Edit</button>
+                    </td>
+                    <td>
+                        <button name="action" value="delete" type="submit">Delete</button>
+                    </td>
+                </form>
             </tr>
         </c:forEach>
-        <div class="clear"></div>
     </table>
     <br><br>
-    <div> Insert a new city <button class="insert">Insert</button></div>
+    <div> Insert a new city
+        <form action="${pageContext.request.contextPath}/cities" , method="post">
+            <button class="insert" name="action" value="insertForm">Insert</button>
+        </form>
+    </div>
 </div>
-</body>
-
-
 </body>
 </html>

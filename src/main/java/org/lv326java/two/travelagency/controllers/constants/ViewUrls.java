@@ -15,7 +15,8 @@ public enum ViewUrls {
     ADMIN_CITY_JSP("/WEB-INF/pages/admin/cities.jsp"),
     ADMIN_HOTELS_JSP("/WEB-INF/pages/admin/hotels.jsp"),
     ADMIN_USERS_JSP("/WEB-INF/pages/admin/users.jsp"),
-    ADMIN_COUNTRIES_INSERT_UPDATE_JSP("/WEB-INF/pages/admin/InsertUpdateCountry.jsp");
+    ADMIN_COUNTRIES_INSERT_UPDATE_JSP("/WEB-INF/pages/admin/InsertUpdateCountry.jsp"),
+    ADMIN_CITIES_INSERT_UPDATE_JSP("/WEB-INF/pages/admin/InsertUpdateCity.jsp");
     //
     private String url;
 
