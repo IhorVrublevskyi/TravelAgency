@@ -7,6 +7,7 @@ import org.lv326java.two.travelagency.dto.LoginDto;
 import org.lv326java.two.travelagency.dto.VisaDto;
 import org.lv326java.two.travelagency.services.CountryService;
 import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
+import org.lv326java.two.travelagency.services.UserService;
 import org.lv326java.two.travelagency.services.VisaService;
 
 import javax.servlet.ServletException;
@@ -22,27 +23,26 @@ public class VisaServlet extends HttpServlet {
 
     private VisaService visaService;
     private CountryService countryService;
+    private UserService userService;
 
     public VisaServlet() {
         ServiceDaoConteiner serviceDaoConteiner = ServiceDaoConteiner.get();
         visaService = serviceDaoConteiner.getVisaService();
         countryService = serviceDaoConteiner.getCountryService();
+        userService = serviceDaoConteiner.getUserService();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
             HttpSession httpSession = request.getSession();
             VisaDto visaDto = new VisaDto(
-                    visaService.getIdCountryByName(request.getParameter(ParametersEnum.COUNTRY_NAME.toString())).toString(),
-                    visaService.getIdUserByLogin(((LoginDto)httpSession.getAttribute(
-                            ParametersEnum.LOGIN_DTO.toString())).getLogin()).toString(),
+                    request.getParameter(ParametersEnum.COUNTRY_ID.toString()),
+                    userService.getIdUserByLogin(
+                            (LoginDto)httpSession.getAttribute(ParametersEnum.LOGIN_DTO.toString())).toString(),
                     request.getParameter(ParametersEnum.ENTRY_DATE.toString()),
                     request.getParameter(ParametersEnum.OUT_DATE.toString()));
             visaService.addVisa(visaDto);
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ControllerUrls.USERCABINET_SERVLET.toString())
-                    .forward(request, response);
+            response.sendRedirect(request.getContextPath() + ControllerUrls.USERCABINET_SERVLET);
         } else {
             getServletConfig()
                     .getServletContext()

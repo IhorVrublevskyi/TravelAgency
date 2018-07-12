@@ -16,9 +16,9 @@
         <form action="/addVisa" method="post">
             <div class="input">
                 <p>Country</p>
-                <select type="text" name="countryName" required>
+                <select type="text" name="countryId" required>
                     <c:forEach items="${countries}" var="item">
-                        <option value="${item.getName()}">${item.getName()}</option>
+                        <option value="${item.getId()}">${item.getName()}</option>
                     </c:forEach>
                 </select>
             </div>

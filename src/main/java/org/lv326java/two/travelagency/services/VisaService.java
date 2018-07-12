@@ -31,14 +31,6 @@ public class VisaService {
         this.visaDao = visaDao;
     }
 
-    public Long getIdUserByLogin(String login) {
-        return userDao.getUserEntityByLogin(login).getId();
-    }
-
-    public Long getIdCountryByName(String name) {
-        return countryDao.getByFieldName("name", name).get(0).getId();
-    }
-
     public List<VisaDto> getVisaByUserLogin(String login) {
         User user;
         List<Visa> visas;
