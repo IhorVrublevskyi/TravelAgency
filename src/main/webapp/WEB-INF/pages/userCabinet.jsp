@@ -37,7 +37,7 @@
     <br><br>
     <div class="search">
         <a href="/search">
-            <button>Search Hotel</button>
+            <button>Search hotel</button>
         </a></div>
 </div>
 </body>

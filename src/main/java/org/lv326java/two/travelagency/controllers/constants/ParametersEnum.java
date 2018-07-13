@@ -14,6 +14,9 @@ public enum ParametersEnum {
     HOTEL_NAME("hotelName"),
     HOTEL_ADDRESS("hotelAddress"),
     HOTEL_DTO_LIST("hotels"),
+    CURRENT_BOOKING("currentBooking"),
+    BOOKING_DTO("bookingDto"),
+    BOOKING_DTO_LIST("bookings"),
     ACTION("action"),
     ENTRY_DATE("entryDate"),
     OUT_DATE("outDate"),
@@ -32,12 +35,12 @@ public enum ParametersEnum {
     ROLE_ID("roleId"),
     ROLE_DTO_LIST("roles"),
     USER_ID("userId"),
-    NUMBER_OF_VISAS("numberOfVisas");
-
+    NUMBER_OF_VISAS("numberOfVisas"),
+    ROOM_ID("roomId");
 
     private String url;
 
-    private ParametersEnum(String url) {
+    ParametersEnum(String url) {
         this.url = url;
     }
 

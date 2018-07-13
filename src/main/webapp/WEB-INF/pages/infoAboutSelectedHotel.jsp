@@ -9,43 +9,53 @@
 </head>
 <body>
 
-<p>infoAboutSelectedHotel</p>
-
-<%--Необхідно сформувати на сторінці hotels.jsp об'єкт dto,--%>
-<%--який буде передавати інфу про даний вибраний готель,--%>
-<%--і з нього тягнути всю інфу:--%>
-<%--request.setAttribute("hotel", hotel)--%>
+<p>Information about you order</p>
 
 <div class="wrap-item float-l">
     <table>
+        <form action=""
         <tr>
-            <td class="fd">Готель:</td>
-            <td class="sd">${hotel.getHotelName()}</td>
+            <td class="fd">Hotel:</td>
+            <td class="sd">
+                <input type="text" name="hotelName" value="${currentBooking.getHotelName()}" readonly
+                                  required></td>
         </tr>
         <tr>
-            <td class="fd">Країна:</td>
-            <td class="sd">${hotel.getCountry()}</td>
+            <td class="fd">Country:</td>
+            <td class="sd">
+                <input type="text" name="countryName" value="${currentBooking.getCountry()}" readonly
+                                  required></td>
         </tr>
         <tr>
-            <td class="fd">Місто:</td>
-            <td class="sd">${hotel.getCity()}</td>
+            <td class="fd">City:</td>
+            <td class="sd">
+                <input type="text" name="cityName" value="${currentBooking.getCity()}" readonly required>
+            </td>
         </tr>
         <tr>
-            <td class="fd">Адреса:</td>
-            <td class="sd">${hotel.getHotelAddress()}</td>
+            <td class="fd">Address:</td>
+            <td class="sd"><
+                input type="text" name="hotelAddress" value="${currentBooking.getHotelAddress()}" readonly
+                required></td>
         </tr>
         <tr>
-            <td class="fd">Кількість вільних кімнат:</td>
-            <td class="sd">${hotel.getFreeHotelRooms()}</td>
+            <td class="fd">Checkin date:</td>
+            <td class="sd">
+                <input type="text" name="hotelAddress" value="${currentBooking.getDateCheckin()}" readonly
+                                  required></td>
+        </tr>
+        <tr>
+            <td class="fd">Checkout date:</td>
+            <td class="sd">
+                <input type="text" name="hotelAddress" value="${currentBooking.getDateCheckout()}" readonly
+                       required></td>
         </tr>
     </table>
-    <%--<div class="item float-l"><a href="">--%>
-        <%--<button>Edit</button>--%>
-    <%--</a></div>--%>
-    <%--Має вести назад до переліку готелів--%>
-    <div class="item float-l"><a href="/hotelConfirm">
-        <button>Confirm</button>
-    </a></div>
+    <div class="item float-l">
+        <form action="/book" method="post">
+            <button name="bookingDto" value="${currentBooking}">Confirm</button>
+        </form>
+    </div>
     <div class="clear"></div>
 </div>
 <div class="clear"></div>

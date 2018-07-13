@@ -52,23 +52,6 @@ public class HotelService {
         return hotelDtos;
     }
 
-    public List<HotelDto> searchHotels(Date startDate, Date endDate, Long cityId) {
-        List<HotelDto> hotelDtos = new LinkedList<>();
-        for (Room room : roomDao.getFreeRoomsByPerion(startDate, endDate)) {
-            Hotel hotel = hotelDao.getById(room.getHotelId());
-            City ourCity = cityDao.getById(cityId);
-            if (hotel.getCityId().equals(ourCity.getId())) {
-                hotelDtos.add(new HotelDto(
-                        countryDao.getById(ourCity.getCountryId()).getName(),
-                        ourCity.getName(),
-                        hotel.getName(),
-                        hotel.getAddress()
-                ));
-            }
-        }
-        return hotelDtos;
-    }
-
     //CRUD
 
     public boolean insertHotel(HotelDto hotelDto) {

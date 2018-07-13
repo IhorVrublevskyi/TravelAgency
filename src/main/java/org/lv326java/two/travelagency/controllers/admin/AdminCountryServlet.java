@@ -71,8 +71,6 @@ public class AdminCountryServlet extends HttpServlet {
                         break;
                     case ActionConstants.STATISTIC:
                         Integer numberOfVisas = visaService.getVisaByCountry(name).size();
-//                        System.out.println(name);
-//                        System.out.println(numberOfVisas);
                         request.setAttribute(ParametersEnum.NUMBER_OF_VISAS.toString(), numberOfVisas);
                         request.getRequestDispatcher(ViewUrls.ADMIN_COUNTRIES_JSP.toString())
                                 .forward(request, response);

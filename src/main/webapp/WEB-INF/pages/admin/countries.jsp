@@ -27,9 +27,7 @@
                         <button name="action" value="editForm" type="submit">Edit</button>
                     </td>
                     <td>
-                        <button name="action" value="delete" type="submit" onclick="return confirm('Are you sure?')">
-                            Delete
-                        </button>
+                        <button name="action" value="delete" type="submit" onclick="return confirm('Are you sure?')">Delete</button>
                     </td>
                     <td>
                         <button name="action" value="statistic" type="submit">Visa Statistic</button>
@@ -40,7 +38,6 @@
         </c:forEach>
     </table>
     <br/>
-    <%--<input id="stat" type="hidden" value="${numberOfVisas}">--%>
     <div id="statistic">Number of Visas: ${numberOfVisas} </div>
     <br>
     <div class="bottom-button">
