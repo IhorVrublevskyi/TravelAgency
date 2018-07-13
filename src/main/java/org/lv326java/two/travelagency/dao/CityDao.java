@@ -3,6 +3,7 @@ package org.lv326java.two.travelagency.dao;
 import org.lv326java.two.travelagency.entities.City;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CityDao extends AbstractDaoCRUD<City> {
@@ -48,5 +49,9 @@ public class CityDao extends AbstractDaoCRUD<City> {
         fields.put(NAME_FIELDNAME, entity.getName());
         fields.put(COUNTRY_ID_FIELDNAME, entity.getCountryId().toString());
         return fields;
+    }
+
+    public List<City> getByCountryId(Long countryId) {
+        return getByFieldName(COUNTRY_ID_FIELDNAME, countryId.toString());
     }
 }

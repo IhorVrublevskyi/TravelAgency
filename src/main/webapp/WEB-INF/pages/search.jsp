@@ -12,14 +12,33 @@
 <div class="form">
     <h2 class="log">Searching page</h2>
     <fieldset>
-        <form action="/search" method="post">
-            <div class="input">
-                <p>City</p>
-                <select type="text" name="cityName" required>
-                    <c:forEach items="${cities}" var="item">
-                        <option value="${item.getName()}">${item.getCountry()} ${item.getName()}</option>
+        <div class="input">
+            <p>Country</p>
+            <form action="/search" method="get">
+                <select type="text" name="countryId" value="${countryId}" onchange="this.form.submit()" required>
+                    <c:forEach items="${countries}" var="item">
+                        <c:choose>
+                            <c:when test="${countryId == item.getId()}">
+                                <option value="${item.getId()}" selected="selected">${item.getName()}</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="${item.getId()}">${item.getName()}</option>
+                            </c:otherwise>
+                        </c:choose>
                     </c:forEach>
                 </select>
+            </form>
+        </div>
+        <form action="/search" method="post">
+            <div class="input">
+                <c:if test="${cities != null}">
+                    <p>City</p>
+                    <select type="text" name="cityId" required>
+                        <c:forEach items="${cities}" var="item">
+                            <option value="${item.getId()}">${item.getName()}</option>
+                        </c:forEach>
+                    </select>
+                </c:if>
             </div>
             <div class="input">
                 <p>Date of checkin</p>
@@ -37,22 +56,5 @@
         </form>
     </fieldset>
 </div>
-
 </body>
 </html>
-
-
-
-            <%--<div class="input">--%>
-                <%--<p>Select Country</p>--%>
-                <%--<select id="country" name="countries" required>--%>
-                    <%--&lt;%&ndash;<c:forEach var="i" items="${countries}">&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<option value="${i.name}">&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;&lt;%&ndash;<c:out value="${i.name}"/>&ndash;%&gt;&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;</option>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;</c:forEach>&ndash;%&gt;--%>
-                    <%--<option>country 1</option>--%>
-                    <%--<option>country 2</option>--%>
-                    <%--<option>country 3</option>--%>
-                <%--</select>--%>
-            <%--</div>--%>

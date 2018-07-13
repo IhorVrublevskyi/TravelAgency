@@ -4,7 +4,6 @@ import org.lv326java.two.travelagency.dao.CountryDao;
 import org.lv326java.two.travelagency.dto.CountryDto;
 import org.lv326java.two.travelagency.entities.Country;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,19 +19,7 @@ public class CountryService {
         this.countryDao = new CountryDao();
     }
 
-    public List<CountryDto> getAllCountriesDto() {
-        List<Country> countries;
-        List<CountryDto> result = new ArrayList<>();
-        countries = countryDao.getAll();
-        for (Country country : countries) {
-            result.add(new CountryDto(country.getId().toString(), country.getName()));
-        }
-        return result;
-    }
-
-    //CRUD
-
-    public List<CountryDto> getAllCountries(){
+    public List<CountryDto> getAllCountriesDto(){
         List<CountryDto> countryDtos = new LinkedList<>();
         for (Country country: countryDao.getAll()) {
             CountryDto countryDto = new CountryDto(
@@ -44,6 +31,8 @@ public class CountryService {
 
         return countryDtos;
     }
+
+    //CRUD
 
     public boolean insertCountry(CountryDto countryDto){
         return countryDao.insert(new Country(Long.parseLong(countryDto.getId()), countryDto.getName()));

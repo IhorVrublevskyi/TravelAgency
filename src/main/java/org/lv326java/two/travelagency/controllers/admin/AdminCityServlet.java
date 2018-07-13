@@ -41,14 +41,14 @@ public class AdminCityServlet extends HttpServlet {
                 switch (request.getParameter(ParametersEnum.ACTION.toString())) {
                     case ActionConstants.EDIT_FORM:
                         CityDto cityDto = cityService.getCityDtoById(Long.parseLong(id));
-                        request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountries());
+                        request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountriesDto());
                         request.setAttribute(ParametersEnum.CURRENT_CITY.toString(), cityDto);
                         request.setAttribute(ParametersEnum.ACTION.toString(), ActionConstants.UPDATE);
                         request.getRequestDispatcher(ViewUrls.ADMIN_CITY_INSERT_UPDATE_JSP.toString())
                                 .forward(request, response);
                         break;
                     case ActionConstants.INSERT_FORM:
-                        request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountries());
+                        request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountriesDto());
                         request.setAttribute(ParametersEnum.ACTION.toString(), ActionConstants.INSERT);
                         request.getRequestDispatcher(ViewUrls.ADMIN_CITY_INSERT_UPDATE_JSP.toString())
                                 .forward(request, response);

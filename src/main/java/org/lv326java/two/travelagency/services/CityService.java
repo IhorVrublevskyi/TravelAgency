@@ -27,17 +27,27 @@ public class CityService {
         this.countryDao = new CountryDao();
     }
 
-    //CRUD
-
     public List<CityDto> getAllCitiesDto() {
-        List<City> cities;
         List<CityDto> result = new LinkedList<>();
-        cities = cityDao.getAll();
-        for (City city : cities) {
+        for (City city : cityDao.getAll()) {
             result.add(new CityDto(city.getId().toString(), city.getName(), countryDao.getById(city.getCountryId()).getName()));
         }
         return result;
     }
+
+    public List<CityDto> getCitiesByCountryId(Long countryId) {
+        List<CityDto> cityDtos = new LinkedList<>();
+        for (City city : cityDao.getByCountryId(countryId)){
+            cityDtos.add(new CityDto(
+                    city.getId().toString(),
+                    city.getName(),
+                    countryDao.getById(city.getCountryId()).getName()
+            ));
+        }
+        return cityDtos;
+    }
+
+    //CRUD
 
     public boolean insertCity(CityDto cityDto){
         return cityDao.insert(new City(Long.parseLong(cityDto.getId()), cityDto.getName(), Long.parseLong(cityDto.getCountry())));

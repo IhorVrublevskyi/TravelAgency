@@ -52,12 +52,11 @@ public class HotelService {
         return hotelDtos;
     }
 
-    public List<HotelDto> searchHotels(Date startDate, Date endDate, String cityName) {
+    public List<HotelDto> searchHotels(Date startDate, Date endDate, Long cityId) {
         List<HotelDto> hotelDtos = new LinkedList<>();
         for (Room room : roomDao.getFreeRoomsByPerion(startDate, endDate)) {
             Hotel hotel = hotelDao.getById(room.getHotelId());
-            City ourCity = cityDao.getByFieldName("name", cityName).get(0);
-
+            City ourCity = cityDao.getById(cityId);
             if (hotel.getCityId().equals(ourCity.getId())) {
                 hotelDtos.add(new HotelDto(
                         countryDao.getById(ourCity.getCountryId()).getName(),
