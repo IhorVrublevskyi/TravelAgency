@@ -25,10 +25,10 @@ public final class DataSourceRepository {
 		return new DataSource(sqlDriver,
 //				"jdbc:mysql://localhost:3306/travel_agency", "root", "");
 //				"jdbc:mysql://localhost:3306/travel_agency", "root", "");
-//				"jdbc:mysql://localhost:3306/travel_agency?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-// 				"root", "root");
-				"jdbc:mysql://localhost:3306/travel_agency?serverTimezone=UTC&useSSL=true",
-				"root", "root");
+				"jdbc:mysql://localhost:3306/travel_agency?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+ 				"root", "root");
+//				"jdbc:mysql://localhost:3306/travel_agency?serverTimezone=UTC&useSSL=true",
+//				"root", "root");
 	}
 
 //	public static DataSource getSybaseLocalHost() {

@@ -24,7 +24,7 @@ public class HotelService {
 
     public HotelDto getHotelDtoById(Long id) {
         Hotel hotel = hotelDao.getById(id);
-        City city = cityDao.getById(hotel.getId());
+        City city = cityDao.getById(hotel.getCityId());
         HotelDto hotelDto = new HotelDto(
                 countryDao.getById(city.getCountryId()).getName(),
                 city.getName(),

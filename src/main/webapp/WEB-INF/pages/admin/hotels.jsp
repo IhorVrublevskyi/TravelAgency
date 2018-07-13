@@ -10,6 +10,12 @@
 <body>
 <div class="form">
     <h2 class="log">Hotels</h2>
+    <div class="head-button">
+        <form action="${pageContext.request.contextPath}/hotels" , method="post">
+            <button class="insert" name="action" value="insertForm">Add</button>
+        </form>
+    </div>
+    <div class="clear"></div>
     <table border="1">
         <tr>
             <td>Country</td>
@@ -31,18 +37,19 @@
                         <button name="action" value="editForm" type="submit">Edit</button>
                     </td>
                     <td>
-                        <button name="action" value="delete" type="submit">Delete</button>
+                        <button name="action" value="delete" type="submit" onclick="return confirm('Are you sure?')">
+                            Delete
+                        </button>
                     </td>
                 </form>
             </tr>
         </c:forEach>
     </table>
-    <br><br>
-    <div> Insert a new hotel
-        <form action="${pageContext.request.contextPath}/hotels", method="post">
-            <button class="insert" name="action" value="insertForm">Insert</button>
-        </form>
+    <br>
+    <div class="bottom-button">
+        <a href="/adminsCabinet"><button>Back</button></a>
     </div>
+    <div class="clear"></div>
 </div>
 </body>
 </html>

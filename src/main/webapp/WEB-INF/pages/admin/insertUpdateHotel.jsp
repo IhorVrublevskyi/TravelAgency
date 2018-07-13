@@ -35,11 +35,17 @@
                 <input type="text" name="hotelAddress" placeholder="Address" required>
             </c:if>
 
-            <p><input type="submit" value="Submit"></p>
+            <input type="submit" value="Submit">
+            <input type="button" value="Cancel" onclick="back()" formnovalidate>
         </form>
     </div>
 
 
 </div>
+<script>
+    function back() {
+        window.location.replace("${pageContext.request.contextPath}/hotels");
+    }
+</script>
 </body>
 </html>
