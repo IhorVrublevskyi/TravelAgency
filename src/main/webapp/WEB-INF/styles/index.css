@@ -111,3 +111,8 @@ button {
 .mt{
     margin-top: 10px;
 }
+
+.head-button, .bottom-button{
+    display: flex;
+    justify-content: flex-end;
+}

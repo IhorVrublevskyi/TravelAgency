@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="form">
-    <h2 class="log">Country</h2>
+    <h2 class="log">City</h2>
 
     <div class="input">
         <form action="${pageContext.request.contextPath}/cities" method="post">
@@ -23,18 +23,22 @@
             <input type="hidden" name="action" value="${action}">
             <c:if test="${action == 'update'}">
                 <input type="text" name="cityName" placeholder="${currentCity.getName()}" required>
+                <%--<input type="text" name="cityName" placeholder="${currentCity.getName()}" required>--%>
                 <input type="hidden" name="cityId" value="${currentCity.getId()}">
             </c:if>
             <c:if test="${action == 'insert'}">
-
-                <input type="text" name="cityName" placeholder="CountryName" required>
+                <%--<input type="text" name="cityName" placeholder="CityName" required>--%>
+                <input type="text" name="cityName" placeholder="CityName" required>
             </c:if>
-
             <input type="submit" value="Submit">
+            <input type="button" value="Cancel" onclick="back()" formnovalidate>
         </form>
     </div>
-
-
 </div>
+<script>
+    function back() {
+        window.location.replace("${pageContext.request.contextPath}/cities");
+    }
+</script>
 </body>
 </html>

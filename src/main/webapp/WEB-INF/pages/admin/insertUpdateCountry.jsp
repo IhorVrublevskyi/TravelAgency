@@ -24,10 +24,14 @@
             </c:if>
 
             <input type="submit" value="Submit">
+            <input type="button" value="Cancel" onclick="back()" formnovalidate>
         </form>
     </div>
-
-
 </div>
+<script>
+    function back() {
+        window.location.replace("${pageContext.request.contextPath}/countries");
+    }
+</script>
 </body>
 </html>
