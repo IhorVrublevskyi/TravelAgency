@@ -3,10 +3,9 @@ package org.lv326java.two.travelagency.controllers;
 import org.lv326java.two.travelagency.controllers.constants.ControllerUrls;
 import org.lv326java.two.travelagency.controllers.constants.ParametersEnum;
 import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
-import org.lv326java.two.travelagency.services.CityService;
-import org.lv326java.two.travelagency.services.CountryService;
-import org.lv326java.two.travelagency.services.HotelService;
-import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
+import org.lv326java.two.travelagency.dto.BookingDto;
+import org.lv326java.two.travelagency.dto.LoginDto;
+import org.lv326java.two.travelagency.services.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 
 @WebServlet(name = "SearchServlet")
 public class SearchServlet extends HttpServlet {
@@ -22,22 +22,29 @@ public class SearchServlet extends HttpServlet {
     private CityService cityService;
     private CountryService countryService;
     private HotelService hotelService;
+    private BookingService bookingService;
+    private UserService userService;
 
     public SearchServlet() {
         ServiceDaoConteiner serviceDaoConteiner = ServiceDaoConteiner.get();
         cityService = serviceDaoConteiner.getCityService();
         hotelService = serviceDaoConteiner.getHotelService();
         countryService = serviceDaoConteiner.getCountryService();
+        bookingService = serviceDaoConteiner.getBookingService();
+        userService = serviceDaoConteiner.getUserService();
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
-            String cityId= request.getParameter(ParametersEnum.CITY_ID.toString());
-            Date checkin = Date.valueOf(request.getParameter(ParametersEnum.ENTRY_DATE.toString()));
-            Date checkout = Date.valueOf(request.getParameter(ParametersEnum.OUT_DATE.toString()));
-            request.setAttribute(ParametersEnum.HOTEL_DTO_LIST.toString(),
-                    hotelService.searchHotels(checkin, checkout, Long.parseLong(cityId)));
+            String cityId = request.getParameter(ParametersEnum.CITY_ID.toString());
+            String checkin = request.getParameter(ParametersEnum.ENTRY_DATE.toString());
+            String checkout = request.getParameter(ParametersEnum.OUT_DATE.toString());
+            LoginDto loginDto = (LoginDto) request.getSession().getAttribute(ParametersEnum.LOGIN_DTO.toString());
+            Long userId = userService.getIdUserByLogin(loginDto);
+            List<BookingDto> bookingDtoList = bookingService.searchHotels(checkin, checkout, Long.parseLong(cityId), userId);
+
+            request.setAttribute(ParametersEnum.BOOKING_DTO_LIST.toString(), bookingDtoList);
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.HOTELS_JSP.toString())
@@ -55,7 +62,7 @@ public class SearchServlet extends HttpServlet {
             String countryId = request.getParameter(ParametersEnum.COUNTRY_ID.toString());
             if (countryId == null) {
                 request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountriesDto());
-                request.setAttribute(ParametersEnum.COUNTRY_ID.toString(), "1");
+                request.setAttribute(ParametersEnum.COUNTRY_ID.toString(), 2);
             } else {
                 request.setAttribute(ParametersEnum.COUNTRY_ID.toString(), countryId);
                 request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountriesDto());

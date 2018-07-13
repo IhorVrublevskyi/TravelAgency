@@ -30,6 +30,7 @@
             </form>
         </div>
         <form action="/search" method="post">
+            <input type="hidden", name="loginDto" value="${loginDto}">
             <div class="input">
                 <c:if test="${cities != null}">
                     <p>City</p>
