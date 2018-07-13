@@ -31,7 +31,8 @@ public enum ParametersEnum {
     USER_DTO_LIST("users"),
     ROLE_ID("roleId"),
     ROLE_DTO_LIST("roles"),
-    USER_ID("userId");
+    USER_ID("userId"),
+    NUMBER_OF_VISAS("numberOfVisas");
 
 
     private String url;

@@ -21,22 +21,39 @@
             <tr>
                 <form action="${pageContext.request.contextPath}/countries" method="post">
                     <input type="hidden" name="countryId" value="${item.getId()}">
+                    <input type="hidden" name="countryName" value="${item.getName()}">
                     <td>${item.getName()} </td>
                     <td>
                         <button name="action" value="editForm" type="submit">Edit</button>
                     </td>
                     <td>
-                        <button name="action" value="delete" type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+                        <button name="action" value="delete" type="submit" onclick="return confirm('Are you sure?')">
+                            Delete
+                        </button>
                     </td>
+                    <td>
+                        <button name="action" value="statistic" type="submit">Visa Statistic</button>
+                    </td>
+
                 </form>
             </tr>
         </c:forEach>
     </table>
+    <br/>
+    <%--<input id="stat" type="hidden" value="${numberOfVisas}">--%>
+    <div id="statistic">Number of Visas: ${numberOfVisas} </div>
     <br>
     <div class="bottom-button">
         <a href="/adminsCabinet"><button>Back</button></a>
     </div>
     <div class="clear"></div>
 </div>
+<%--<script type="text/javascript">--%>
+    <%--(function showStatistic() {--%>
+        <%--if(document.getElementById("stat").value !== 0){--%>
+            <%--document.getElementById("statistic").style.display = "block";--%>
+        <%--}--%>
+    <%--})();--%>
+<%--</script>--%>
 </body>
 </html>

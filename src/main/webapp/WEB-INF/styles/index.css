@@ -103,16 +103,20 @@ button {
     color: green;
 }
 
-.ml{
+.ml {
     margin-left: 25px;
     margin-top: 10px;
 }
 
-.mt{
+.mt {
     margin-top: 10px;
 }
 
-.head-button, .bottom-button{
+.head-button, .bottom-button {
     display: flex;
     justify-content: flex-end;
 }
+
+/*#statistic {*/
+    /*display: none;*/
+/*}*/

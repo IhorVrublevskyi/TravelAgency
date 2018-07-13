@@ -18,11 +18,13 @@ import java.io.IOException;
 public class AdminCountryServlet extends HttpServlet {
 
     private CountryService countryService;
+    private VisaService visaService;
 
 
     public AdminCountryServlet() {
         ServiceDaoConteiner serviceDaoConteiner = ServiceDaoConteiner.get();
         countryService = serviceDaoConteiner.getCountryService();
+        visaService = serviceDaoConteiner.getVisaService();
     }
 
     public AdminCountryServlet(CountryService countryService) {
@@ -35,6 +37,7 @@ public class AdminCountryServlet extends HttpServlet {
             LoginDto loginDto = (LoginDto) session.getAttribute(ParametersEnum.LOGIN_DTO.toString());
             if (Security.isAdmin(loginDto)) {
                 String id = request.getParameter(ParametersEnum.COUNTRY_ID.toString());
+                String name = request.getParameter(ParametersEnum.COUNTRY_NAME.toString());
                 switch (request.getParameter(ParametersEnum.ACTION.toString())) {
                     case ActionConstants.EDIT_FORM:
                         CountryDto countryDto = countryService.getCountryDtoById(Long.parseLong(id));
@@ -65,6 +68,14 @@ public class AdminCountryServlet extends HttpServlet {
                     case ActionConstants.DELETE:
                         countryService.deleteCountryById(Long.parseLong(id));
                         response.sendRedirect(request.getContextPath() + ControllerUrls.ADMINCOUNTRY_SERVLET);
+                        break;
+                    case ActionConstants.STATISTIC:
+                        Integer numberOfVisas = visaService.getVisaByCountry(name).size();
+//                        System.out.println(name);
+//                        System.out.println(numberOfVisas);
+                        request.setAttribute(ParametersEnum.NUMBER_OF_VISAS.toString(), numberOfVisas);
+                        request.getRequestDispatcher(ViewUrls.ADMIN_COUNTRIES_JSP.toString())
+                                .forward(request, response);
                         break;
                 }
             } else {

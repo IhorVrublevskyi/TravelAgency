@@ -38,12 +38,29 @@ public class VisaService {
         try {
             user = userDao.getUserEntityByLogin(login);
             visas = visaDao.getByFieldName("user_id", user.getId().toString());
-
             for (Visa visa : visas) {
                 result.add(new VisaDto(countryDao.getById(visa.getCountryId()).getName(), null,
                         visa.getDateOfInit().toString(), visa.getDateOfExpired().toString()));
             }
+        } catch (Exception e) {
+            System.out.println("RuntimeException, message: " + e.getMessage());
+        }
+        return result;
+    }
 
+    public List<VisaDto> getVisaByCountry(String name) {
+        List<Country> countries;
+        List<Visa> visas;
+        List<VisaDto> result = new LinkedList<>();
+        countries = countryDao.getByName(name);
+        try{
+            for (Country country : countries) {
+                visas = visaDao.getByFieldName("country_id", country.getId().toString());
+                for (Visa visa : visas){
+                    result.add(new VisaDto(countryDao.getById(visa.getCountryId()).getName(), null,
+                            visa.getDateOfInit().toString(), visa.getDateOfExpired().toString()));
+                }
+            }
         } catch (Exception e) {
             System.out.println("RuntimeException, message: " + e.getMessage());
         }

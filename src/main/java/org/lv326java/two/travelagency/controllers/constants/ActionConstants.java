@@ -7,4 +7,6 @@ public class ActionConstants {
     public static final String INSERT = "insert";
     public static final String INSERT_FORM = "insertForm";
     public static final String DELETE = "delete";
+    public static final String STATISTIC = "statistic";
+
 }

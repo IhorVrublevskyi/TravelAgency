@@ -39,6 +39,11 @@
         </c:forEach>
         <div class="clear"></div>
     </table>
+    <br>
+    <div class="bottom-button">
+        <a href="/adminsCabinet"><button>Back</button></a>
+    </div>
+    <div class="clear"></div>
     <%--<br><br>--%>
     <%--<div> Insert a new user--%>
         <%--<form action="${pageContext.request.contextPath}/users" , method="post">--%>
