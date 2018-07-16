@@ -46,7 +46,7 @@ public final class ServiceDaoConteiner {
         cityService = new CityService(cityDao, countryDao);
         hotelService = new HotelService(hotelDao, cityDao, countryDao, roomDao);
         roleService = new RoleService(roleDao);
-        bookingService = new BookingService(bookingDao, countryDao, cityDao, hotelDao, roomDao);
+        bookingService = new BookingService(bookingDao, countryDao, cityDao, hotelDao, roomDao, visaDao);
     }
 
     public static ServiceDaoConteiner get() {

@@ -41,9 +41,10 @@ public class SearchServlet extends HttpServlet {
             String checkin = request.getParameter(ParametersEnum.ENTRY_DATE.toString());
             String checkout = request.getParameter(ParametersEnum.OUT_DATE.toString());
             LoginDto loginDto = (LoginDto) request.getSession().getAttribute(ParametersEnum.LOGIN_DTO.toString());
+            boolean onlyAvailableCountries = Boolean.valueOf(request.getParameter(ParametersEnum.ONLY_AVAILABLE_COUNTRIES.toString()));
             Long userId = userService.getIdUserByLogin(loginDto);
-            List<BookingDto> bookingDtoList = bookingService.searchHotels(checkin, checkout, Long.parseLong(cityId), userId);
-
+            List<BookingDto> bookingDtoList = bookingService.searchHotels(checkin, checkout, Long.parseLong(cityId),
+                    userId, onlyAvailableCountries);
             request.setAttribute(ParametersEnum.BOOKING_DTO_LIST.toString(), bookingDtoList);
             getServletConfig()
                     .getServletContext()

@@ -36,7 +36,8 @@ public enum ParametersEnum {
     ROLE_DTO_LIST("roles"),
     USER_ID("userId"),
     NUMBER_OF_VISAS("numberOfVisas"),
-    ROOM_ID("roomId");
+    ROOM_ID("roomId"),
+    ONLY_AVAILABLE_COUNTRIES("onlyAvailable");
 
     private String url;
 

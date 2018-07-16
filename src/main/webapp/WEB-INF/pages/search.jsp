@@ -30,7 +30,7 @@
             </form>
         </div>
         <form action="/search" method="post">
-            <input type="hidden", name="loginDto" value="${loginDto}">
+            <input type="hidden" , name="loginDto" value="${loginDto}">
             <div class="input">
                 <c:if test="${cities != null}">
                     <p>City</p>
@@ -49,8 +49,11 @@
                 <p>Date of checkout</p>
                 <input type="date" name="outDate" placeholder="" required>
             </div>
+            <div class="input">
+                <input type="checkbox" name="onlyAvailable" value="true"> Only available countries
+            </div>
             <div class="submit">
-                <br/>
+                <br>
                 <input type="submit" value="Search">
             </div>
             <div class="clear"></div>

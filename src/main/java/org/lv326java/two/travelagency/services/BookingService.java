@@ -3,10 +3,7 @@ package org.lv326java.two.travelagency.services;
 import org.lv326java.two.travelagency.dao.*;
 import org.lv326java.two.travelagency.dto.BookingDto;
 import org.lv326java.two.travelagency.dto.RoomDto;
-import org.lv326java.two.travelagency.entities.Booking;
-import org.lv326java.two.travelagency.entities.City;
-import org.lv326java.two.travelagency.entities.Hotel;
-import org.lv326java.two.travelagency.entities.Room;
+import org.lv326java.two.travelagency.entities.*;
 
 import java.sql.Date;
 import java.util.*;
@@ -18,19 +15,28 @@ public class BookingService {
     private CityDao cityDao;
     private HotelDao hotelDao;
     private RoomDao roomDao;
+    private VisaDao visaDao;
 
-    public BookingService(BookingDao bookingDao, CountryDao countryDao, CityDao cityDao, HotelDao hotelDao, RoomDao roomDao) {
+    public BookingService(BookingDao bookingDao, CountryDao countryDao, CityDao cityDao, HotelDao hotelDao,
+                          RoomDao roomDao, VisaDao visaDao) {
         this.bookingDao = bookingDao;
         this.countryDao = countryDao;
         this.cityDao = cityDao;
         this.hotelDao = hotelDao;
         this.roomDao = roomDao;
+        this.visaDao = visaDao;
     }
 
-    public List<BookingDto> searchHotels(String startDate, String endDate, Long cityId, Long userId) {
+    public List<BookingDto> searchHotels(String startDate, String endDate, Long cityId, Long userId, boolean onlyAvailable) {
         List<BookingDto> bookingDtos = new LinkedList<>();
         List<Room> rooms = roomDao.getFreeRoomsByPerion(Date.valueOf(startDate), Date.valueOf(endDate));
         Map<Long, List<Room>> map = new HashMap<>();
+        List<Long> availableCountryIds = new LinkedList<>();
+        if (onlyAvailable) {
+            for (Visa visa : visaDao.getByUserId(userId)) {
+                availableCountryIds.add(visa.getCountryId());
+            }
+        }
         City ourCity = cityDao.getById(cityId);
         for (Room room : rooms) {
             if (map.containsKey(room.getHotelId())) {
@@ -43,7 +49,8 @@ public class BookingService {
         }
         for (Long hotelId : map.keySet()) {
             Hotel hotel = hotelDao.getById(hotelId);
-            if (hotel.getCityId().equals(ourCity.getId())) {
+            if (hotel.getCityId().equals(ourCity.getId()) &&
+                    (!onlyAvailable || availableCountryIds.contains(ourCity.getCountryId()))) {
                 BookingDto bookingDto = new BookingDto(
                         hotel.getId().toString(),
                         hotel.getName(),

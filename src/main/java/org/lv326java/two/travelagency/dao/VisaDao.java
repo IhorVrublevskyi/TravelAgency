@@ -4,6 +4,7 @@ import org.lv326java.two.travelagency.entities.Visa;
 
 import java.sql.Date;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class VisaDao extends AbstractDaoCRUD<Visa> {
@@ -55,5 +56,9 @@ public class VisaDao extends AbstractDaoCRUD<Visa> {
         fields.put(DATE_OF_INIT_FIELDNAME, entity.getDateOfInit().toString());
         fields.put(DATE_OF_EXPIRED_FIELDNAME, entity.getDateOfExpired().toString());
         return fields;
+    }
+
+    public List<Visa> getByUserId(Long userId) {
+        return getByFieldName(USER_ID_FIELDNAME, userId.toString());
     }
 }
