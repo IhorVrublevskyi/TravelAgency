@@ -107,10 +107,10 @@ public class BookingService {
         return visitedCountries;
     }
 
-    public List<RoomStatisticsDto> getRoomLoadStats(Date startDate, Date endDate) {
+    public List<RoomStatisticsDto> getRoomLoadStats(Date startDate, Date endDate) throws InvalidDateException {
+        checkDateforStatistic(startDate, endDate);
         List<RoomStatisticsDto> resultList = new LinkedList<>();
         Map<Long, Integer> roomLoad = bookingDao.roomLoad(startDate, endDate);
-
         for(Long roomId : roomLoad.keySet()) {
             Room room = roomDao.getById(roomId);
             Hotel hotel = hotelDao.getById(room.getHotelId());
@@ -128,6 +128,12 @@ public class BookingService {
         if ((checkin.getTime() - checkout.getTime() > 0) ||
                 (checkin.getTime() - Date.valueOf(LocalDate.now()).getTime() < 0) ||
                 (checkin.getTime() == checkout.getTime())) {
+            throw new InvalidDateException("Date is invalid");
+        }
+    }
+
+    private void checkDateforStatistic(Date checkin, Date checkout) throws InvalidDateException {
+        if (checkin.getTime() - checkout.getTime() > 0){
             throw new InvalidDateException("Date is invalid");
         }
     }

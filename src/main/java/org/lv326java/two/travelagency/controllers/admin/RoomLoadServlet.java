@@ -5,6 +5,7 @@ import org.lv326java.two.travelagency.controllers.constants.ControllerUrls;
 import org.lv326java.two.travelagency.controllers.constants.ParametersEnum;
 import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
 import org.lv326java.two.travelagency.dto.LoginDto;
+import org.lv326java.two.travelagency.exceptions.InvalidDateException;
 import org.lv326java.two.travelagency.services.BookingService;
 import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
 
@@ -33,8 +34,13 @@ public class RoomLoadServlet extends HttpServlet {
             if (Security.isAdmin(loginDto)) {
                 Date startDate = Date.valueOf(request.getParameter(ParametersEnum.ENTRY_DATE.toString()));
                 Date endDate = Date.valueOf(request.getParameter(ParametersEnum.OUT_DATE.toString()));
-                request.setAttribute(ParametersEnum.ROOM_STATS_DTO_LIST.toString(),
-                        bookingService.getRoomLoadStats(startDate, endDate));
+                try {
+                    request.setAttribute(ParametersEnum.ROOM_STATS_DTO_LIST.toString(),
+                            bookingService.getRoomLoadStats(startDate, endDate));
+                } catch (InvalidDateException e) {
+                    request.setAttribute(ParametersEnum.ERROR.toString(), "Date is invalid. Please try again");
+                    request.getRequestDispatcher(ViewUrls.ROOM_LOAD_SEARCH_JSP.toString()).forward(request, response);
+                }
                 request.getRequestDispatcher(ViewUrls.ROOM_LOAD_VIEW_JSP.toString()).forward(request, response);
             } else {
                 request.getRequestDispatcher(ViewUrls.USER_CABINET_JSP.toString()).forward(request, response);

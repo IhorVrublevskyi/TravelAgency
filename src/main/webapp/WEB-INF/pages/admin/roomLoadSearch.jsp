@@ -11,9 +11,13 @@
 <body>
 <div class="form">
     <h2 class="log">Statistics search page</h2>
+    <c:if test="${error ne null}">
+        <p>
+            <span style="color:red">${error}</span>
+        </p>
+    </c:if>
     <fieldset>
         <div class="input">
-            <p>Country</p>
             <form action="/roomStatistics" method="post">
                 <div class="input">
                     <p>Begin date</p>
