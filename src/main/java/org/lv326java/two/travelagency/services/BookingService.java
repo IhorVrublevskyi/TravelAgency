@@ -2,7 +2,9 @@ package org.lv326java.two.travelagency.services;
 
 import org.lv326java.two.travelagency.dao.*;
 import org.lv326java.two.travelagency.dto.BookingDto;
+import org.lv326java.two.travelagency.dto.CountryDto;
 import org.lv326java.two.travelagency.dto.RoomDto;
+import org.lv326java.two.travelagency.dto.RoomStatisticsDto;
 import org.lv326java.two.travelagency.entities.*;
 import org.lv326java.two.travelagency.exceptions.InvalidDateException;
 
@@ -35,7 +37,7 @@ public class BookingService {
         Date checkout = Date.valueOf(endDate);
         checkDate(checkin, checkout);
         List<BookingDto> bookingDtos = new LinkedList<>();
-        List<Room> rooms = roomDao.getFreeRoomsByPerion(Date.valueOf(startDate), Date.valueOf(endDate));
+        List<Room> rooms = roomDao.getFreeRoomsByPeriod(Date.valueOf(startDate), Date.valueOf(endDate));
         Map<Long, List<Room>> map = new HashMap<>();
         List<Long> availableCountryIds = new LinkedList<>();
         if (onlyAvailable) {
@@ -86,6 +88,40 @@ public class BookingService {
                 Date.valueOf(bookingDto.getDateCheckin()),
                 Date.valueOf(bookingDto.getDateCheckout())
         ));
+    }
+
+    public List<CountryDto> getVisitedCountriesByUserId(Long userId) {
+        Set<Long> countryIds = new HashSet<>();
+        List<CountryDto> visitedCountries = new LinkedList<>();
+        for(Booking booking : bookingDao.getByUserId(userId)) {
+            countryIds.add(cityDao.getById(hotelDao.getById(roomDao.getById(booking.getRoomId()).getHotelId())
+                    .getCityId()).getCountryId());
+        }
+        for (Long countryId : countryIds) {
+            Country country = countryDao.getById(countryId);
+            visitedCountries.add(new CountryDto(
+                    country.getId().toString(),
+                    country.getName()
+            ));
+        }
+        return visitedCountries;
+    }
+
+    public List<RoomStatisticsDto> getRoomLoadStats(Date startDate, Date endDate) {
+        List<RoomStatisticsDto> resultList = new LinkedList<>();
+        Map<Long, Integer> roomLoad = bookingDao.roomLoad(startDate, endDate);
+
+        for(Long roomId : roomLoad.keySet()) {
+            Room room = roomDao.getById(roomId);
+            Hotel hotel = hotelDao.getById(room.getHotelId());
+            resultList.add(new RoomStatisticsDto(
+                    hotel.getName(),
+                    room.getRoomNumber().toString(),
+                    roomLoad.get(roomId).toString()
+            ));
+        }
+
+        return resultList;
     }
 
     private void checkDate(Date checkin, Date checkout) throws InvalidDateException {

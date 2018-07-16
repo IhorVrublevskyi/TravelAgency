@@ -37,7 +37,9 @@ public enum ParametersEnum {
     USER_ID("userId"),
     NUMBER_OF_VISAS("numberOfVisas"),
     ROOM_ID("roomId"),
-    ONLY_AVAILABLE_COUNTRIES("onlyAvailable");
+    ONLY_AVAILABLE_COUNTRIES("onlyAvailable"),
+    HOTEL_ROOM_NUMBERS("roomsNumber"),
+    ROOM_STATS_DTO_LIST("rooms");
 
     private String url;
 

@@ -35,6 +35,11 @@
         </c:forEach>
     </div>
     <br><br>
+    <p>Visited countries:</p>
+    <c:forEach items="${countries}" var="item">
+        <div class="visa-item float-l">${item.getName()}</div>
+        <div class="clear"></div>
+    </c:forEach>
     <div class="search">
         <a href="/search">
             <button>Search hotel</button>

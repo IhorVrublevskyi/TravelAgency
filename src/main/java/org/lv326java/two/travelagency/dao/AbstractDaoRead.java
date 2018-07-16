@@ -1,6 +1,7 @@
 package org.lv326java.two.travelagency.dao;
 
 import org.lv326java.two.travelagency.db.ConnectionManager;
+import org.lv326java.two.travelagency.entities.Room;
 import org.lv326java.two.travelagency.entities.SqlQueries;
 
 import java.sql.ResultSet;
@@ -31,15 +32,12 @@ abstract class AbstractDaoRead<TEntity> implements DaoRead<TEntity> {
     // Read
     protected List<TEntity> getQueryResult(String query, SqlQueries sqlQueries) {
         List<TEntity> all = new ArrayList<>();
-        Statement statement = null;
-        ResultSet resultSet = null;
         Map<String, String> queryResult;
         if (query == null) {
             throw new RuntimeException(String.format(QUERY_NOT_FOUND, sqlQueries.name()));
         }
-        try {
-            statement = ConnectionManager.getInstance().getConnection().createStatement();
-            resultSet = statement.executeQuery(query);
+        try (Statement statement = ConnectionManager.getInstance().getConnection().createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
             ResultSetMetaData md = resultSet.getMetaData();
             int columns = md.getColumnCount();
             queryResult = new LinkedHashMap<>();
@@ -51,22 +49,9 @@ abstract class AbstractDaoRead<TEntity> implements DaoRead<TEntity> {
             }
         } catch (SQLException e) {
             throw new RuntimeException(DATABASE_READING_ERROR, e);
-        } finally {
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (Exception ex) {
-                    // TODO Warning
-                }
-            }
-            if (statement != null) {
-                try {
-                    statement.close();
-                } catch (Exception ex) {
-                    // TODO Warning
-                }
-            }
         }
+        // TODO Warning
+        // TODO Warning
         if (all.isEmpty()) {
 //            throw new RuntimeException(String.format(EMPTY_RESULTSET, query));
         }

@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.List;
 
 @WebServlet(name = "SearchServlet")
@@ -22,14 +21,12 @@ public class SearchServlet extends HttpServlet {
 
     private CityService cityService;
     private CountryService countryService;
-    private HotelService hotelService;
     private BookingService bookingService;
     private UserService userService;
 
     public SearchServlet() {
         ServiceDaoConteiner serviceDaoConteiner = ServiceDaoConteiner.get();
         cityService = serviceDaoConteiner.getCityService();
-        hotelService = serviceDaoConteiner.getHotelService();
         countryService = serviceDaoConteiner.getCountryService();
         bookingService = serviceDaoConteiner.getBookingService();
         userService = serviceDaoConteiner.getUserService();
@@ -69,12 +66,12 @@ public class SearchServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
             String countryId = request.getParameter(ParametersEnum.COUNTRY_ID.toString());
+            request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountriesDto());
             if (countryId == null) {
-                request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountriesDto());
-                request.setAttribute(ParametersEnum.COUNTRY_ID.toString(), 2);
+                request.setAttribute(ParametersEnum.COUNTRY_ID.toString(), 1);
+                request.setAttribute(ParametersEnum.CITY_DTO_LIST.toString(), cityService.getCitiesByCountryId(1L));
             } else {
                 request.setAttribute(ParametersEnum.COUNTRY_ID.toString(), countryId);
-                request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountriesDto());
                 request.setAttribute(ParametersEnum.CITY_DTO_LIST.toString(), cityService.getCitiesByCountryId(
                         Long.parseLong(countryId)));
             }

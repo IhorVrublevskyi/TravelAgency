@@ -1,6 +1,7 @@
 package org.lv326java.two.travelagency.dao;
 
 import org.lv326java.two.travelagency.entities.Hotel;
+import org.lv326java.two.travelagency.entities.SqlQueries;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

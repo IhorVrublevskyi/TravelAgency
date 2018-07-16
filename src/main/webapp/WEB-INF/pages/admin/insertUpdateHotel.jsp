@@ -23,10 +23,11 @@
             <c:if test="${action == 'update'}">
                 <input type="hidden" name="hotelId" value="${currentHotel.getId()}">
                 <p>Hotel name</p>
-                <input type="text" name="hotelName" placeholder="${currentHotel.getHotelName()}" required>
+                <input type="text" name="hotelName" value="${currentHotel.getHotelName()}" required>
                 <p>Hotel address</p>
-                <input type="text" name="hotelAddress" placeholder="${currentHotel.getHotelAddress()}" required>
-
+                <input type="text" name="hotelAddress" value="${currentHotel.getHotelAddress()}" required>
+                <p>Add rooms</p>
+                <input type="text" name="roomsNumber" value="0" placeholder="Number of rooms" required>
             </c:if>
             <c:if test="${action == 'insert'}">
                 <p>Hotel name</p>
@@ -39,8 +40,6 @@
             <input type="button" value="Cancel" onclick="back()" formnovalidate>
         </form>
     </div>
-
-
 </div>
 <script>
     function back() {

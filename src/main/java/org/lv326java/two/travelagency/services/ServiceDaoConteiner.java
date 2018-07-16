@@ -22,6 +22,7 @@ public final class ServiceDaoConteiner {
     private HotelService hotelService;
     private RoleService roleService;
     private BookingService bookingService;
+    private RoomService roomService;
 
     private ServiceDaoConteiner() {
         initDaos();
@@ -47,6 +48,7 @@ public final class ServiceDaoConteiner {
         hotelService = new HotelService(hotelDao, cityDao, countryDao, roomDao);
         roleService = new RoleService(roleDao);
         bookingService = new BookingService(bookingDao, countryDao, cityDao, hotelDao, roomDao, visaDao);
+        roomService = new RoomService(roomDao);
     }
 
     public static ServiceDaoConteiner get() {
@@ -118,5 +120,9 @@ public final class ServiceDaoConteiner {
 
     public BookingService getBookingService() {
         return bookingService;
+    }
+
+    public RoomService getRoomService() {
+        return roomService;
     }
 }

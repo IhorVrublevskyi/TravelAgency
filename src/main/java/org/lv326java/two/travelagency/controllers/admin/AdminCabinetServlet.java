@@ -2,6 +2,7 @@ package org.lv326java.two.travelagency.controllers.admin;
 
 import org.lv326java.two.travelagency.controllers.constants.ControllerUrls;
 import org.lv326java.two.travelagency.controllers.Security;
+import org.lv326java.two.travelagency.controllers.constants.ParametersEnum;
 import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
 import org.lv326java.two.travelagency.dto.LoginDto;
 
@@ -23,7 +24,7 @@ public class AdminCabinetServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
             HttpSession session = request.getSession(false);
-            LoginDto loginDto = (LoginDto) session.getAttribute("loginDto");
+            LoginDto loginDto = (LoginDto) session.getAttribute(ParametersEnum.LOGIN_DTO.toString());
             if (Security.isAdmin(loginDto)) {
                 request.getRequestDispatcher(ViewUrls.ADMIN_CABINET_JSP.toString()).forward(request, response);
             } else {

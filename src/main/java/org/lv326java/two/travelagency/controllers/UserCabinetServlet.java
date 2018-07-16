@@ -4,7 +4,10 @@ import org.lv326java.two.travelagency.controllers.constants.ControllerUrls;
 import org.lv326java.two.travelagency.controllers.constants.ParametersEnum;
 import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
 import org.lv326java.two.travelagency.dto.LoginDto;
+import org.lv326java.two.travelagency.entities.Booking;
+import org.lv326java.two.travelagency.services.BookingService;
 import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
+import org.lv326java.two.travelagency.services.UserService;
 import org.lv326java.two.travelagency.services.VisaService;
 
 import javax.servlet.ServletException;
@@ -19,9 +22,14 @@ import java.io.IOException;
 public class UserCabinetServlet extends HttpServlet {
 
     private VisaService visaService;
+    private BookingService bookingService;
+    private UserService userService;
 
     public UserCabinetServlet() {
-        this.visaService = ServiceDaoConteiner.get().getVisaService();
+        ServiceDaoConteiner serviceDaoConteiner = ServiceDaoConteiner.get();
+        this.visaService = serviceDaoConteiner.getVisaService();
+        this.bookingService = serviceDaoConteiner.getBookingService();
+        this.userService = serviceDaoConteiner.getUserService();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,9 +39,11 @@ public class UserCabinetServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
             HttpSession session = request.getSession(false);
+            LoginDto loginDto = ((LoginDto) session.getAttribute(ParametersEnum.LOGIN_DTO.toString()));
             request.setAttribute(ParametersEnum.USER_VISAS.toString(),
-                    visaService.getVisaByUserLogin(((LoginDto)session.getAttribute(ParametersEnum.LOGIN_DTO.toString()))
-                            .getLogin()));
+                    visaService.getVisaByUserLogin(loginDto.getLogin()));
+            request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(),
+                    bookingService.getVisitedCountriesByUserId(userService.getIdUserByLogin(loginDto)));
             request.getRequestDispatcher(ViewUrls.USER_CABINET_JSP.toString()).forward(request, response);
         } else {
             getServletConfig()
