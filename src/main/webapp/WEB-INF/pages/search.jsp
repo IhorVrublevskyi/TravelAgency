@@ -49,9 +49,12 @@
                 <p>Date of checkout</p>
                 <input type="date" name="outDate" placeholder="" required>
             </div>
+            <br>
+            <br>
             <div class="input">
-                <input type="checkbox" name="onlyAvailable" value="true"> Only available countries
+                <label><input type="checkbox" name="onlyAvailable" value="true"> Only available countries  </label>
             </div>
+
             <div class="submit">
                 <br>
                 <input type="submit" value="Search">
