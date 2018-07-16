@@ -1,9 +1,14 @@
 package org.lv326java.two.travelagency.dao;
 
+import org.lv326java.two.travelagency.db.ConnectionManager;
 import org.lv326java.two.travelagency.entities.Booking;
 
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BookingDao extends AbstractDaoCRUD<Booking> {
@@ -56,5 +61,29 @@ public class BookingDao extends AbstractDaoCRUD<Booking> {
         fields.put(DATE_CHECKIN_FIELDNAME, entity.getDateCheckin().toString());
         fields.put(DATE_CHECKOUT_FIELDNAME, entity.getDateCheckout().toString());
         return fields;
+    }
+
+    public List<Booking> getByUserId(Long userId) {
+        return getByFieldName(USER_ID_FIELDNAME, userId.toString());
+    }
+
+    public Map<Long, Integer> roomLoad(Date startDate, Date endDate) {
+        String sql = "SELECT room_id, SUM(DATEDIFF(date_checkout, date_checkin)) AS room_load FROM bookings " +
+                "WHERE (bookings.date_checkin > '%s' OR bookings.date_checkin IS NULL OR bookings.date_checkout < '%s' OR " +
+                "bookings.date_checkout IS NULL) GROUP BY room_id;";
+        Map<Long, Integer> roomLoad = new HashMap<>();
+        sql = String.format(sql, startDate, endDate);
+        try {
+            ResultSet resultSet = ConnectionManager.getInstance().getConnection().createStatement().executeQuery(sql);
+
+            while (resultSet.next()) {
+                roomLoad.put(resultSet.getLong(ROOM_ID_FIELDNAME), resultSet.getInt("room_load"));
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return roomLoad;
     }
 }

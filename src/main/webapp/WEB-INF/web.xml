@@ -41,25 +41,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>confirm</servlet-name>
-        <servlet-class>org.lv326java.two.travelagency.controllers.ConfirmServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>confirm</servlet-name>
-        <url-pattern>/edit</url-pattern>
-        <url-pattern>/confirm</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>th</servlet-name>
-        <servlet-class>org.lv326java.two.travelagency.controllers.ThanksServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>th</servlet-name>
-        <url-pattern>/thanks</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>reg</servlet-name>
         <servlet-class>org.lv326java.two.travelagency.controllers.users.RegistrationServlet</servlet-class>
     </servlet>
@@ -132,7 +113,14 @@
         <url-pattern>/users</url-pattern>
     </servlet-mapping>
 
-
+    <servlet>
+        <servlet-name>roomLoad</servlet-name>
+        <servlet-class>org.lv326java.two.travelagency.controllers.admin.RoomLoadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>roomLoad</servlet-name>
+        <url-pattern>/roomStatistics</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>

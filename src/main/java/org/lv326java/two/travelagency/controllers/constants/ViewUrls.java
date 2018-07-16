@@ -1,5 +1,7 @@
 package org.lv326java.two.travelagency.controllers.constants;
 
+import org.lv326java.two.travelagency.entities.Visa;
+
 public enum ViewUrls {
     LOGIN_JSP("/WEB-INF/pages/login.jsp"),
     INFO_ABOUT_SELECTED_HOTEL_JSP("/WEB-INF/pages/infoAboutSelectedHotel.jsp"),
@@ -18,7 +20,9 @@ public enum ViewUrls {
     ADMIN_COUNTRY_INSERT_UPDATE_JSP("/WEB-INF/pages/admin/insertUpdateCountry.jsp"),
     ADMIN_CITY_INSERT_UPDATE_JSP("/WEB-INF/pages/admin/insertUpdateCity.jsp"),
     ADMIN_HOTEL_INSERT_UPDATE_JSP("/WEB-INF/pages/admin/insertUpdateHotel.jsp"),
-    ADMIN_USER_UPDATE_JSP("/WEB-INF/pages/admin/updateUser.jsp");
+    ADMIN_USER_UPDATE_JSP("/WEB-INF/pages/admin/updateUser.jsp"),
+    ROOM_LOAD_SEARCH_JSP("/WEB-INF/pages/admin/roomLoadSearch.jsp"),
+    ROOM_LOAD_VIEW_JSP("/WEB-INF/pages/admin/roomLoadView.jsp");
     //
     private String url;
 

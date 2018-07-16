@@ -8,8 +8,10 @@ import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
 import org.lv326java.two.travelagency.dto.CityDto;
 import org.lv326java.two.travelagency.dto.HotelDto;
 import org.lv326java.two.travelagency.dto.LoginDto;
+import org.lv326java.two.travelagency.dto.RoomDto;
 import org.lv326java.two.travelagency.services.CityService;
 import org.lv326java.two.travelagency.services.HotelService;
+import org.lv326java.two.travelagency.services.RoomService;
 import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
 
 import javax.servlet.ServletException;
@@ -25,11 +27,13 @@ public class AdminHotelServlet extends HttpServlet {
 
     private HotelService hotelService;
     private CityService cityService;
+    private RoomService roomService;
 
     public AdminHotelServlet() {
         ServiceDaoConteiner serviceDaoConteiner = ServiceDaoConteiner.get();
         hotelService = serviceDaoConteiner.getHotelService();
         cityService = serviceDaoConteiner.getCityService();
+        roomService = serviceDaoConteiner.getRoomService();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -56,6 +60,7 @@ public class AdminHotelServlet extends HttpServlet {
                                 .forward(request, response);
                         break;
                     case ActionConstants.UPDATE:
+                        int roomsNumber = Integer.parseInt(request.getParameter(ParametersEnum.HOTEL_ROOM_NUMBERS.toString()));
                         hotelDto = new HotelDto(
                                 null,
                                 request.getParameter(ParametersEnum.CITY_ID.toString()),
@@ -64,6 +69,11 @@ public class AdminHotelServlet extends HttpServlet {
                         response.sendRedirect(request.getContextPath() + ControllerUrls.ADMINHOTEL_SERVLET);
                         hotelDto.setId(id);
                         hotelService.updateHotel(hotelDto);
+                        for (int i = 0; i < roomsNumber; i++) {
+                            RoomDto roomDto = new RoomDto(null, Integer.toString(i+1));
+                            roomDto.setHotelId(id);
+                            roomService.insert(roomDto);
+                        }
                         break;
                     case ActionConstants.INSERT:
                         hotelDto = new HotelDto(

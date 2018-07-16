@@ -45,17 +45,6 @@
                 class="edit">edit</span> or <span class="delete">delete</span> already exists.
         </div>
         <div class="clear"/>
-
-        <div class="float-l mt">
-            <a href="/rooms">
-                <button>Rooms</button>
-            </a>
-        </div>
-        <div class="float-l ml">You can <span class="insert">insert</span> new country and <span
-                class="edit">edit</span> or <span class="delete">delete</span> already exists.
-        </div>
-        <div class="clear"/>
-
         <div class="float-l mt">
             <a href="/users">
                 <button>Users</button>
@@ -65,9 +54,9 @@
                 class="edit">edit</span> or <span class="delete">delete</span> already exists.
         </div>
         <div class="clear"/>
-
     </div>
-
+    <br>Statistics
+    <br><a href="/roomStatistics">Room load statistics</a>
 </div>
 </body>
 </html>
