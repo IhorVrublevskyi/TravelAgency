@@ -10,7 +10,8 @@ public enum ControllerUrls {
     ADMINCITY_SERVLET("/cities"),
     ADMINHOTEL_SERVLET("/hotels"),
     ADMINUSER_SERVLET("/users"),
-    SEARCH_SERVLET("/search");
+    SEARCH_SERVLET("/search"),
+    VISA_SERVLET("/visa");
 
     private String url;
 

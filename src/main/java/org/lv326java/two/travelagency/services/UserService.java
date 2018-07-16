@@ -8,6 +8,7 @@ import org.lv326java.two.travelagency.dto.UserDto;
 import org.lv326java.two.travelagency.dto.LoginDto;
 import org.lv326java.two.travelagency.entities.Role;
 import org.lv326java.two.travelagency.entities.User;
+import org.lv326java.two.travelagency.exceptions.InvalidDateException;
 import org.lv326java.two.travelagency.exceptions.PasswordMismatchException;
 import org.lv326java.two.travelagency.exceptions.UserAlreadyExistsException;
 

@@ -69,7 +69,8 @@ public class VisaService {
         return result;
     }
 
-    public boolean addVisa(VisaDto visaDto) {
+    public boolean addVisa(VisaDto visaDto) throws InvalidDateException {
+        checkDate(Date.valueOf(visaDto.getDateOfInit()), Date.valueOf(visaDto.getDateOfExpired()));
         return visaDao.insert(new Visa(
                 null,
                 Long.parseLong(visaDto.getCountry()),
@@ -78,9 +79,9 @@ public class VisaService {
                 Date.valueOf(visaDto.getDateOfExpired())));
     }
 
-    public void checkDate(Date checkin, Date checkout) throws InvalidDateException {
+    private void checkDate(Date checkin, Date checkout) throws InvalidDateException {
         if ((checkin.getTime() - checkout.getTime() > 0) ||
-            (checkout.getTime() - Date.valueOf(LocalDate.now()).getTime() < 0))
+                (checkout.getTime() - Date.valueOf(LocalDate.now()).getTime() < 0))
         {
             throw new InvalidDateException("Date is invalid");
         }

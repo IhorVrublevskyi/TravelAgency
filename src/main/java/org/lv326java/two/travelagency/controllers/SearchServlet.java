@@ -47,7 +47,9 @@ public class SearchServlet extends HttpServlet {
                         userId, onlyAvailableCountries);
             } catch (InvalidDateException e) {
                 request.setAttribute(ParametersEnum.ERROR.toString(), "Date is invalid. Please try again");
-                request.getRequestDispatcher(ControllerUrls.SEARCH_SERVLET.toString()).forward(request, response);
+                String countryId = request.getParameter(ParametersEnum.COUNTRY_ID.toString());
+                request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountriesDto());
+                request.getRequestDispatcher(ViewUrls.SEARCH_JSP.toString()).forward(request, response);
                 return;
             }
             request.setAttribute(ParametersEnum.BOOKING_DTO_LIST.toString(), bookingDtoList);

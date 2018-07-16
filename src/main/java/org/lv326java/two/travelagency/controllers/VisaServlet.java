@@ -38,13 +38,6 @@ public class VisaServlet extends HttpServlet {
         if (Security.isActiveSession(request, response)) {
             HttpSession httpSession = request.getSession();
             try{
-                visaService.checkDate(Date.valueOf(request.getParameter(ParametersEnum.ENTRY_DATE.toString())),
-                        Date.valueOf(request.getParameter(ParametersEnum.OUT_DATE.toString())));
-            } catch (InvalidDateException e) {
-                request.setAttribute(ParametersEnum.ERROR.toString(), "Date is invalid. Please try again");
-                request.getRequestDispatcher(ViewUrls.VISA_JSP.toString()).forward(request, response);
-            }
-
             VisaDto visaDto = new VisaDto(
                     request.getParameter(ParametersEnum.COUNTRY_ID.toString()),
                     userService.getIdUserByLogin(
@@ -52,6 +45,11 @@ public class VisaServlet extends HttpServlet {
                     request.getParameter(ParametersEnum.ENTRY_DATE.toString()),
                     request.getParameter(ParametersEnum.OUT_DATE.toString()));
             visaService.addVisa(visaDto);
+            } catch (InvalidDateException e) {
+                request.setAttribute(ParametersEnum.ERROR.toString(), "Date is invalid. Please try again");
+                request.setAttribute(ParametersEnum.COUNTRY_DTO_LIST.toString(), countryService.getAllCountriesDto());
+                request.getRequestDispatcher(ViewUrls.VISA_JSP.toString()).forward(request, response);
+            }
             response.sendRedirect(request.getContextPath() + ControllerUrls.USERCABINET_SERVLET);
         } else {
             getServletConfig()
