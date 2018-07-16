@@ -4,8 +4,10 @@ import org.lv326java.two.travelagency.dao.*;
 import org.lv326java.two.travelagency.dto.BookingDto;
 import org.lv326java.two.travelagency.dto.RoomDto;
 import org.lv326java.two.travelagency.entities.*;
+import org.lv326java.two.travelagency.exceptions.InvalidDateException;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.*;
 
 public class BookingService {
@@ -80,5 +82,14 @@ public class BookingService {
                 Date.valueOf(bookingDto.getDateCheckin()),
                 Date.valueOf(bookingDto.getDateCheckout())
         ));
+    }
+
+    public void checkDate(Date checkin, Date checkout) throws InvalidDateException {
+        if ((checkin.getTime() - checkout.getTime() > 0) ||
+            (checkin.getTime() - Date.valueOf(LocalDate.now()).getTime() < 0) ||
+            (checkin.getTime() == checkout.getTime()))
+        {
+            throw new InvalidDateException("Date is invalid");
+        }
     }
 }

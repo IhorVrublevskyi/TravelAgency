@@ -5,6 +5,7 @@ import org.lv326java.two.travelagency.controllers.constants.ParametersEnum;
 import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
 import org.lv326java.two.travelagency.dto.BookingDto;
 import org.lv326java.two.travelagency.dto.LoginDto;
+import org.lv326java.two.travelagency.exceptions.InvalidDateException;
 import org.lv326java.two.travelagency.services.*;
 
 import javax.servlet.ServletException;
@@ -37,9 +38,15 @@ public class SearchServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
-            String cityId = request.getParameter(ParametersEnum.CITY_ID.toString());
             String checkin = request.getParameter(ParametersEnum.ENTRY_DATE.toString());
             String checkout = request.getParameter(ParametersEnum.OUT_DATE.toString());
+            try{
+                bookingService.checkDate(Date.valueOf(checkin), Date.valueOf(checkout));
+            } catch (InvalidDateException e) {
+                request.setAttribute(ParametersEnum.ERROR.toString(), "Date is invalid. Please try again");
+                request.getRequestDispatcher(ViewUrls.SEARCH_JSP.toString()).forward(request, response);
+            }
+            String cityId = request.getParameter(ParametersEnum.CITY_ID.toString());
             LoginDto loginDto = (LoginDto) request.getSession().getAttribute(ParametersEnum.LOGIN_DTO.toString());
             boolean onlyAvailableCountries = Boolean.valueOf(request.getParameter(ParametersEnum.ONLY_AVAILABLE_COUNTRIES.toString()));
             Long userId = userService.getIdUserByLogin(loginDto);

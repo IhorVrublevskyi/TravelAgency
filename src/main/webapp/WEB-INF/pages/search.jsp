@@ -11,6 +11,11 @@
 <body>
 <div class="form">
     <h2 class="log">Searching page</h2>
+    <c:if test="${error ne null}">
+        <p>
+            <span style="color:red">${error}</span>
+        </p>
+    </c:if>
     <fieldset>
         <div class="input">
             <p>Country</p>
