@@ -17,6 +17,7 @@
     </div>
     <div class="clear"></div>
     <table border="1">
+        <thead>
         <tr>
             <td>Country</td>
             <td>City</td>
@@ -24,7 +25,10 @@
             <td>Address</td>
             <td>Edit</td>
             <td>Delete</td>
+            <div class="clear"></div>
         </tr>
+        <thead>
+        <tbody>
         <c:forEach items="${hotels}" var="item">
             <tr>
                 <td>${item.getCountry()}</td>
@@ -44,6 +48,7 @@
                 </form>
             </tr>
         </c:forEach>
+    </tbody>
     </table>
     <br>
     <div class="bottom-button">

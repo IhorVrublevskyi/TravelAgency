@@ -9,31 +9,39 @@
 </head>
 <body>
 <div class="wrap">
-    <h2 class = "logout float-r"><a href="/logout"><button>Logout</button></a></h2>
-    <h2 class="log float-r">Hello, <span class="name">${loginDto.getLogin()}</span></h2>
-    <div class="clear"/>
+    <h2 class="logout float-r"><a href="/logout">
+        <button>Logout</button>
+    </a></h2>
+</div>
+<div class="form">
+    <table class="wrap">
+        <h2 class="log float-r">Hello, <span class="name">${loginDto.getLogin()}</span></h2>
 
-    <p>There is information about your visas:</p>
-    <div>
-        <div class="addButton float-r">
+        <br>
+        <div >
             <a href="/visa">
-                <button class="insert">Add visa</button>
+                <button class="insert addButton float-r">Add visa</button>
             </a>
         </div>
-        <div class="clear"/>
-    </div>
-    <div>
-        <div class="visa-item float-l">Country</div>
-        <div class="visa-item float-l">Date of init</div>
-        <div class="visa-item float-l">Date of expired</div>
-        <div class="clear"></div>
-        <c:forEach items="${userVisas}" var="item">
-            <div class="visa-item float-l">${item.getCountry()}</div>
-            <div class="visa-item float-l">${item.getDateOfInit()}</div>
-            <div class="visa-item float-l">${item.getDateOfExpired()}</div>
-            <div class="clear"></div>
-        </c:forEach>
-    </div>
+        <table border="1">
+            <p>Information about your visas:</p>
+            <thead>
+            <tr>
+                <td>Country</td>
+                <td>Date of init</td>
+                <td>Date of expired</td>
+            </tr>
+            </thead>
+            <c:forEach items="${userVisas}" var="item">
+            <tr>
+                <td>${item.getCountry()}</td>
+                <td>${item.getDateOfInit()}</td>
+                <td>${item.getDateOfExpired()}</td>
+            </tr>
+                <div class="clear"></div>
+            </c:forEach>
+        </table>
+    </table>
     <br><br>
     <p>Visited countries:</p>
     <c:forEach items="${countries}" var="item">

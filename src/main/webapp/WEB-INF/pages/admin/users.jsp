@@ -11,6 +11,7 @@
 <div class="form">
     <h2 class="log">Users</h2>
     <table border="1">
+        <thead>
         <tr>
             <td>First name</td>
             <td>Last name</td>
@@ -19,6 +20,8 @@
             <td>Edit</td>
             <td>Delete</td>
         </tr>
+        <thead>
+        <tbody>
         <c:forEach items="${users}" var="item">
             <tr>
                 <form action="${pageContext.request.contextPath}/users" method="post">
@@ -37,13 +40,14 @@
             </tr>
 
         </c:forEach>
-        <div class="clear"></div>
+        </tbody>
     </table>
     <br>
     <div class="bottom-button">
         <a href="/adminsCabinet"><button>Back</button></a>
     </div>
     <div class="clear"></div>
+</div>
     <%--<br><br>--%>
     <%--<div> Insert a new user--%>
         <%--<form action="${pageContext.request.contextPath}/users" , method="post">--%>

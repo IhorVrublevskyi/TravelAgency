@@ -8,17 +8,17 @@
     </style>
 </head>
 <body>
-<div class="wrap">
+<div class="form">
     <p>Please, choose hotel</p>
-    <table>
+    <table border="1">
         <thead>
         <tr>
             <td>Hotel</td>
             <td>Country</td>
             <td>City</td>
             <td>Address</td>
-            <td>Checkin</td>
-            <td>Checkout</td>
+            <td>Checkin date</td>
+            <td>Checkout date</td>
             <td>Room number</td>
             <td>Book</td>
         </tr>
@@ -49,7 +49,7 @@
                         </select>
                     </td>
                     <td>
-                        <button type="submit" onclick="getConfirmation();">Book</button>
+                        <button class="insert" type="submit" onclick="getConfirmation();">Book</button>
 
                         <script type="text/javascript">
                             function getConfirmation() {
@@ -62,6 +62,7 @@
         </c:forEach>
         </tbody>
     </table>
+    <div class="clear"></div>
 </div>
 </body>
 </html>

@@ -13,7 +13,6 @@
 
 <div class="wrap-item float-l">
     <table>
-        <form action=""
         <tr>
             <td class="fd">Hotel:</td>
             <td class="sd">

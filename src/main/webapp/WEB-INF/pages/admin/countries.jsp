@@ -30,16 +30,17 @@
                         <button class="delete" name="action" value="delete" type="submit" onclick="return confirm('Are you sure?')">Delete</button>
                     </td>
                     <td>
-                        <button name="action" value="statistic" type="submit">Quantity</button>
+                        <button name="action" value="statistic" type="submit"><span class="register"> Quantity <b>*</b></span> </button>
                     </td>
 
                 </form>
             </tr>
         </c:forEach>
     </table>
+    <br><br>
+    <span class="register"><b>*</b> Quantity of visas inited </span>
     <br/>
-    <div id="statistic">Number of Visas: ${numberOfVisas} </div>
-    <br>
+    <div id="statistic">${numberOfVisas} </div>
     <div class="bottom-button">
         <a href="/adminsCabinet"><button>Back</button></a>
     </div>

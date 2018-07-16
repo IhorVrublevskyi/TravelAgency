@@ -2,14 +2,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Countries</title>
+    <title>Room statistic</title>
     <style>
         <%@include file="../../styles/index.css"%>
     </style>
 </head>
 <body>
-<table>
-    <caption>Room load statistics</caption>
+<div class="form">
+<table border="1">
+    <h2 class="log">Room load statistic</h2>
+    <br>
     <tr>
         <td>Hotel name</td>
         <td>Room number</td>

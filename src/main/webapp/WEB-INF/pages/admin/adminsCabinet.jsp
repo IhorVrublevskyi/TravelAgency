@@ -55,8 +55,15 @@
         </div>
         <div class="clear"/>
     </div>
-    <br>Statistics
-    <br><a href="/roomStatistics">Room load statistics</a>
+    <br>
+    <div class="float-l mt">
+        <a href="/users">
+            <a href="/roomStatistics"><button>Statistic</button></a>
+        </a>
+    </div>
+    <div class="float-l ml register"><b>*</b> Room load statistic.
+    </div>
+
 </div>
 </body>
 </html>
