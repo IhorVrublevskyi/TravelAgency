@@ -34,10 +34,10 @@
                 <form action="${pageContext.request.contextPath}/hotels" method="post">
                     <input type="hidden" name="hotelId" value="${item.getId()}">
                     <td>
-                        <button name="action" value="editForm" type="submit">Edit</button>
+                        <button class="edit" class="submit" name="action" value="editForm" type="submit">Edit</button>
                     </td>
                     <td>
-                        <button name="action" value="delete" type="submit" onclick="return confirm('Are you sure?')">
+                        <button class="delete" name="action" value="delete" type="submit" onclick="return confirm('Are you sure?')">
                             Delete
                         </button>
                     </td>

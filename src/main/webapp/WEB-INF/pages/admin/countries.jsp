@@ -24,13 +24,13 @@
                     <input type="hidden" name="countryName" value="${item.getName()}">
                     <td>${item.getName()} </td>
                     <td>
-                        <button name="action" value="editForm" type="submit">Edit</button>
+                        <button class="edit" name="action" value="editForm" type="submit">Edit</button>
                     </td>
                     <td>
-                        <button name="action" value="delete" type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+                        <button class="delete" name="action" value="delete" type="submit" onclick="return confirm('Are you sure?')">Delete</button>
                     </td>
                     <td>
-                        <button name="action" value="statistic" type="submit">Visa Statistic</button>
+                        <button name="action" value="statistic" type="submit">Quantity</button>
                     </td>
 
                 </form>
@@ -45,12 +45,5 @@
     </div>
     <div class="clear"></div>
 </div>
-<%--<script type="text/javascript">--%>
-    <%--(function showStatistic() {--%>
-        <%--if(document.getElementById("stat").value !== 0){--%>
-            <%--document.getElementById("statistic").style.display = "block";--%>
-        <%--}--%>
-    <%--})();--%>
-<%--</script>--%>
 </body>
 </html>

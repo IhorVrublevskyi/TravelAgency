@@ -17,7 +17,7 @@
     <div>
         <div class="addButton float-r">
             <a href="/visa">
-                <button>Add visa</button>
+                <button class="insert">Add visa</button>
             </a>
         </div>
         <div class="clear"/>

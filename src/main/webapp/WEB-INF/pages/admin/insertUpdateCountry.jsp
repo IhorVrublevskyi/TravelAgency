@@ -20,7 +20,7 @@
                 <input type="hidden" name="countryId" value="${currentCountry.getId()}">
             </c:if>
             <c:if test="${action == 'insert'}">
-                <input type="text" name="countryName" placeholder="CountryName" required>
+                <input type="text" name="countryName" placeholder="Country name" required>
             </c:if>
 
             <input type="submit" value="Submit">
