@@ -40,18 +40,19 @@ public class SearchServlet extends HttpServlet {
         if (Security.isActiveSession(request, response)) {
             String checkin = request.getParameter(ParametersEnum.ENTRY_DATE.toString());
             String checkout = request.getParameter(ParametersEnum.OUT_DATE.toString());
-            try{
-                bookingService.checkDate(Date.valueOf(checkin), Date.valueOf(checkout));
-            } catch (InvalidDateException e) {
-                request.setAttribute(ParametersEnum.ERROR.toString(), "Date is invalid. Please try again");
-                request.getRequestDispatcher(ViewUrls.SEARCH_JSP.toString()).forward(request, response);
-            }
             String cityId = request.getParameter(ParametersEnum.CITY_ID.toString());
             LoginDto loginDto = (LoginDto) request.getSession().getAttribute(ParametersEnum.LOGIN_DTO.toString());
             boolean onlyAvailableCountries = Boolean.valueOf(request.getParameter(ParametersEnum.ONLY_AVAILABLE_COUNTRIES.toString()));
             Long userId = userService.getIdUserByLogin(loginDto);
-            List<BookingDto> bookingDtoList = bookingService.searchHotels(checkin, checkout, Long.parseLong(cityId),
-                    userId, onlyAvailableCountries);
+            List<BookingDto> bookingDtoList;
+            try {
+                bookingDtoList = bookingService.searchHotels(checkin, checkout, Long.parseLong(cityId),
+                        userId, onlyAvailableCountries);
+            } catch (InvalidDateException e) {
+                request.setAttribute(ParametersEnum.ERROR.toString(), "Date is invalid. Please try again");
+                request.getRequestDispatcher(ControllerUrls.SEARCH_SERVLET.toString()).forward(request, response);
+                return;
+            }
             request.setAttribute(ParametersEnum.BOOKING_DTO_LIST.toString(), bookingDtoList);
             getServletConfig()
                     .getServletContext()

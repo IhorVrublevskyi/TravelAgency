@@ -8,8 +8,10 @@ import org.lv326java.two.travelagency.dto.VisaDto;
 import org.lv326java.two.travelagency.entities.Country;
 import org.lv326java.two.travelagency.entities.User;
 import org.lv326java.two.travelagency.entities.Visa;
+import org.lv326java.two.travelagency.exceptions.InvalidDateException;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -74,5 +76,13 @@ public class VisaService {
                 Long.parseLong(visaDto.getUser()),
                 Date.valueOf(visaDto.getDateOfInit()),
                 Date.valueOf(visaDto.getDateOfExpired())));
+    }
+
+    public void checkDate(Date checkin, Date checkout) throws InvalidDateException {
+        if ((checkin.getTime() - checkout.getTime() > 0) ||
+            (checkout.getTime() - Date.valueOf(LocalDate.now()).getTime() < 0))
+        {
+            throw new InvalidDateException("Date is invalid");
+        }
     }
 }

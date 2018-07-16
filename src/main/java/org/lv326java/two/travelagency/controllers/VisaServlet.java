@@ -5,6 +5,7 @@ import org.lv326java.two.travelagency.controllers.constants.ParametersEnum;
 import org.lv326java.two.travelagency.controllers.constants.ViewUrls;
 import org.lv326java.two.travelagency.dto.LoginDto;
 import org.lv326java.two.travelagency.dto.VisaDto;
+import org.lv326java.two.travelagency.exceptions.InvalidDateException;
 import org.lv326java.two.travelagency.services.CountryService;
 import org.lv326java.two.travelagency.services.ServiceDaoConteiner;
 import org.lv326java.two.travelagency.services.UserService;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Date;
 
 @WebServlet(name = "VisaServlet")
 public class VisaServlet extends HttpServlet {
@@ -35,6 +37,14 @@ public class VisaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
             HttpSession httpSession = request.getSession();
+            try{
+                visaService.checkDate(Date.valueOf(request.getParameter(ParametersEnum.ENTRY_DATE.toString())),
+                        Date.valueOf(request.getParameter(ParametersEnum.OUT_DATE.toString())));
+            } catch (InvalidDateException e) {
+                request.setAttribute(ParametersEnum.ERROR.toString(), "Date is invalid. Please try again");
+                request.getRequestDispatcher(ViewUrls.VISA_JSP.toString()).forward(request, response);
+            }
+
             VisaDto visaDto = new VisaDto(
                     request.getParameter(ParametersEnum.COUNTRY_ID.toString()),
                     userService.getIdUserByLogin(

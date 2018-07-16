@@ -29,7 +29,11 @@ public class BookingService {
         this.visaDao = visaDao;
     }
 
-    public List<BookingDto> searchHotels(String startDate, String endDate, Long cityId, Long userId, boolean onlyAvailable) {
+    public List<BookingDto> searchHotels(String startDate, String endDate, Long cityId, Long userId, boolean onlyAvailable)
+            throws InvalidDateException {
+        Date checkin = Date.valueOf(startDate);
+        Date checkout = Date.valueOf(endDate);
+        checkDate(checkin, checkout);
         List<BookingDto> bookingDtos = new LinkedList<>();
         List<Room> rooms = roomDao.getFreeRoomsByPerion(Date.valueOf(startDate), Date.valueOf(endDate));
         Map<Long, List<Room>> map = new HashMap<>();
@@ -84,11 +88,10 @@ public class BookingService {
         ));
     }
 
-    public void checkDate(Date checkin, Date checkout) throws InvalidDateException {
+    private void checkDate(Date checkin, Date checkout) throws InvalidDateException {
         if ((checkin.getTime() - checkout.getTime() > 0) ||
-            (checkin.getTime() - Date.valueOf(LocalDate.now()).getTime() < 0) ||
-            (checkin.getTime() == checkout.getTime()))
-        {
+                (checkin.getTime() - Date.valueOf(LocalDate.now()).getTime() < 0) ||
+                (checkin.getTime() == checkout.getTime())) {
             throw new InvalidDateException("Date is invalid");
         }
     }
